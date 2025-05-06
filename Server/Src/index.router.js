@@ -1,7 +1,7 @@
 import morgan from "morgan";
 import cors from "cors";
 import { globalErrorHandling } from "./utils/errorHandling.js";
-import connectionDB from "../DB/connection.js";
+import connectionDB from "./DB/connection.js";
 const initApp = (app, express) => {
   app.use(express.json());
   app.use(morgan("dev"));
