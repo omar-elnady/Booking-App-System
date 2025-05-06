@@ -20,6 +20,7 @@ async function sendEmail({
     from: `"Booking App" <${process.env.GMAIL_USER}>`,
     cc,
     bcc,
+    to,
     subject,
     html,
     attachments,
