@@ -27,11 +27,11 @@ const eventSchema = new Schema(
       required: [true, "Event price is required"],
     },
     image: {
-      type: {
-        secure_url: String,
-        public_id: String,
+      secure_url: {
+        type: String,
+        default: "",
       },
-      required: [true, "Event image is required"],
+      public_id: { type: String, default: null },
     },
     availableTickets: {
       type: Number,
