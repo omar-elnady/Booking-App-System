@@ -11,10 +11,7 @@ const bookingSchema = new Schema({
     ref: "event",
     required: true,
   },
-  ticketCount: {
-    type: Number,
-    default: 1,
-  },
+
   bookingDate: {
     type: Date,
     default: Date.now,
@@ -25,9 +22,14 @@ const bookingSchema = new Schema({
     default: "booked",
   },
   paymentStatus: {
-    type: String,
+  type: String,
     enum: ["paid", "unpaid"],
     default: "unpaid",
+  },
+  paymentProvider: {
+    type: String,
+    enum: ["stripe"],
+    required: true,
   },
 });
 

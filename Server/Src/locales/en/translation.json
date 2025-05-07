@@ -1,0 +1,19 @@
+{
+  "errors": {
+    "invalidConfirmPassword": "In-valid confirm password",
+    "emailExist": "Email already exist",
+    "sendEmailError": "Send email error, please try again",
+    "tokenPayload" : "In-valid token payload",
+    "notRegisterAccount" : "Not register account" ,
+    "invalidResetCode": "Invalid reset code",
+    "confirmYouEmailFirst" : "Please confirm your email first",
+    "resetCodeExpired": "Reset code has expired",
+    "invalidLoginData": "In-valid login data"
+  },
+  "messages": {
+    "userRegistredSuccessfully": "User Register Successfully , Please check your email",
+    "passwordChangedSuccessfully": "Password changed successfully",
+    "resendVerificationCode": "Verification code sent successfully , Please check your email",
+    "userLoginSuccessfully": "User Login Successfully"
+  }
+}

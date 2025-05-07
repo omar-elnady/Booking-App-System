@@ -1,0 +1,20 @@
+{
+    "errors": {
+      "invalidConfirmPassword"  : "كلمات المرور غير متطابقة",
+      "emailExist" : "البريد الالكتروني مسجل بالفعل",
+      "sendEmailError" : "حدث خطأ في ارسال البريد الالكتروني , يرجي المحاولة مرة اخرى" , 
+      "tokenPayload" : "شفرة التحقق غير صالحة",
+      "notRegisterAccount": "حساب غير مسجل",
+      "invalidResetCode": "رمز إعادة التعيين غير صالح",
+      "confirmYouEmailFirst" : "يرجى تاكيد بريدك الالكتروني اولا",
+      "resetCodeExpired": "انتهت صلاحية رمز إعادة التعيين",
+      "invalidLoginData": "بيانات تسجيل الدخول غير صالحة"
+    },
+    "messages": {
+        "userRegistredSuccessfully": "تم التسجيل بنجاح , يرجى التحقق من بريدك الالكتروني",
+        "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح",
+        "resendVerificationCode": "تم ارسال رمز التحقق بنجاح , يرجى التحقق من بريدك الالكتروني",
+        "userLoginSuccessfully": "تم تسجيل الدخول بنجاح"
+    }
+  }
+  
