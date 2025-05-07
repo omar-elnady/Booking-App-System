@@ -1,25 +1,24 @@
-import { asyncHandler } from "../../utils/errorHandling.js";
-import sendEmail from "../../utils/email.js";
-import { hash, compare } from "../../utils/HashAndCompare.js";
-import userModel from "../../DB/modules/User.model.js";
+import { asyncHandler } from "../../../utils/errorHandling.js";
+import sendEmail from "../../../utils/email.js";
+import { hash, compare } from "../../../utils/HashAndCompare.js";
+import userModel from "../../../DB/modules/User.model.js";
 import {
   generateToken,
   verifyToken,
-} from "../../utils/GenerateAndVerifyToken.js";
+} from "../../../utils/GenerateAndVerifyToken.js";
 import {
   confirmationEmailTemplate,
   resendConfirmEmailTemplate,
   sendForgetCodeTemplate,
-} from "../../utils/emailTemplates.js";
+} from "../../../utils/emailTemplates.js";
 import { customAlphabet } from "nanoid";
 import i18next from "i18next";
 
 const successfullRedirectUrl =
   process.env.FE_URL || "https://www.facebook.com/omarahmedelnadey";
 
-export const register = asyncHandler(async (req, res, next) => {
-  console.log(i18next.language);
-  const { userName, email, password } = req.body;
+export const register = asyncHandler(async (req, res, next) => { 
+   const { userName, email, password } = req.body;
 
   if (await userModel.findOne({ email: email.toLowerCase() })) {
     return next(new Error(req.t("errors.emailExist"), { cause: 409 }));

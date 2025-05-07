@@ -1,20 +1,56 @@
 {
-    "errors": {
-      "invalidConfirmPassword"  : "كلمات المرور غير متطابقة",
-      "emailExist" : "البريد الالكتروني مسجل بالفعل",
-      "sendEmailError" : "حدث خطأ في ارسال البريد الالكتروني , يرجي المحاولة مرة اخرى" , 
-      "tokenPayload" : "شفرة التحقق غير صالحة",
-      "notRegisterAccount": "حساب غير مسجل",
-      "invalidResetCode": "رمز إعادة التعيين غير صالح",
-      "confirmYouEmailFirst" : "يرجى تاكيد بريدك الالكتروني اولا",
-      "resetCodeExpired": "انتهت صلاحية رمز إعادة التعيين",
-      "invalidLoginData": "بيانات تسجيل الدخول غير صالحة"
-    },
-    "messages": {
-        "userRegistredSuccessfully": "تم التسجيل بنجاح , يرجى التحقق من بريدك الالكتروني",
-        "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح",
-        "resendVerificationCode": "تم ارسال رمز التحقق بنجاح , يرجى التحقق من بريدك الالكتروني",
-        "userLoginSuccessfully": "تم تسجيل الدخول بنجاح"
-    }
+  "errors": {
+    "invalidConfirmPassword": "كلمات المرور غير متطابقة",
+    "emailExist": "البريد الالكتروني مسجل بالفعل",
+    "sendEmailError": "حدث خطأ في ارسال البريد الالكتروني , يرجي المحاولة مرة اخرى",
+    "tokenPayload": "شفرة التحقق غير صالحة",
+    "notRegisterAccount": "حساب غير مسجل",
+    "invalidResetCode": "رمز إعادة التعيين غير صالح",
+    "confirmYouEmailFirst": "يرجى تاكيد بريدك الالكتروني اولا",
+    "resetCodeExpired": "انتهت صلاحية رمز إعادة التعيين",
+    "invalidLoginData": "بيانات تسجيل الدخول غير صالحة",
+    "eventLanguageExist": "هذا الحدث مسجل بالفعل بنفس اللغة",
+    "eventAlreadyExist": "هذا الحدث مسجل بالفعل"
+  },
+  "messages": {
+    "userRegistredSuccessfully": "تم التسجيل بنجاح , يرجى التحقق من بريدك الالكتروني",
+    "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح",
+    "resendVerificationCode": "تم ارسال رمز التحقق بنجاح , يرجى التحقق من بريدك الالكتروني",
+    "userLoginSuccessfully": "تم تسجيل الدخول بنجاح",
+    "secondLanguageEventAddSuccessfully": "تم اضافة اللغة التانية لهذا الحدث بنجاح",
+    "createEventSuccessfully": "تم انشاء الحدث بنجاح."
+  },
+  "joiValidation": {
+    "validationError": "خطأ في التحقق",
+    "eventNameRequired": "اسم الحدث مطلوب",
+    "eventNameEnRequired": "اسم الحدث بالإنجليزية مطلوب",
+    "eventNameEnInvalid": "اسم الحدث بالإنجليزية يجب أن يكون نصًا صالحًا",
+    "eventNameArRequired": "اسم الحدث بالعربية مطلوب",
+    "eventNameArInvalid": "اسم الحدث بالعربية يجب أن يكون نصًا صالحًا",
+    "eventNameInvalidType": "اسم الحدث يجب أن يحتوي على حقلين بالإنجليزية والعربية",
+    "eventDescriptionRequired": "وصف الحدث مطلوب",
+    "eventDescriptionEnRequired": "وصف الحدث بالإنجليزية مطلوب",
+    "eventDescriptionEnInvalid": "وصف الحدث بالإنجليزية يجب أن يكون نصًا صالحًا",
+    "eventDescriptionArRequired": "وصف الحدث بالعربية مطلوب",
+    "eventDescriptionArInvalid": "وصف الحدث بالعربية يجب أن يكون نصًا صالحًا",
+    "eventDescriptionInvalidType": "وصف الحدث يجب أن يحتوي على حقلين بالإنجليزية والعربية",
+    "eventCategoryRequired": "فئة الحدث مطلوبة",
+    "eventCategoryEnRequired": "فئة الحدث بالإنجليزية مطلوبة",
+    "eventCategoryEnInvalid": "فئة الحدث بالإنجليزية يجب أن تكون نصًا صالحًا",
+    "eventCategoryArRequired": "فئة الحدث بالعربية مطلوبة",
+    "eventCategoryArInvalid": "فئة الحدث بالعربية يجب أن تكون نصًا صالحًا",
+    "eventCategoryInvalidType": "فئة الحدث يجب أن يحتوي على حقلين بالإنجليزية والعربية",
+    "eventVenueRequired": "مكان الحدث مطلوب",
+    "eventVenueEnRequired": "مكان الحدث بالإنجليزية مطلوب",
+    "eventVenueEnInvalid": "مكان الحدث بالإنجليزية يجب أن يكون نصًا صالحًا",
+    "eventVenueArRequired": "مكان الحدث بالعربية مطلوب",
+    "eventVenueArInvalid": "مكان الحدث بالعربية يجب أن يكون نصًا صالحًا",
+    "eventVenueInvalidType": "مكان الحدث يجب أن يحتوي على حقلين بالإنجليزية والعربية",
+    "eventDateRequired": "تاريخ الحدث مطلوب",
+    "eventDateInvalid": "تاريخ الحدث يجب أن يكون تاريخًا صالحًا",
+    "minPriceRequired": "السعر مطلوب",
+    "minPriceInvalid": "السعر يجب أن يكون رقمًا صالحًا وعلى الأقل 0",
+    "minAvailableTicketsRequired": "يجب توفر تذكرة واحدة على الأقل",
+    "minAvailableTickets": "عدد التذاكر المتاحة يجب أن يكون رقمًا صالحًا"
   }
-  
+}

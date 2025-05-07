@@ -55,9 +55,21 @@ export const validation = (schema, considerHeaders = false) => {
     }
     const validationResult = schema.validate(inputsData, { abortEarly: false });
     if (validationResult.error?.details) {
+      const errors = validationResult.error.details.map((error) => {
+        const translationKey = `joiValidation.${error.message}`;
+        const translatedMessage = req.t(translationKey, {
+          defaultValue: error.message
+        });
+        return {
+          field: error.context.label || error.path.join("."),
+          message: translatedMessage,
+        };
+      });
       return res.status(400).json({
-        message: `Validation Err : ${validationResult.error.message}`,
-        validationErr: validationResult.error.details,
+        message: ` ${req.t("joiValidation.validationError")} : ${
+          errors[0].message
+        }`,
+        validationErrors: errors,
       });
     }
     return next();

@@ -3,28 +3,33 @@ import { Schema, model } from "mongoose";
 const eventSchema = new Schema(
   {
     name: {
-      type: String,
-      required: [true, "Event name is required"],
+      en: String,
+      ar: String,
     },
+
     description: {
-      type: String,
-      required: [true, "Event description is required"],
+      en: String,
+      ar: String,
     },
     category: {
+      en: String,
+      ar: String,
+    },
+    venue: {
+      en: String,
+      ar: String,
+    },
+    eventCode: {
       type: String,
-      required: [true, "Event category is required"],
+      required: true,
     },
     date: {
       type: Date,
-      required: [true, "Event date is required"],
-    },
-    venue: {
-      type: String,
-      required: [true, "Event venue is required"],
+      required: true,
     },
     price: {
       type: Number,
-      required: [true, "Event price is required"],
+      required: true,
     },
     image: {
       secure_url: {

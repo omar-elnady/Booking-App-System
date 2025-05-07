@@ -1,5 +1,5 @@
 import joi from "joi";
-import { generalFields } from "../middlewares/validation.js";
+import { generalFields } from "../../middlewares/validation.js";
 
 export const token = joi.object({ token: joi.string().required() }).required();
 

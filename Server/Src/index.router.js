@@ -7,9 +7,11 @@ import i18nextFsBackend from "i18next-fs-backend";
 import i18nextHttpMiddleware from "i18next-http-middleware";
 import path from "path";
 import { fileURLToPath } from "url";
-
 // import Routers
-import authRouter from "./modules/auth.router.js";
+import authRouter from "./modules/Auth/auth.router.js";
+import eventRouter from './modules/Event/event.router.js'
+
+
 const initApp = (app, express) => {
   app.use(express.json());
   app.use(morgan("dev"));
@@ -41,6 +43,7 @@ const initApp = (app, express) => {
   app.use(i18nextHttpMiddleware.handle(i18next));
 
   app.use("/auth", authRouter);
+  app.use("/event", eventRouter);
 
   // app.get("*", (req, res, next) => {
   //   res.status(404).send("In-valid Routing Please check url or method");
