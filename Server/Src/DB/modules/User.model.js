@@ -49,6 +49,9 @@ const userSchema = new Schema(
       type: Number,
       default: null,
     },
+    forgetCodeExpires: {
+      type: Date,
+    },
     changePasswordTime: {
       type: Date,
     },
