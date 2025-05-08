@@ -11,7 +11,12 @@
     "invalidLoginData": "In-valid login data",
     "eventLanguageExist": "Event already exists in this language.",
     "eventAlreadyExist": "Event already exists.",
-    "eventNotFound" : "Event not found."
+    "eventNotFound": "Event not found.",
+    "noTicketsAvailable": "No tickets available",
+    "alreadyBooked": "You already booked this ticket",
+    "notBookedEvent": "You have not booked any ticket for this event",
+    "bookingNotFound": "Booking not found",
+    "bookingAlreadyProcessed": "Booking already processed"
   },
   "messages": {
     "userRegistredSuccessfully": "User Register Successfully , Please check your email",
@@ -21,8 +26,12 @@
     "secondLanguageEventAddSuccessfully": "Second language event added successfully",
     "createEventSuccessfully": "New event created Successfully.",
     "eventsRetrievedSuccessfully": "Events retrieved successfully",
-    "eventUpdatedSuccessfully"  : "Event updated successfully",
-    "eventDeletedSuccessfully"  : "Event deleted successfully"
+    "eventUpdatedSuccessfully": "Event updated successfully",
+    "eventDeletedSuccessfully": "Event deleted successfully",
+    "bookingCreatedSuccessfully": "Please confirm your payment to book ticket",
+    "bookingsRetrievedSuccessfully": "Booking updated successfully",
+    "ticketCanceledSuccessfully": "Ticket canceled successfully",
+    "bookingConfirmedSuccessfully": "Booking confirmed successfully"
   },
   "joiValidation": {
     "validationError": "Validation failed",
@@ -55,6 +64,10 @@
     "minPriceRequired": "Price is required",
     "minPriceInvalid": "Price must be a valid number and at least 0",
     "minAvailableTickets": "At least one ticket must be available",
-    "minAvailableTicketsInvalid": "Available tickets must be a valid number"
+    "minAvailableTicketsInvalid": "Available tickets must be a valid number",
+    "sessionIdRequired" : "Session id is required",
+    "invalidSessionId" : "In-valid session id",
+    "eventIdRequired" : "Event id is required" ,
+    "invalidEventId" : "In-valid event id"
   }
 }

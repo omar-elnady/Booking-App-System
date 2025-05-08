@@ -11,7 +11,11 @@
     "invalidLoginData": "بيانات تسجيل الدخول غير صالحة",
     "eventLanguageExist": "هذا الحدث مسجل بالفعل بنفس اللغة",
     "eventAlreadyExist": "هذا الحدث مسجل بالفعل",
-    "eventNotFound" : "الحدث غير موجود"
+    "eventNotFound": "الحدث غير موجود",
+    "noTicketsAvailable": "لا يوجد تذاكر متاحة",
+    "alreadyBooked": "لقد قمت بحجز هذه التذكرة بالفعل",
+    "bookingNotFound": "الحجز غير موجود",
+    "bookingAlreadyProcessed": "الحجز يتم بالفعل"
   },
   "messages": {
     "userRegistredSuccessfully": "تم التسجيل بنجاح , يرجى التحقق من بريدك الالكتروني",
@@ -21,8 +25,13 @@
     "secondLanguageEventAddSuccessfully": "تم اضافة اللغة التانية لهذا الحدث بنجاح",
     "createEventSuccessfully": "تم انشاء الحدث بنجاح.",
     "eventsRetrievedSuccessfully": " تم استلام الاحداث بنجاح",
-    "eventUpdatedSuccessfully"  : "تم تحديث الحدث بنجاح",
-    "eventDeletedSuccessfully"  : "تم حذف الحدث بنجاح"
+    "eventUpdatedSuccessfully": "تم تحديث الحدث بنجاح",
+    "eventDeletedSuccessfully": "تم حذف الحدث بنجاح",
+    "bookingCreatedSuccessfully": "من فضلك اكمل عمليه الدفع لاتمام الحجز",
+    "bookingsRetrievedSuccessfully": "تم استلام التذاكر بنجاح",
+    "notBookedEvent": "لم تقم بحجز اي تذكرة لهذا الحدث",
+    "ticketCanceledSuccessfully": "تم إلغاء التذكرة بنجاح",
+    "bookingConfirmedSuccessfully": "تم تاكيد الحجز بنجاح"
   },
   "joiValidation": {
     "validationError": "خطأ في التحقق",
@@ -55,6 +64,10 @@
     "minPriceRequired": "السعر مطلوب",
     "minPriceInvalid": "السعر يجب أن يكون رقمًا صالحًا وعلى الأقل 0",
     "minAvailableTicketsRequired": "يجب توفر تذكرة واحدة على الأقل",
-    "minAvailableTickets": "عدد التذاكر المتاحة يجب أن يكون رقمًا صالحًا"
+    "minAvailableTickets": "عدد التذاكر المتاحة يجب أن يكون رقمًا صالحًا",
+    "sessionIdRequired": "مطلوب الجلسة",
+    "eventIdRequired": "مطلوب الحدث",
+    "invalidEventId": "مطلوب الحدث",
+    "invalidSessionId": "مطلوب الجلسة"
   }
 }

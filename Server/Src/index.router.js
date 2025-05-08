@@ -9,8 +9,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 // import Routers
 import authRouter from "./modules/Auth/auth.router.js";
-import eventRouter from './modules/Event/event.router.js'
-
+import eventRouter from "./modules/Event/event.router.js";
+import bookingRouter from "./modules/Booking/booking.router.js";
 
 const initApp = (app, express) => {
   app.use(express.json());
@@ -44,6 +44,7 @@ const initApp = (app, express) => {
 
   app.use("/auth", authRouter);
   app.use("/event", eventRouter);
+  app.use("/booking", bookingRouter);
 
   // app.get("*", (req, res, next) => {
   //   res.status(404).send("In-valid Routing Please check url or method");

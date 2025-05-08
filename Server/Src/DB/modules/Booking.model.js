@@ -11,7 +11,6 @@ const bookingSchema = new Schema({
     ref: "event",
     required: true,
   },
-
   bookingDate: {
     type: Date,
     default: Date.now,
@@ -22,14 +21,12 @@ const bookingSchema = new Schema({
     default: "booked",
   },
   paymentStatus: {
-  type: String,
-    enum: ["paid", "unpaid"],
+    type: String,
+    enum: ["completed", "unpaid", "pending"],
     default: "unpaid",
   },
-  paymentProvider: {
+  stripeSessionId: {
     type: String,
-    enum: ["stripe"],
-    required: true,
   },
 });
 
