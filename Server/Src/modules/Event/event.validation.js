@@ -1,4 +1,5 @@
 import joi from "joi";
+import { generalFields } from "../../middlewares/validation.js";
 
 export const createSingleEvent = joi
   .object({
@@ -34,6 +35,7 @@ export const createSingleEvent = joi
       "number.base": "minAvailableTicketsInvalid",
       "number.min": "minAvailableTicketsRequired",
     }),
+    image: generalFields.file,
   })
   .required();
 
@@ -116,6 +118,6 @@ export const createMultiLanguageEvent = joi
       "number.base": "minAvailableTicketsInvalid",
       "number.min": "minAvailableTickets",
     }),
+    image: generalFields.file,
   })
   .required();
-  

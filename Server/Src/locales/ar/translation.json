@@ -10,7 +10,8 @@
     "resetCodeExpired": "انتهت صلاحية رمز إعادة التعيين",
     "invalidLoginData": "بيانات تسجيل الدخول غير صالحة",
     "eventLanguageExist": "هذا الحدث مسجل بالفعل بنفس اللغة",
-    "eventAlreadyExist": "هذا الحدث مسجل بالفعل"
+    "eventAlreadyExist": "هذا الحدث مسجل بالفعل",
+    "eventNotFound" : "الحدث غير موجود"
   },
   "messages": {
     "userRegistredSuccessfully": "تم التسجيل بنجاح , يرجى التحقق من بريدك الالكتروني",
@@ -18,7 +19,10 @@
     "resendVerificationCode": "تم ارسال رمز التحقق بنجاح , يرجى التحقق من بريدك الالكتروني",
     "userLoginSuccessfully": "تم تسجيل الدخول بنجاح",
     "secondLanguageEventAddSuccessfully": "تم اضافة اللغة التانية لهذا الحدث بنجاح",
-    "createEventSuccessfully": "تم انشاء الحدث بنجاح."
+    "createEventSuccessfully": "تم انشاء الحدث بنجاح.",
+    "eventsRetrievedSuccessfully": " تم استلام الاحداث بنجاح",
+    "eventUpdatedSuccessfully"  : "تم تحديث الحدث بنجاح",
+    "eventDeletedSuccessfully"  : "تم حذف الحدث بنجاح"
   },
   "joiValidation": {
     "validationError": "خطأ في التحقق",

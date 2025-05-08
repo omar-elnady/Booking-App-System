@@ -1,8 +1,9 @@
-import e from "express";
 import eventModel from "../../../DB/modules/event.model.js";
 import { trimStringsInObject } from "../../../utils/cleanSpace.js";
 import { asyncHandler } from "../../../utils/errorHandling.js";
 import { paginate } from "../../../utils/paginate.js";
+import cloudinary from "../../../utils/cloudinary.js";
+import { Types } from "mongoose";
 
 export const createSingleLanguageEvent = asyncHandler(
   async (req, res, next) => {
@@ -15,9 +16,9 @@ export const createSingleLanguageEvent = asyncHandler(
       eventCode,
       price,
       date,
-      image,
       availableTickets,
     } = cleanedData;
+    const file = req.file || {};
 
     const language = req.language || "en";
 
@@ -43,7 +44,16 @@ export const createSingleLanguageEvent = asyncHandler(
       existingEvent.date = date || existingEvent.date;
       existingEvent.availableTickets =
         availableTickets || existingEvent.availableTickets;
-
+      if (file) {
+        if (existingEvent.image.public_id) {
+          await cloudinary.uploader.destroy(existingEvent.image.public_id);
+        }
+        const { secure_url, public_id } = await cloudinary.uploader.upload(
+          file.path,
+          { folder: `${generateEventCode}/${language}/${name}` }
+        );
+        existingEvent.image = { secure_url, public_id };
+      }
       await existingEvent.save();
 
       return res.status(200).json({
@@ -56,7 +66,14 @@ export const createSingleLanguageEvent = asyncHandler(
     while (await eventModel.findOne({ eventCode: generateEventCode })) {
       generateEventCode = "EVT-" + Math.random().toString(36).substring(2, 10);
     }
-
+    let image = {};
+    if (file) {
+      const { secure_url, public_id } = await cloudinary.uploader.upload(
+        file.path,
+        { folder: `${generateEventCode}/${language}/${name}` }
+      );
+      image = { secure_url, public_id };
+    }
     const newEvent = await eventModel.create({
       name: { [language]: name },
       description: { [language]: description },
@@ -86,10 +103,9 @@ export const createMultiLanguageEvent = asyncHandler(async (req, res, next) => {
     eventCode,
     price,
     date,
-    image,
     availableTickets,
   } = cleanedData;
-
+  const file = req.file || {};
   const existingEvent = await eventModel.findOne({
     name,
     description,
@@ -105,6 +121,14 @@ export const createMultiLanguageEvent = asyncHandler(async (req, res, next) => {
 
   while (await eventModel.findOne({ eventCode: generateEventCode })) {
     generateEventCode = "EVT-" + Math.random().toString(36).substring(2, 10);
+  }
+  let image = {};
+  if (file) {
+    const { secure_url, public_id } = await cloudinary.uploader.upload(
+      file.path,
+      { folder: `${generateEventCode}/${language}/${name}` }
+    );
+    image = { secure_url, public_id };
   }
 
   const newEvent = await eventModel.create({
@@ -125,7 +149,7 @@ export const createMultiLanguageEvent = asyncHandler(async (req, res, next) => {
   });
 });
 
-export const getEvents = asyncHandler(async (req, res, next) => {
+export const getAllEvents = asyncHandler(async (req, res, next) => {
   const { skip, limit } = paginate(req.query.page, req.query.size);
   const search = req.query.search || "";
   const cleanSearch = search.replace(/"/g, "");
@@ -164,9 +188,129 @@ export const getEvents = asyncHandler(async (req, res, next) => {
 
   const totalPages = Math.ceil(totalEvents / limit);
   return res.json({
-    message: "events retrieved successfully",
+    message: req.t("messages.eventsRetrievedSuccessfully"),
     events,
     totalPages,
     totalEvents,
   });
+});
+
+export const getSpicificEvent = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+  const event = await eventModel.aggregate([
+    {
+      $match: {
+        _id: new Types.ObjectId(id),
+      },
+    },
+    {
+      $project: {
+        arEvent: {
+          name: "$name.ar",
+          description: "$description.ar",
+          category: "$category.ar",
+          venue: "$venue.ar",
+          date: "$date",
+          price: "$price",
+          availableTickets: "$availableTickets",
+          eventCode: "$eventCode",
+          image: {
+            secure_url: "$image.secure_url",
+            public_id: "$image.public_id",
+          },
+        },
+        enEvent: {
+          name: "$name.en",
+          description: "$description.en",
+          category: "$category.en",
+          venue: "$venue.en",
+          date: "$date",
+          price: "$price",
+          availableTickets: "$availableTickets",
+          eventCode: "$eventCode",
+          image: {
+            secure_url: "$image.secure_url",
+            public_id: "$image.public_id",
+          },
+        },
+      },
+    },
+  ]);
+  if (!event || event.length === 0) {
+    return next(
+      new Error(req.t("errors.eventNotFound"), {
+        cause: 404,
+      })
+    );
+  }
+  const normalEvent = await eventModel.find({ _id: id });
+
+  return res.json({
+    message: req.t("eventsRetrievedSuccessfully"),
+    arEvent: event[0].arEvent,
+    enEvent: event[0].enEvent,
+    normalEvent,
+  });
+});
+
+export const updateEvent = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+  const { name, description, category, venue, date, price, availableTickets } =
+    req.body;
+  const language = req.language || "en";
+  const isEventExist = await eventModel.findById(id);
+  if (!isEventExist) {
+    return next(
+      new Error(req.t("errors.eventNotFound"), {
+        cause: 404,
+      })
+    );
+  }
+  const file = req.file || {};
+  let image = {};
+  if (file) {
+    if (isEventExist.image.public_id) {
+      await cloudinary.uploader.destroy(isEventExist.image.public_id);
+    }
+    const { secure_url, public_id } = await cloudinary.uploader.upload(
+      file.path,
+      { folder: `${id}/${req.language}/${name}` }
+    );
+    image = { secure_url, public_id };
+  }
+
+  const event = await eventModel.findOneAndUpdate(
+    { _id: id },
+    {
+      $set: {
+        name: { [language]: name },
+        description: { [language]: description },
+        category: { [language]: category },
+        venue: { [language]: venue },
+        date,
+        price,
+        availableTickets,
+        image,
+      },
+    },
+    { new: true }
+  );
+  return res.json({ message: req.t("eventUpdatedSuccessfully"), event });
+});
+
+export const deleteEvent = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+  const isEventExist = await eventModel.findById(id);
+  if (!isEventExist) {
+    return next(
+      new Error(req.t("errors.eventNotFound"), {
+        cause: 404,
+      })
+    );
+  }
+  if (isEventExist.image.public_id) {
+    await cloudinary.uploader.destroy(isEventExist.image.public_id);
+  }
+  await eventModel.findByIdAndDelete(id);
+  return res.json({ message: req.t("eventDeletedSuccessfully") });
 });

@@ -10,7 +10,8 @@
     "resetCodeExpired": "Reset code has expired",
     "invalidLoginData": "In-valid login data",
     "eventLanguageExist": "Event already exists in this language.",
-    "eventAlreadyExist": "Event already exists."
+    "eventAlreadyExist": "Event already exists.",
+    "eventNotFound" : "Event not found."
   },
   "messages": {
     "userRegistredSuccessfully": "User Register Successfully , Please check your email",
@@ -18,7 +19,10 @@
     "resendVerificationCode": "Verification code sent successfully , Please check your email",
     "userLoginSuccessfully": "User Login Successfully",
     "secondLanguageEventAddSuccessfully": "Second language event added successfully",
-    "createEventSuccessfully": "New event created Successfully."
+    "createEventSuccessfully": "New event created Successfully.",
+    "eventsRetrievedSuccessfully": "Events retrieved successfully",
+    "eventUpdatedSuccessfully"  : "Event updated successfully",
+    "eventDeletedSuccessfully"  : "Event deleted successfully"
   },
   "joiValidation": {
     "validationError": "Validation failed",
