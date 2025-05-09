@@ -12,7 +12,6 @@ import {
   sendForgetCodeTemplate,
 } from "../../../utils/emailTemplates.js";
 import { customAlphabet } from "nanoid";
-import i18next from "i18next";
 
 const successfullRedirectUrl =
   process.env.FE_URL || "https://www.facebook.com/omarahmedelnadey";
