@@ -1,4 +1,14 @@
 {
+  "appName": "احجزلي",
+  "welcome": "مرحبًا بك في احجزلي",
+  "toggleDarkMode": "تبديل الوضع الداكن",
+  "language": "اللغة",
+  "language.arabic": "عربي",
+  "language.english": "إنجليزي",
+  "profile": "الملف الشخصي",
+  "billing": "الفوترة",
+  "team": "الفريق",
+  "subscription": "الاشتراك",
   "errors": {
     "invalidConfirmPassword": "كلمات المرور غير متطابقة",
     "emailExist": "البريد الالكتروني مسجل بالفعل",
@@ -68,6 +78,24 @@
     "sessionIdRequired": "مطلوب الجلسة",
     "eventIdRequired": "مطلوب الحدث",
     "invalidEventId": "مطلوب الحدث",
-    "invalidSessionId": "مطلوب الجلسة"
+    "invalidSessionId": "مطلوب الجلسة",
+    "emailRequired": "البريد الإلكتروني مطلوب",
+    "emailInvalid": "البريد الإلكتروني يجب أن يكون عنوان بريد صالح",
+    "passwordRequired": "كلمة المرور مطلوبة",
+    "passwordInvalid": "كلمة المرور يجب أن تحتوي على حرف كبير، حرف صغير، رقم، و رمز خاص",
+    "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
+    "confirmPasswordInvalid": "تأكيد كلمة المرور يجب أن يتطابق مع كلمة المرور",
+    "userNameRequired": "اسم المستخدم مطلوب",
+    "userNameInvalid": "اسم المستخدم يجب أن يكون بين 2 و 20 حرفًا",
+    "idRequired": "المعرف مطلوب",
+    "idInvalid": "معرف غير صالح",
+    "forgetCodeRequired": "رمز إعادة التعيين مطلوب",
+    "forgetCodeInvalid": "رمز إعادة التعيين يجب أن يكون رقمًا مكونًا من 6 أرقام",
+    "tokenRequired": "الرمز مطلوب",
+    "tokenInvalid": "الرمز يجب أن يكون نصًا صالحًا",
+    "fileRequired": "الملف مطلوب",
+    "fileInvalid": "الملف يجب أن يكون كائن ملف صالح",
+    "headersRequired": "رأس التفويض مطلوب",
+    "headersInvalid": "رأس التفويض يجب أن يكون نصًا صالحًا"
   }
 }
