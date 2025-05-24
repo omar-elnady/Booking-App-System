@@ -1,0 +1,26 @@
+{
+  "navbar": {
+    "logoName": "كـليـك",
+    "home": "الصفحة الرئيسية",
+    "events": "الايفنـتات",
+    "en": "English",
+    "ar": "عـربـي",
+    "dashboard": "لوحة التحكم",
+    "settings": "الإعدادات",
+    "bookings": " الحجوزات",
+    "logout": "تسجيل الخروج",
+    "login": "تسجيل الدخول",
+    "signup": "انشاء حساب"
+  },
+  "welcomeMessage": "أهلاً بك في منصة الفعاليات الخاصة بنا!",
+  "loginButton": "تسجيل الدخول",
+  "signupButton": "إنشاء حساب",
+  "searchEvents": "البحث عن فعاليات",
+  "greeting": "مرحباً، {{name}}",
+  "menu": {
+    "dashboard": "لوحة التحكم",
+    "settings": "الإعدادات",
+    "bookings": "تطبيق الحجوزات",
+    "logout": "تسجيل الخروج"
+  }
+}

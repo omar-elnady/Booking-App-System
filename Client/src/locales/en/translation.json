@@ -1,0 +1,26 @@
+{
+  "navbar": {
+    "logoName": "CLICK",
+    "home": "Home",
+    "events": "Events",
+    "en": "English",
+    "ar": "عـربـي",
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "bookings": "Bookings",
+    "logout": "Logout",
+    "login": "Login",
+    "signup": "Sign Up"
+  },
+  "welcomeMessage": "Welcome to our Event Platform!",
+  "loginButton": "Login",
+  "signupButton": "Sign Up",
+  "searchEvents": "Search Events",
+  "greeting": "Hello, {{name}}",
+  "menu": {
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "bookings": "Booking App",
+    "logout": "Logout"
+  }
+}
