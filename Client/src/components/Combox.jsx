@@ -13,7 +13,6 @@ const CustomDropdown = ({ value, setValue, options, ...props }) => {
     setIsOpen(false);
   };
 
-  console.log(value);
   return (
     <div>
       <div className="dropdown-container">

@@ -12,6 +12,11 @@
     "login": "Login",
     "signup": "Sign Up"
   },
+  "home": {
+    "title": "Discover the Latest Exciting Events",
+    "subTitle": " Join Now and Don’t Miss Your Chance for an Extraordinary Experience!",
+    "goToEvents": "View All Events"
+  },
   "welcomeMessage": "Welcome to our Event Platform!",
   "loginButton": "Login",
   "signupButton": "Sign Up",

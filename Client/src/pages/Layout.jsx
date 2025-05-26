@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <>
       <Navber />
-      <Outlet />;
+      <Outlet />
     </>
   );
 };

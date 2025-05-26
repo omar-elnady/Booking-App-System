@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   User,
@@ -9,10 +9,13 @@ import {
   LayoutDashboard,
   MousePointerClick,
   Menu,
+  Sun,
+  Moon,
+  MoonIcon,
 } from "lucide-react";
 import Button from "./Button";
 import DropdownMenu from "./DropdownMenu";
-import { useTranslation } from "react-i18next"; // Import useTranslation
+import { useTranslation } from "react-i18next"; 
 import LanguageSwitcher from "./Lang";
 import CustomDropdown from "./Combox";
 
@@ -51,6 +54,19 @@ const Navbar = () => {
         : languagesOpition[1]
       : languagesOpition[0]
   );
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.toggle("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDark]);
+
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+  };
 
   const basicLinks = [
     {
@@ -73,8 +89,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50">
-      <div className="container mx-auto px-4">
+    <nav className="bg-white blurred dark:bg-darkNavbar   shadow-lg border-b  transition-colors duration-500 border-gray-600 z-50">
+      <div className="container mx-auto ">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
@@ -82,7 +98,7 @@ const Navbar = () => {
                 <MousePointerClick />
               </span>
             </div>
-            <span className="text-xl font-bold text-gray-900">
+            <span className="text-xl font-bold text-gray-900 dark:text-white transition duration-500">
               {t("navbar.logoName")}
             </span>
           </Link>
@@ -93,7 +109,7 @@ const Navbar = () => {
               <Link
                 key={index}
                 to={link.to}
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
+                className="text-gray-700 dark:text-white hover:text-blue-600 transition-colors duration-400 font-medium"
               >
                 {link.name}
               </Link>
@@ -115,6 +131,28 @@ const Navbar = () => {
                 options={languagesOpition}
                 setValue={setLang}
               />
+            </div>
+            <div
+              className="relative w-16 h-8 bg-gray-300 dark:bg-gray-700 rounded-full p-1 cursor-pointer"
+              onClick={toggleTheme}
+            >
+              <div
+                className={`w-6 h-6 bg-white rounded-full flex items-center justify-center transform transition-transform duration-300 ${
+                  i18n.language === "ar"
+                    ? isDark
+                      ? "translate-x-8"
+                      : "translate-x-0"
+                    : isDark
+                    ? "translate-x-0"
+                    : "translate-x-8"
+                }`}
+              >
+                {isDark ? (
+                  <Moon className="text-gray-300 w-4 h-4" />
+                ) : (
+                  <Sun className="text-yellow-500 w-4 h-4" />
+                )}
+              </div>
             </div>
             {/* --- End Language Switcher Buttons --- */}
 
