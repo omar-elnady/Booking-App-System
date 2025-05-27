@@ -42,7 +42,7 @@ const DropdownMenu = ({
           type="button"
           className={`${
             !cancelDefultStyle
-              ? `transition ease-in-out duration-300 inline-flex gap-2 justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-600 ${classMenuBtn}`
+              ? `transition ease-in-out duration-300 inline-flex gap-2 justify-center w-full rounded-md border  border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-600 ${classMenuBtn}`
               : ` ${classMenuBtn}`
           }`}
           id="options-menu"
@@ -62,7 +62,7 @@ const DropdownMenu = ({
       {isOpen && (
         <div
           className="absolute top-full mt-3 w-56 rounded-md shadow-lg bg-white ring-1 ring-gray-500 ring-opacity-5 focus:outline-none z-10 transition ease-in-out duration-300"
-          style={{ insetInlineEnd: 0 }} // يحل محل right: 0 ويدعم RTL
+          style={{ insetInlineEnd: 0 }} 
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="options-menu"

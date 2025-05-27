@@ -1,9 +1,21 @@
 import { ArrowBigDown, ArrowBigUp, ChevronDown } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const CustomDropdown = ({ value, setValue, options, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -14,7 +26,7 @@ const CustomDropdown = ({ value, setValue, options, ...props }) => {
   };
 
   return (
-    <div>
+    <div ref={dropdownRef}>
       <div className="dropdown-container">
         <div className="dropdown-header" onClick={toggleDropdown}>
           <span className="flex  gap-2 items-center">

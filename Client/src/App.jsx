@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
+import Events from "./pages/Events";
 //    import Router Pages
 
 export default function App() {
@@ -51,7 +52,10 @@ export default function App() {
         />
         // </ProdectedRoute>
       ),
-      children: [{ path: "/", element: <Home /> }],
+      children: [
+        { path: "/", element: <Home /> },
+        { path: "/events", element: <Events /> },
+      ],
     },
   ]);
   return <RouterProvider router={routers} />;

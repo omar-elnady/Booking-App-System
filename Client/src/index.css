@@ -11,7 +11,7 @@
     47.4%,
     11.2%
   ); 
-  --color-cardForeground: hsl(210, 40%, 98%); /* تحويل القيمة لـ HSL للتناسق */
+  --color-cardForeground: hsl(210, 40%, 98%); 
 }
 .dark nav {
   background-color: var(--color-darkNavbar);

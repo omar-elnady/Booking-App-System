@@ -17,6 +17,33 @@
     "subTitle": " Join Now and Don’t Miss Your Chance for an Extraordinary Experience!",
     "goToEvents": "View All Events"
   },
+  "events": {
+    "title": "Join Now and Don’t Miss Your Chance for an Extraordinary Experience!",
+    "searchPlaceholder": "Search for an Event",
+    "searchButton": "Search",
+    "evnetsFound": "Events Found",
+    "event": " Event ",
+    "evnets": " Events ",
+    "founds": "found",
+    "found": "found",
+    "for": "for",
+    "noEventsFound": "No Events Found",
+    "adjustSearch": "Try Adjusting Your Search Criteria or Filters to Find More Events"
+  },
+
+  "sortOpition": {
+    "filters": "Filters",
+    "sortBy": "Sort By",
+    "newest": "Newest First",
+    "popular": "Most Popular",
+    "priceLowToHigh": "Price: Low to High",
+    "priceHighToLow": "Price: High to Low",
+    "date": "Event Date"
+  },
+  "categories": "Categories",
+  "clearFilters": "Clear Filters",
+  "currency": "EGP",
+  "bookNow": "Book Now",
   "welcomeMessage": "Welcome to our Event Platform!",
   "loginButton": "Login",
   "signupButton": "Sign Up",

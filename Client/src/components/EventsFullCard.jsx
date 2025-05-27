@@ -40,7 +40,7 @@ const EventsFullCard = ({ event }) => {
               <MapPin /> {event.venue}
             </span>
             <span className="dark:text-gray-300 text-gray-700 gap-2 flex">
-              <Banknote /> {event.price} EGP
+              <Banknote /> {event.price} {t("currency")}
             </span>
           </div>
           <Button
@@ -49,7 +49,7 @@ const EventsFullCard = ({ event }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Book Now !
+            {t("bookNow")}
           </Button>
         </div>
         <div className="absolute top-0 left-0 w-10 h-10 bg-lightMainBg dark:bg-darkMainBg rounded-full -translate-x-2 translate-y-[-50%]"></div>
