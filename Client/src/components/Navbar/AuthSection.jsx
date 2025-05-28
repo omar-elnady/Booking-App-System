@@ -13,7 +13,7 @@ const MOCK_USER = { role: "admin", name: "omar" };
 const AuthSection = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  
+
   const isAuthenticated = MOCK_IS_AUTHENTICATED;
   const user = MOCK_USER;
 
@@ -25,7 +25,7 @@ const AuthSection = () => {
   return (
     <div className="flex items-center space-x-3">
       {isAuthenticated ? (
-        // Authenticated 
+        // Authenticated
         user?.role === "admin" && (
           <div className="flex">
             <DropdownMenu
@@ -40,7 +40,7 @@ const AuthSection = () => {
           </div>
         )
       ) : (
-        // Unauthenticated 
+        // Unauthenticated
         <div className="flex items-center space-x-2">
           {/* Desktop  */}
           <div className="hidden md:flex items-center space-x-2">
@@ -64,12 +64,12 @@ const AuthSection = () => {
           {/* Mobile  */}
           <div className="relative group md:hidden">
             <UserPlus
-              onClick={handleLoginClick} 
+              onClick={handleLoginClick}
               className="h-6 w-6 text-gray-600 dark:text-gray-300 cursor-pointer hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200"
             />
             <AnimatePresence>
               <motion.div
-                className="absolute top-8 left-1/2 -translate-x-1/2 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-md px-3 py-1 text-sm text-gray-700 dark:text-cardForeground shadow-md backdrop-blur-md bg-opacity-80 dark:bg-opacity-80 hidden group-hover:block whitespace-nowrap" // Added whitespace-nowrap
+                className="absolute top-8 left-1/2 -translate-x-1/2 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-md px-3 py-1 text-sm text-gray-700 dark:text-textDark shadow-md backdrop-blur-md bg-opacity-80 dark:bg-opacity-80 hidden group-hover:block whitespace-nowrap" // Added whitespace-nowrap
                 variants={tooltipVariants}
                 initial="hidden"
                 animate="visible"

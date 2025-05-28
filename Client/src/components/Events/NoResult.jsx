@@ -15,7 +15,7 @@ function NoResult({
       <div className="text-gray-400 dark:text-gray-500 mb-4">
         <SearchIcon className="w-16 h-16 mx-auto" />
       </div>
-      <h3 className="text-2xl font-semibold text-gray-900 dark:text-cardForeground mb-2">
+      <h3 className="text-2xl font-semibold text-gray-900 dark:text-textDark mb-2">
         {t("events.noEventsFound")}
       </h3>
       <p className="text-gray-600 dark:text-gray-300 mb-6">

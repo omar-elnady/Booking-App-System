@@ -2,10 +2,16 @@ import React from "react";
 import { Banknote, CalendarClock, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Button from "../Button";
+import { useNavigate } from "react-router-dom";
 
 const EventCard = ({ event }) => {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
+const navigate = useNavigate();
+
+  const handleGoToEvent = (event) => {
+    navigate(`/events/eventId=${event.id}`);
+  };
 
   return (
     <div className="card relative  overflow-hidden group" key={event._id}>
@@ -44,7 +50,7 @@ const EventCard = ({ event }) => {
             </span>
           </div>
           <Button
-            href={event.link}
+            onClick={() => handleGoToEvent(event)}
             className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded transition-colors"
             target="_blank"
             rel="noopener noreferrer"

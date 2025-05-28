@@ -5,7 +5,6 @@ import { events } from "../lib/Events";
 import SearchFilters from "../components/Events/SearchFilters";
 import EventCard from "../components/Events/EventsCards";
 import Pagination from "../components/Events/Pagination";
-import { useTranslation } from "react-i18next";
 import SearchBar from "../components/Events/SearchBar";
 import EventsList from "../components/Events/EventsList";
 import NoResult from "../components/Events/NoResult";
@@ -13,6 +12,12 @@ import { usePagination } from "../hooks/usePagination";
 import { useEvent } from "../hooks/useEvent";
 
 const Events = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   const {
     searchQuery,
     setSearchQuery,
@@ -28,6 +33,7 @@ const Events = () => {
     searchParams,
     setSearchParams,
   } = useEvent(events);
+
   const { currentPage, setCurrentPage, totalPages, paginationItems } =
     usePagination(filteredAndSortedEvents);
 
@@ -36,7 +42,7 @@ const Events = () => {
     if (query) {
       setSearchQuery(query);
     }
-  }, [searchParams]);
+  }, [searchParams, setSearchQuery]);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-darkMainBg">

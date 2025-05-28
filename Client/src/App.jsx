@@ -9,6 +9,7 @@ import { jwtDecode } from "jwt-decode";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Events from "./pages/Events";
+import EventDetails from "./pages/EventDetails";
 //    import Router Pages
 
 export default function App() {
@@ -55,6 +56,7 @@ export default function App() {
       children: [
         { path: "/", element: <Home /> },
         { path: "/events", element: <Events /> },
+        { path: "/events/:eventId", element: <EventDetails /> },
       ],
     },
   ]);

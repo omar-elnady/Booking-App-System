@@ -10,10 +10,10 @@ const SearchBar = ({
   handleSearch,
   handleKeyPress,
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <div className="mb-8">
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-cardForeground mb-6 text-center">
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-textDark mb-6 text-center">
         {t("events.title")}
       </h1>
 
@@ -28,7 +28,9 @@ const SearchBar = ({
             className="flex-1 border-0  focus:ring-0 bg-transparent text-gray-900 dark:text-gray-300"
           />
           <Button onClick={handleSearch} className="flex">
-            <SearchIcon className="w-5 h-5 mr-2" />
+            <SearchIcon
+              className={`w-5 h-5 ${i18n.language === "ar" ? "ml-2" : "mr-2"}`}
+            />
             {t("events.searchButton")}
           </Button>
         </div>

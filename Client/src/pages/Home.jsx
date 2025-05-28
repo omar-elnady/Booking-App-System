@@ -1,11 +1,17 @@
 import React from "react";
 import Button from "../components/Button";
-import EventsFullCard from "../components/EventsFullCard";
+import EventsFullCard from "../components/Events/EventsFullCard"; 
 import { useTranslation } from "react-i18next";
 import { events } from "../lib/Events";
+import { useNavigate } from "react-router-dom";
 
 function HomeEventsSection() {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+
+  const handleViewEvents = () => {
+    navigate("/events");
+  };
 
   return (
     <div className="bg-lightMainBg dark:bg-darkMainBg">
@@ -22,7 +28,7 @@ function HomeEventsSection() {
           })}
         </div>
         <div className="flex justify-center pt-15 pb-5">
-          <Button> {t("home.goToEvents")}</Button>
+          <Button onClick={handleViewEvents}> {t("home.goToEvents")}</Button>
         </div>
       </div>
     </div>

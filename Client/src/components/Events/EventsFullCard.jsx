@@ -1,12 +1,17 @@
 import React from "react";
 import { Banknote, CalendarClock, MapPin } from "lucide-react";
-import Button from "./Button";
+import Button from "../Button";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const EventsFullCard = ({ event }) => {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
-  console.log(lang);
+  const navigate = useNavigate();
+
+  const handleGoToEvent = (event) => {
+    navigate(`/events/eventId=${event.id}`);
+  };
 
   return (
     <div className="card relative " key={event._id}>
@@ -25,7 +30,7 @@ const EventsFullCard = ({ event }) => {
         />
         <div className="  md:flex-2 flex flex-col gap-2  justify-between h-full px-10 py-5  md:px-4 md:py-7 ">
           <div className=" flex-2 flex flex-col gap-2 h-full   ">
-            <h2 className="text-2xl md:text-3xl font-bold   text-gray-900 dark:text-cardForeground">
+            <h2 className="text-2xl md:text-3xl font-bold   text-gray-900 dark:text-textDark">
               {event.title}
             </h2>
             <p className="text-base text-gray-800  dark:text-gray-200">
@@ -44,7 +49,7 @@ const EventsFullCard = ({ event }) => {
             </span>
           </div>
           <Button
-            href={event.link}
+            onClick={() => handleGoToEvent(event)}
             className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded transition-colors"
             target="_blank"
             rel="noopener noreferrer"

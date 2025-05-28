@@ -216,7 +216,7 @@
 //                   <UserPlus className="h-6 w-6 text-gray-600 dark:text-gray-300 cursor-pointer hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200" />
 //                   <AnimatePresence>
 //                     <motion.div
-//                       className=" absolute top-8 left-1/2 -translate-x-1/2 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-md px-3 py-1 text-sm text-gray-700 dark:text-cardForeground shadow-md backdrop-blur-md bg-opacity-80 dark:bg-opacity-80 hidden group-hover:block"
+//                       className=" absolute top-8 left-1/2 -translate-x-1/2 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-700 rounded-md px-3 py-1 text-sm text-gray-700 dark:text-textDark shadow-md backdrop-blur-md bg-opacity-80 dark:bg-opacity-80 hidden group-hover:block"
 //                       variants={tooltipVariants}
 //                       initial="hidden"
 //                       animate="visible"
@@ -242,17 +242,17 @@
 // };
 
 // export default Navbar;
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { getBasicLinks } from '../../constants'; // Corrected path
-import { useTheme } from '../../hooks/useTheme'; // Corrected path
-import { useLanguage } from '../../hooks/useLanguage'; // Corrected path
-import Logo from './Logo';
-import NavLinks from './NavLinks';
-import LanguageSwitcher from './LanguageSwitcher';
-import ThemeSwitcher from './ThemeSwitcher';
-import AuthSection from './AuthSection';
-import MobileMenu from './MobileMenu';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { getBasicLinks } from "../../constants"; // Corrected path
+import { useTheme } from "../../hooks/useTheme"; // Corrected path
+import { useLanguage } from "../../hooks/useLanguage"; // Corrected path
+import Logo from "./Logo";
+import NavLinks from "./NavLinks";
+import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeSwitcher from "./ThemeSwitcher";
+import AuthSection from "./AuthSection";
+import MobileMenu from "./MobileMenu";
 
 const Navbar = () => {
   // Initialize hooks
@@ -261,7 +261,7 @@ const Navbar = () => {
 
   // Get data from constants (passing t for translation)
   const basicLinks = getBasicLinks(t);
-  const logoText = t('navbar.logoName');
+  const logoText = t("navbar.logoName");
 
   return (
     <nav className="bg-white blurred dark:bg-darkNavbar shadow-lg border-b  border-gray-600 dark:border-gray-700 z-50">
@@ -296,4 +296,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

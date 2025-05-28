@@ -6,19 +6,14 @@
   --color-darkMainBg: hsl(222.2, 84%, 4.9%);
   --color-white: #fff;
   --color-darkNavbar: hsl(222.2, 84%, 4.9%);
-  --color-darkCard: hsl(
-    222.2,
-    47.4%,
-    11.2%
-  ); 
-  --color-cardForeground: hsl(210, 40%, 98%); 
+  --color-darkCard: hsl(222.2, 47.4%, 11.2%);
+  --color-textDark: hsl(210, 40%, 98%);
+  --color-muted: #d1d5dc ;
+
 }
 .dark nav {
   background-color: var(--color-darkNavbar);
 }
-
-
-
 
 .dropdown-container {
   position: relative;

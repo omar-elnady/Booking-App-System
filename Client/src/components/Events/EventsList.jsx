@@ -19,7 +19,7 @@ function EventsList({
         {searchQuery && (
           <span className="ml-1">
             {t("events.for")} "
-            <span className="font-semibold text-gray-900 dark:text-cardForeground">
+            <span className="font-semibold text-gray-900 dark:text-textDark">
               {searchQuery}
             </span>
             "
