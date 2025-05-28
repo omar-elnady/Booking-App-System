@@ -38,10 +38,17 @@
     "priceHighToLow": "السعر من الاعلى الى الاقل",
     "date": "التاريخ"
   },
+  "eventDetails": {
+    "back": "رجوع",
+    "booked": "تم حجز الايفنت بالفعل",
+    "eventDetails": "تفاصيل الايفنت",
+    "ticketPrice": "سعر التذكرة"
+  },
   "categories": "أنواع الإيفنتات",
   "clearFilters": "مسح كل التصفيات",
-  "currency": "جـنية",
+  "currency": " جـنية ",
   "bookNow": "احجز الان",
+
   "welcomeMessage": "أهلاً بك في منصة الفعاليات الخاصة بنا!",
   "loginButton": "تسجيل الدخول",
   "signupButton": "إنشاء حساب",

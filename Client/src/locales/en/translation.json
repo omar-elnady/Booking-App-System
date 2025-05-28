@@ -40,9 +40,15 @@
     "priceHighToLow": "Price: High to Low",
     "date": "Event Date"
   },
+  "eventDetails": {
+    "back": "Back",
+    "booked": "Event Booked",
+    "eventDetails": "Event Details",
+    "ticketPrice": "Ticket Price"
+  },
   "categories": "Categories",
   "clearFilters": "Clear Filters",
-  "currency": "EGP",
+  "currency": " EGP ",
   "bookNow": "Book Now",
   "welcomeMessage": "Welcome to our Event Platform!",
   "loginButton": "Login",
