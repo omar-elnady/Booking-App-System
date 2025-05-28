@@ -55,7 +55,7 @@ const SearchFilters = ({
             {t("sortOpition.sortBy")}
           </label>
           <div className="space-y-2">
-            {sortOptions.map((option, index) => (
+            {sortOptions?.map((option, index) => (
               <motion.div
                 key={option.value}
                 className="flex items-center"
@@ -94,7 +94,7 @@ const SearchFilters = ({
             {t("categories")}
           </label>
           <div className="space-y-3">
-            {categories.map((category, index) => (
+            {categories?.map((category, index) => (
               <motion.div
                 key={category}
                 className="flex items-center"
@@ -126,7 +126,7 @@ const SearchFilters = ({
           </div>
         </div>
 
-        {selectedCategories.length > 0 && (
+        {selectedCategories?.length > 0 && (
           <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
             <button
               onClick={handleClearFilters}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Banknote, CalendarClock, MapPin } from "lucide-react";
-import Button from "./Button";
 import { useTranslation } from "react-i18next";
+import Button from "../Button";
 
 const EventCard = ({ event }) => {
   const { t, i18n } = useTranslation();
