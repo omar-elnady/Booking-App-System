@@ -10,6 +10,9 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Events from "./pages/Events";
 import EventDetails from "./pages/EventDetails";
+import Login from "./pages/Login";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
 //    import Router Pages
 
 export default function App() {
@@ -57,6 +60,12 @@ export default function App() {
         { path: "/", element: <Home /> },
         { path: "/events", element: <Events /> },
         { path: "/events/:eventId", element: <EventDetails /> },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+
+        // { path: "*", element: <Navigate to="/" /> },
       ],
     },
   ]);

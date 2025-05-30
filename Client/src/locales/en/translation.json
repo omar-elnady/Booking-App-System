@@ -46,6 +46,58 @@
     "eventDetails": "Event Details",
     "ticketPrice": "Ticket Price"
   },
+  "login": {
+    "welcomeMessage": "Welcome to our events platform!",
+    "signToContinue": "Sign in to book the latest events",
+    "joinUs": "Join Us!",
+    "createAccount": "Create a new account to book the best events",
+    "signIn": "Sign In",
+    "signup": "Sign Up",
+    "signingUp": "Creating Account",
+
+    "loginButton": "Sign In",
+    "signingIn": "Signing In",
+    "forgetPassword": "Forgot your password ? ",
+    "dontHaveAccount": "Don't have an account ? ",
+    "signUpHere": "Sign up now",
+    "alreadyHaveAccount": "Already have an account ? ",
+    "signInHere": "Sign in here",
+    "demoAccounts": "Demo Accounts",
+    "continueAsGuest": "Continue as Guest",
+    "email": {
+      "label": "E-mail",
+      "placeholder": "Enter your e-mail",
+      "required": "E-mail is required",
+      "invalid": "Invalid e-mail format"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Enter your password",
+      "required": "Password is required",
+      "minLength": "Password must be at least 8 characters"
+    },
+    "firstName": {
+      "label": "First Name",
+      "placeholder": "Enter your first name",
+      "required": "First Name is required"
+    },
+    "lastName": {
+      "label": "Last Name",
+      "placeholder": "Enter your last name",
+      "required": "Last Name is required"
+    },
+    "userName": {
+      "label": "Username",
+      "placeholder": "Enter a unique username",
+      "required": "Username is required"
+    },
+    "confirmPassword": {
+      "label": "Confirm Password",
+      "placeholder": "Enter your password",
+      "required": "Confirm Password is required",
+      "minLength": "Password must be at least 8 characters"
+    }
+  },
   "categories": "Categories",
   "clearFilters": "Clear Filters",
   "currency": " EGP ",

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const NavLinks = ({ links }) => {
   return (
@@ -8,7 +8,7 @@ const NavLinks = ({ links }) => {
         <Link
           key={index}
           to={link.to}
-          className="text-gray-700 dark:text-white hover:text-indigo-600 transition-colors duration-400 font-medium"
+          className="text-gray-700 dark:text-white hover:text-mainColor transition-colors duration-400 font-medium"
         >
           {link.name}
         </Link>
@@ -18,4 +18,3 @@ const NavLinks = ({ links }) => {
 };
 
 export default NavLinks;
-

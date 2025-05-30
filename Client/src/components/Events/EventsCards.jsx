@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const EventCard = ({ event }) => {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleGoToEvent = (event) => {
     navigate(`/events/eventId=${event.id}`);
@@ -18,7 +18,7 @@ const navigate = useNavigate();
       <span
         className={`absolute ${
           lang === "ar" ? "right-2 top-2" : "left-2 top-2"
-        } bg-indigo-600 text-white px-2  py-1 rounded z-10`}
+        } bg-mainColor text-white px-2  py-1 rounded z-10`}
       >
         {event.category}
       </span>
@@ -51,7 +51,7 @@ const navigate = useNavigate();
           </div>
           <Button
             onClick={() => handleGoToEvent(event)}
-            className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded transition-colors"
+            className="bg-indigo-500 hover:bg-mainColor text-white font-semibold py-2 px-4 rounded transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >

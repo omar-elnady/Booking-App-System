@@ -70,7 +70,7 @@ const LandingSection = () => {
                   </p>
                   <Button
                     href={event.link}
-                    className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded transition-colors"
+                    className="bg-indigo-500 hover:bg-mainColor text-white font-semibold py-2 px-4 rounded transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

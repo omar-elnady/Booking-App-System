@@ -73,7 +73,7 @@ const SearchFilters = ({
                   value={option.value}
                   checked={sortBy === option.value}
                   onChange={() => onSortChange(option.value)}
-                  className={`h-4 w-4 text-indigo-600 border-gray-300 dark:border-gray-600 focus:ring-indigo-500 cursor-pointer ${
+                  className={`h-4 w-4 text-mainColor border-gray-300 dark:border-gray-600 focus:ring-indigo-500 cursor-pointer ${
                     isRTL ? "ml-2" : "mr-2"
                   }`}
                 />
@@ -111,7 +111,7 @@ const SearchFilters = ({
                   type="checkbox"
                   checked={selectedCategories.includes(category)}
                   onChange={(e) => onCategoryChange(category, e.target.checked)}
-                  className={`h-4 w-4 text-indigo-600 border-gray-300 dark:border-gray-600 focus:ring-indigo-500 cursor-pointer ${
+                  className={`h-4 w-4 text-mainColor border-gray-300 dark:border-gray-600 focus:ring-indigo-500 cursor-pointer ${
                     isRTL ? "ml-2" : "mr-2"
                   }`}
                 />

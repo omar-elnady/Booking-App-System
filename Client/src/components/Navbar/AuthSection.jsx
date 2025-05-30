@@ -7,7 +7,7 @@ import DropdownMenu from "../DropdownMenu";
 import { getListMenuAdmin, tooltipVariants } from "../../constants";
 import { useTranslation } from "react-i18next";
 
-const MOCK_IS_AUTHENTICATED = true;
+const MOCK_IS_AUTHENTICATED = false;
 const MOCK_USER = { role: "admin", name: "omar" };
 
 const AuthSection = () => {
@@ -55,7 +55,7 @@ const AuthSection = () => {
             <Button
               size="sm"
               onClick={handleRegisterClick}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white"
+              className="bg-mainColor hover:bg-indigo-700 text-white"
             >
               {t("navbar.signup")}
             </Button>
@@ -65,7 +65,7 @@ const AuthSection = () => {
           <div className="relative group md:hidden">
             <UserPlus
               onClick={handleLoginClick}
-              className="h-6 w-6 text-gray-600 dark:text-gray-300 cursor-pointer hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200"
+              className="h-6 w-6 text-gray-600 dark:text-gray-300 cursor-pointer hover:text-mainColor dark:hover:text-indigo-400 transition-colors duration-200"
             />
             <AnimatePresence>
               <motion.div

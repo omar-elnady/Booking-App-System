@@ -1,11 +1,15 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar/Navber";
+import { useTheme } from "../hooks/useTheme";
 
 const Layout = () => {
+  useTheme();
+
+  const { pathname } = useLocation();
   return (
     <>
-      <Navbar />
+      {pathname === "/login" ? null : <Navbar />}
       <Outlet />
     </>
   );

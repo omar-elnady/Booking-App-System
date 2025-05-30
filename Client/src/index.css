@@ -2,14 +2,15 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  --color-mainColor: #4f39f6;
   --color-lightMainBg: #e5e7eb;
   --color-darkMainBg: hsl(222.2, 84%, 4.9%);
   --color-white: #fff;
   --color-darkNavbar: hsl(222.2, 84%, 4.9%);
   --color-darkCard: hsl(222.2, 47.4%, 11.2%);
   --color-textDark: hsl(210, 40%, 98%);
-  --color-muted: #d1d5dc ;
-
+  --color-muted: #d1d5dc;
+  --duration: 500ms;
 }
 .dark nav {
   background-color: var(--color-darkNavbar);
@@ -89,36 +90,24 @@
 [dir="rtl"] .dropdown-list {
   text-align: right;
 }
-
-/* تخصيص أزرار Swiper */
-/* .swiper-button-prev,
-.swiper-button-next {
-  color: #ffffff; 
-  background-color: rgba(0, 0, 0, 0.5); 
-  border-radius: 50%; 
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-} */
-
-/* .swiper-button-prev:hover,
-.swiper-button-next:hover {
-  background-color: rgba(0, 0, 0, 0.8); 
-} */
-
-/* .swiper-button-prev::after,
-.swiper-button-next::after {
-  font-size: 20px; 
-} */
-
-/* ضبط المسافات للأزرار */
-/* .swiper-button-prev {
-  left: 10px; 
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.swiper-button-next {
-  right: 10px;
-} */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}

@@ -44,6 +44,58 @@
     "eventDetails": "تفاصيل الايفنت",
     "ticketPrice": "سعر التذكرة"
   },
+  "login": {
+    "welcomeMessage": " أهلاً بك في منصة الفعاليات الخاصة بنا !",
+    "signToContinue": "سجل دخول واحجز احدث الايفنتات",
+    "joinUs": "انضم لنا !",
+    "createAccount": "انشاء حساب جديد لحجز افضل الايفنتات",
+    "signIn": "تسجيل الدخول",
+    "signup": "انشاء حساب",
+    "signingUp": "جاري انشاء الحساب",
+
+    "loginButton": "تسجيل الدخول",
+    "signingIn": "جاري تسجيل الدخول",
+    "forgetPassword": "نسيت كلمة المرور ؟ ",
+    "dontHaveAccount": "ليس لديك حساب ؟  ",
+    "signUpHere": "سجل الان",
+    "alreadyHaveAccount": "لديك حساب بالفعل ؟ ",
+    "signInHere": "سجل دخول من هنا ",
+    "demoAccounts": " حسابات للتجربة ",
+    "continueAsGuest": "متابعة كضيف ",
+    "email": {
+      "label": "البريد الإلكتروني",
+      "placeholder": "أدخل بريدك الإلكتروني",
+      "required": "البريد الإلكتروني مطلوب",
+      "invalid": "صيغة البريد الإلكتروني غير صحيحة"
+    },
+    "password": {
+      "label": "كلمة المرور",
+      "placeholder": "أدخل كلمة المرور",
+      "required": "كلمة المرور مطلوبة",
+      "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل"
+    },
+    "firstName": {
+      "label": "الاسم الأول",
+      "placeholder": "أدخل اسمك الأول",
+      "required": "الاسم الأول مطلوب"
+    },
+    "lastName": {
+      "label": "الاسم الأخير",
+      "placeholder": "أدخل اسمك الأخير",
+      "required": "الاسم الأخير مطلوب"
+    },
+    "userName": {
+      "label": "اسم المستخدم",
+      "placeholder": "أدخل اسم مستخدم غير مسجل من قبل",
+      "required": "اسم المستخدم مطلوب"
+    },
+    "confirmPassword": {
+      "label": "تأكيد كلمة المرور",
+      "placeholder": "أدخل كلمة المرور",
+      "required": "تأكيد كلمة المرور مطلوب",
+      "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل"
+    }
+  },
   "categories": "أنواع الإيفنتات",
   "clearFilters": "مسح كل التصفيات",
   "currency": " جـنية ",

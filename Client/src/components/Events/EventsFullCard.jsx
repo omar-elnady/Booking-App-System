@@ -18,20 +18,20 @@ const EventsFullCard = ({ event }) => {
       <span
         className={`absolute ${
           lang === "ar" ? "right-8 top-5" : "left-8 top-5"
-        } bg-indigo-600 text-white px-2 py-1 rounded`}
+        } bg-mainColor text-white px-2 py-1 rounded`}
       >
         {event.category}
       </span>
       <div className=" flex md:items-center flex-col md:flex-row   justify-between  bg-white dark:bg-darkCard border-2 border-gray-300 dark:border-gray-700  md:h-[300px]">
         <img
           src={event.image}
-          alt={event.title}
+          alt={event.name}
           className="md:flex-3 md:h-full w-full h-[300px]  "
         />
         <div className="  md:flex-2 flex flex-col gap-2  justify-between h-full px-10 py-5  md:px-4 md:py-7 ">
           <div className=" flex-2 flex flex-col gap-2 h-full   ">
             <h2 className="text-2xl md:text-3xl font-bold   text-gray-900 dark:text-textDark">
-              {event.title}
+              {event.name}
             </h2>
             <p className="text-base text-gray-800  dark:text-gray-200">
               {event.description.length > 60
@@ -50,7 +50,7 @@ const EventsFullCard = ({ event }) => {
           </div>
           <Button
             onClick={() => handleGoToEvent(event)}
-            className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded transition-colors"
+            className="bg-indigo-500 hover:bg-mainColor text-white font-semibold py-2 px-4 rounded transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >

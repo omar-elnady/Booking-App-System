@@ -10,7 +10,7 @@ function Details({ event, isAuthenticated, isBooked }) {
   return (
     <div className="space-y-3">
       <div className="space-y-2 flex flex-col items-start">
-        <span className=" bg-indigo-600 hover:bg-inigo-600 text-textDark rounded-3xl  text-sm px-3 py-1">
+        <span className=" bg-mainColor hover:bg-inigo-600 text-textDark rounded-3xl  text-sm px-3 py-1">
           {event.category}
         </span>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-textDark  leading-tight">

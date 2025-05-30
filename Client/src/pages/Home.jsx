@@ -23,7 +23,7 @@ function HomeEventsSection() {
           <p className="text-xl text-gray-600">{t("home.subTitle")}</p>
         </div>
         <div className="cards grid grid-cols-1 gap-10">
-          {events?.map((event, index) => {
+          {events?.slice(0, 3).map((event, index) => {
             return <EventsFullCard key={index} event={event} />;
           })}
         </div>
