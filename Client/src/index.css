@@ -3,7 +3,7 @@
 
 @theme {
   --color-mainColor: #4f39f6;
-  --color-lightMainBg: #e5e7eb;
+  --color-lightMainBg: #fbfbfb;
   --color-darkMainBg: hsl(222.2, 84%, 4.9%);
   --color-white: #fff;
   --color-darkNavbar: hsl(222.2, 84%, 4.9%);
@@ -110,4 +110,84 @@
 .overflow-y-auto {
   scrollbar-width: thin;
   scrollbar-color: #888 #f1f1f1;
+}
+
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none;
+}
+
+.swiper_container {
+  padding: 2rem 0;
+  position: relative;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.swiper-slide {
+  width: 32rem;
+  height: auto;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.swiper-slide-active {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .swiper-slide {
+    width: 24rem;
+  }
+}
+
+.slider-controler {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.slider-controler .slider-arrow {
+  background: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.slider-controler .slider-arrow ion-icon {
+  font-size: 1.5rem;
+  color: #222224;
+}
+
+.slider-controler .swiper-button-prev,
+.slider-controler .swiper-button-next {
+  position: static;
+  transform: none;
+}
+
+.swiper-pagination {
+  position: static;
+  width: auto !important;
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-pagination-bullet {
+  background: #4f46e5;
+  opacity: 0.5;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
 }

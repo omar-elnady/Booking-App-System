@@ -14,7 +14,7 @@ const EventsFullCard = ({ event }) => {
   };
 
   return (
-    <div className="card relative " key={event._id}>
+    <div className="   relative w-5/6 mx-auto " key={event._id}>
       <span
         className={`absolute ${
           lang === "ar" ? "right-8 top-5" : "left-8 top-5"
@@ -22,7 +22,7 @@ const EventsFullCard = ({ event }) => {
       >
         {event.category}
       </span>
-      <div className=" flex md:items-center flex-col md:flex-row   justify-between  bg-white dark:bg-darkCard border-2 border-gray-300 dark:border-gray-700  md:h-[300px]">
+      <div className="rounded-2xl  mx-auto overflow-hidden flex md:items-center flex-col md:flex-row   justify-between  bg-white dark:bg-darkCard border-2 border-gray-300 dark:border-gray-700  md:h-[300px]">
         <img
           src={event.image}
           alt={event.name}
@@ -57,10 +57,6 @@ const EventsFullCard = ({ event }) => {
             {t("bookNow")}
           </Button>
         </div>
-        <div className="absolute top-0 left-0 w-10 h-10 bg-lightMainBg dark:bg-darkMainBg rounded-full -translate-x-2 translate-y-[-50%]"></div>
-        <div className="absolute top-0 right-0 w-10 h-10 bg-lightMainBg dark:bg-darkMainBg rounded-full translate-x-2 translate-y-[-50%]"></div>
-        <div className="absolute bottom-0 left-0 w-10 h-10 bg-lightMainBg dark:bg-darkMainBg rounded-full -translate-x-2 translate-y-[50%]"></div>
-        <div className="absolute bottom-0 right-0 w-10 h-10 bg-lightMainBg dark:bg-darkMainBg rounded-full translate-x-2 translate-y-[50%]"></div>
       </div>
     </div>
   );

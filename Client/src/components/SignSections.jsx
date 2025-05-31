@@ -28,7 +28,7 @@ export function CreateYourAccount({ setIsLogin, t }) {
 export function YouAlreadyHaveAccount({ setIsLogin, t }) {
   return (
     <p className="text-gray-600">
-     {t("login.alreadyHaveAccount")}
+      {t("login.alreadyHaveAccount")}
       <span
         onClick={() => setIsLogin(true)}
         className="text-mainColor hover:text-indigo-800 font-medium cursor-pointer"
@@ -41,7 +41,10 @@ export function YouAlreadyHaveAccount({ setIsLogin, t }) {
 }
 export function ContinueAsGuest({ t }) {
   return (
-    <Link to={"/"} className="text-mainColor hover:text-indigo-800 font-medium cursor-pointer">
+    <Link
+      to={"/"}
+      className="text-mainColor hover:text-indigo-800 font-medium cursor-pointer"
+    >
       {t("login.continueAsGuest")}
     </Link>
   );
