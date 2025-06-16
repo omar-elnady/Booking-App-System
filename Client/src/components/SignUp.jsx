@@ -42,8 +42,8 @@ const SignUp = ({ setIsLogin }) => {
         <h2 className="text-3xl font-bold text-gray-900 dark:text-textDark mb-5 text-center">
           {t("login.signup")}
         </h2>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="max-h-[450px] overflow-y-auto space-y-4 pr-2">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 ">
+          <div className={`max-h-[450px] overflow-y-auto space-y-4 ${i18n.language === "ar" ? "pl-3" : "pr-3"} `}>
             {getRegisterForm(t).map((element) => (
               <div key={element.name}>
                 <label

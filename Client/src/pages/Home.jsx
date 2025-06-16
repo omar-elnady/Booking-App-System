@@ -1,24 +1,27 @@
 import React from "react";
-import Button from "../components/Button";
-import EventsFullCard from "../components/Events/EventsFullCard";
 import { useTranslation } from "react-i18next";
-import { events } from "../lib/Events";
 import { useNavigate } from "react-router-dom";
 import VideoBG from "./../assets/Video.mp4";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import SliderEvents from "../components/SliderEvents";
-
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 function HomeEventsSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
   const handleViewEvents = () => {
     navigate("/events");
+  };
+  const isArabic = i18n.language === "ar";
+  const arrowAnimation = {
+    hover: {
+      x: isArabic ? [-8, 0, -8] : [0, 8, 0],
+      transition: {
+        repeat: Infinity,
+        duration: 0.8,
+        ease: "easeInOut",
+      },
+    },
   };
 
   return (
@@ -42,8 +45,17 @@ function HomeEventsSection() {
       </div>
 
       <SliderEvents />
-      <div className="flex justify-center pt-2 pb-5">
-        <Button onClick={handleViewEvents}> {t("home.goToEvents")}</Button>
+      <div className="flex justify-center  pb-20">
+        <motion.button
+          className="flex gap-2 items-center bg-mainColor hover:bg-indigo-700 text-white cursor-pointer transition duration-300 ease-in  font-semibold py-1.5 px-4 rounded"
+          onClick={handleViewEvents}
+          whileHover="hover"
+        >
+          {t("home.goToEvents")}
+          <motion.div variants={arrowAnimation}>
+            {isArabic ? <ArrowLeft /> : <ArrowRight />}
+          </motion.div>
+        </motion.button>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   EffectCoverflow,
@@ -17,15 +17,11 @@ import { useTranslation } from "react-i18next";
 function SliderEvents() {
   const { t, i18n } = useTranslation();
   const swiperRef = useRef(null);
-  useEffect(() => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.update();
-      swiperRef.current.swiper.slideToLoop(0);
-    }
-  }, [i18n.language]);
+
   return (
-    <div className="container mx-auto my-10 px-4 sm:px-6 lg:px-8">
+    <div className="   h-fit w-10/12 relative mx-auto my-10 px-4 sm:px-6 lg:px-8">
       <Swiper
+        key={i18n.language}
         ref={swiperRef}
         effect={"coverflow"}
         grabCursor={true}
@@ -50,7 +46,7 @@ function SliderEvents() {
           disableOnInteraction: false,
         }}
         modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-        className="swiper_container"
+        className="swiper_container md:min-h-[55vh] min-h-[85vh]"
         breakpoints={{
           640: {
             slidesPerView: 1,
@@ -67,6 +63,7 @@ function SliderEvents() {
           </SwiperSlide>
         ))}
       </Swiper>
+      <div className="swiper-pagination relative "></div>
     </div>
   );
 }

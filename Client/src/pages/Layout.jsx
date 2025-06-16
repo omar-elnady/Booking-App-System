@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar/Navber";
 import { useTheme } from "../hooks/useTheme";
+import Footer from "../components/Footer";
 
 const Layout = () => {
   useTheme();
@@ -11,6 +12,8 @@ const Layout = () => {
     <>
       {pathname === "/login" ? null : <Navbar />}
       <Outlet />
+      {pathname === "/login" ? null : <Footer />}
+      
     </>
   );
 };

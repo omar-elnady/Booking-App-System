@@ -1,6 +1,6 @@
 {
   "navbar": {
-    "logoName": "CLICK",
+    "logoName": "DAGHTA",
     "home": "Home",
     "events": "Events",
     "en": "English",
@@ -97,6 +97,14 @@
       "required": "Confirm Password is required",
       "minLength": "Password must be at least 8 characters"
     }
+  },
+  "footer": {
+    "logo": "DAGHTA",
+    "description": "Book your event in seconds!",
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us",
+    "copyright": "2025 DAGHTA . All rights reserved.",
+    "phone": "Phone :  +20 (010) 133 418 63"
   },
   "categories": "Categories",
   "clearFilters": "Clear Filters",

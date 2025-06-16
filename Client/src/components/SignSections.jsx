@@ -12,7 +12,7 @@ export function ForgetYourPassword({ t }) {
 
 export function CreateYourAccount({ setIsLogin, t }) {
   return (
-    <p className="text-gray-600">
+    <p className="text-gray-600 dark:text-muted">
       {t("login.dontHaveAccount")}
       <span
         onClick={() => setIsLogin(false)}
@@ -27,7 +27,7 @@ export function CreateYourAccount({ setIsLogin, t }) {
 
 export function YouAlreadyHaveAccount({ setIsLogin, t }) {
   return (
-    <p className="text-gray-600">
+    <p className="text-gray-600 dark:text-muted">
       {t("login.alreadyHaveAccount")}
       <span
         onClick={() => setIsLogin(true)}
