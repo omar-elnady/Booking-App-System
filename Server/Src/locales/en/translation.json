@@ -12,6 +12,7 @@
   "errors": {
     "invalidConfirmPassword": "In-valid confirm password",
     "emailExist": "Email already exist",
+    "emailAlreadyRegistered": "Email already registered",
     "sendEmailError": "Send email error, please try again",
     "tokenPayload": "In-valid token payload",
     "notRegisterAccount": "Not register account",

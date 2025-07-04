@@ -3,59 +3,34 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-
-import { useEffect, useState } from "react";
-import { jwtDecode } from "jwt-decode";
-import Layout from "./pages/Layout";
+import MainLayout from "./Layouts/MainLayout";
+import { useAuth } from "./context/UserContext";
+//    import Router Pages
 import Home from "./pages/Home";
 import Events from "./pages/Events";
 import EventDetails from "./pages/EventDetails";
 import Login from "./pages/Login";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
-//    import Router Pages
+import AdminDashboard from "./pages/AdminDashboard";
+import { PasswordSettings } from "./components/Dashboard/PasswordSettings";
+import { UserProfile } from "./components/Dashboard/UserProfile";
+import DashboardLayout from "./Layouts/DashboardLayout";
+import ManageEvents from "./pages/ManageEvents";
 
 export default function App() {
-  // const [userData, setUserData] = useState(null);
-  // useEffect(() => {
-  //   if (localStorage.getItem("userToken")) {
-  //     getUserData();
-  //   }
-  // }, []);
-  // function getUserData() {
-  //   const token = localStorage.getItem("userToken");
-  //   setUserData(jwtDecode(token));
-  // }
-  // function ProdectedRoute({ children }) {
-  //   if (!localStorage.getItem("userToken")) {
-  //     return <Navigate to="/sign-in" />;
-  //   }
-  //   return children;
-  // }
-  // function IsLogin({ children }) {
-  //   if (localStorage.getItem("userToken")) {
-  //     return <Navigate to="/" />;
-  //   }
-  //   return children;
-  // }
-  // function logout() {
-  //   localStorage.removeItem("userToken");
-  //   window.location.href = "/sign-in";
-  // }
-  // window.addEventListener("storage", () => {
-  //   window.location.reload(true);
-  // });
+  const { userData } = useAuth();
+  function ProdectedAdminRoute({ children }) {
+    if (!localStorage.getItem("userToken") || userData?.role == "User") {
+      return <Navigate to="/" />;
+    }
+    return children;
+  }
 
   let routers = createBrowserRouter([
     {
       path: "/",
-      element: (
-        // <ProdectedRoute>
-        <Layout
-        // userData={userData} logout={logout}
-        />
-        // </ProdectedRoute>
-      ),
+      element: <MainLayout />,
       children: [
         { path: "/", element: <Home /> },
         { path: "/events", element: <Events /> },
@@ -64,8 +39,22 @@ export default function App() {
           path: "/login",
           element: <Login />,
         },
-
         // { path: "*", element: <Navigate to="/" /> },
+      ],
+    },
+    {
+      path: "/",
+      element: (
+        <ProdectedAdminRoute>
+          <DashboardLayout />
+        </ProdectedAdminRoute>
+      ),
+      children: [
+        { path: "/dashboard", element: <AdminDashboard /> },
+        { path: "/manage-events", element: <ManageEvents /> },
+        { path: "/security", element: <PasswordSettings /> },
+        { path: "/manage-events", element: <ManageEvents /> },
+        { path: "/profile", element: <UserProfile /> },
       ],
     },
   ]);

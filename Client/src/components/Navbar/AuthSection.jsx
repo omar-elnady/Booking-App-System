@@ -4,20 +4,24 @@ import { User, UserPlus } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "../Button";
 import DropdownMenu from "../DropdownMenu";
-import { getListMenuAdmin, tooltipVariants } from "../../constants";
+import {
+  getListMenuAdmin,
+  getListMenuUser,
+  tooltipVariants,
+} from "../../constants";
 import { useTranslation } from "react-i18next";
-
-const MOCK_IS_AUTHENTICATED = false;
-const MOCK_USER = { role: "admin", name: "omar" };
+import { useAuth } from "../../context/UserContext";
 
 const AuthSection = () => {
+  const { userData, isLogin, logout } = useAuth();
+  console.log(userData, isLogin);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const isAuthenticated = MOCK_IS_AUTHENTICATED;
-  const user = MOCK_USER;
+  const isAuthenticated = isLogin;
 
-  const listMenuAdmin = getListMenuAdmin(t);
+  const listMenuAdmin = getListMenuAdmin(t , logout);
+  const listMenuUser = getListMenuUser(t , logout);
 
   const handleLoginClick = () => navigate("/login");
   const handleRegisterClick = () => navigate("/register");
@@ -26,15 +30,16 @@ const AuthSection = () => {
     <div className="flex items-center space-x-3">
       {isAuthenticated ? (
         // Authenticated
-        user?.role === "admin" && (
+        userData && (
           <div className="flex">
             <DropdownMenu
-              items={listMenuAdmin}
+              items={userData.role === "admin" ? listMenuAdmin : listMenuUser}
               menuName={
                 <div className="flex items-center gap-1 text-gray-700 ">
-                  <User /> {user.name.toLocaleUpperCase()}
+                  <User /> {userData.userName.toLocaleUpperCase()}
                 </div>
               }
+              
               classMenuBtn="border-none inline-flex"
             />
           </div>

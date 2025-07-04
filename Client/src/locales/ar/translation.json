@@ -72,7 +72,8 @@
       "label": "كلمة المرور",
       "placeholder": "أدخل كلمة المرور",
       "required": "كلمة المرور مطلوبة",
-      "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل"
+      "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+      "invalid": "كلمة المرور يجب ان تحتوي على الاقل حرف كبير وحرف صغير وست ارقام"
     },
     "firstName": {
       "label": "الاسم الأول",
@@ -96,13 +97,77 @@
       "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل"
     }
   },
-"footer" : {
-    "contactUs" : "تواصل معنا" , 
-    "followUs" : "تابعنا",
-    "logo": "ضـغـطة" , 
-    "description" : "بضـغـطة... حجزك في ثانية!" ,
+  "footer": {
+    "contactUs": "تواصل معنا",
+    "followUs": "تابعنا",
+    "logo": "ضـغـطة",
+    "description": "بضـغـطة... حجزك في ثانية!",
     "copyright": "جميع الحقوق محفوظة , ضغطة 2025",
-    "phone" : "رقم الهاتف : 01013341863"
+    "phone": "رقم الهاتف : 01013341863"
+  },
+  "eventForm": {
+    "eventName": {
+      "labelAr": "اسم الايفنت (العربية)",
+      "labelEn": "اسم الايفنت (الانجليزيه)",
+      "placeholderAr": "أدخل اسم الايفنت بالعربي",
+      "placeholderEn": "ادخل اسم الايفنت بالانجليزي",
+      "requiredAr": "اسم الايفنت مطلوب"
+    },
+    "eventDescription": {
+      "labelAr": "الوصف (العربية)",
+      "labelEn": "الوصف (الانجليزيه)",
+      "placeholderAr": "أدخل وصف الايفنت بالعربي",
+      "placeholderEn": "ادخل وصف الايفنت بالانجليزي",
+      "requiredAr": "الوصف مطلوب",
+      "requiredEn": "الوصف مطلوب"
+    },
+    "eventVenue": {
+      "labelAr": "المكان (العربية)",
+      "labelEn": "المكان (الانجليزيه)",
+      "placeholderAr": " أدخل المكان بالعربي",
+      "placeholderEn": "ادخل المكان بالانجليزي",
+      "requiredAr": "المكان مطلوب",
+      "requiredEn": "المكان مطلوب"
+    },
+    "eventCategory": {
+      "labelAr": "التنصيف",
+      "labelEn": "التصنيف",
+      "placeholderAr": "اختر التصنيف",
+      "placeholderEn": "اختر التصنيف",
+      "requiredAr": "التصنيف مطلوب",
+      "requiredEn": "التصنيف مطلوب"
+    },
+    "eventDate": {
+      "labelAr": "التاريخ",
+      "labelEn": "التاريخ",
+      "placeholderAr": "اختر التاريخ",
+      "placeholderEn": "اختر التاريخ",
+      "requiredAr": "التاريخ مطلوب",
+      "requiredEn": "التاريخ مطلوب"
+    },
+    "eventTime": {
+      "labelAr": "الوقت",
+      "labelEn": "الوقت",
+      "placeholderAr": "اختر الوقت",
+      "placeholderEn": "اختر الوقت",
+      "requiredAr": "الوقت مطلوب",
+      "requiredEn": "الوقت مطلوب"
+    },
+    "eventCapacity": {
+      "labelAr": "السعة",
+      "labelEn": "السعة",
+      "placeholderAr": "أدخل السعة",
+      "placeholderEn": "ادخل السعة",
+      "requiredAr": ""
+    }
+  },
+  "categoriesForm": {
+    "labelAr": "اسم التصنيف (العربية)",
+    "labelEn": "اسم التصنيف (الانجليزيه)",
+    "placeholderAr": "ادخل اسم التصنيف بالعربي",
+    "placeholderEn": "ادخل اسم التصنيف بالانجليزي",
+    "requiredAr": "اسم التصنيف مطلوب",
+    "requiredEn": "اسم التصنيف مطلوب"
   },
   "categories": "أنواع الإيفنتات",
   "clearFilters": "مسح كل التصفيات",

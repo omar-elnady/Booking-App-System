@@ -3,19 +3,23 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar/Navber";
 import { useTheme } from "../hooks/useTheme";
 import Footer from "../components/Footer";
+import { Toaster } from "sonner";
 
-const Layout = () => {
+const MainLayout = () => {
   useTheme();
+
 
   const { pathname } = useLocation();
   return (
     <>
-      {pathname === "/login" ? null : <Navbar />}
+      {pathname === "/login" ? null : (
+        <Navbar/>
+      )}
       <Outlet />
+      <Toaster />
       {pathname === "/login" ? null : <Footer />}
-      
     </>
   );
 };
 
-export default Layout;
+export default MainLayout;

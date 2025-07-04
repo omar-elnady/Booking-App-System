@@ -11,13 +11,32 @@ export const getBasicLinks = (t) => [
   },
 ];
 
-export const getListMenuAdmin = (t) => [
+export const getListMenuAdmin = (t, logout) => [
   {
     name: t("navbar.dashboard"),
     icon: LayoutDashboard,
     to: "/dashboard",
   },
-  { name: t("navbar.logout"), icon: LogOut, to: "/sign-in" }, // Assuming logout redirects to sign-in
+  {
+    name: t("navbar.logout"),
+    onClick: () => logout(),
+    icon: LogOut,
+    to: "/login",
+  },
+];
+
+export const getListMenuUser = (t, logout) => [
+  {
+    name: t("navbar.myBooking"),
+    icon: LayoutDashboard,
+    to: "/dashboard",
+  },
+  {
+    name: t("navbar.logout"),
+    onClick: () => logout(),
+    icon: LogOut,
+    to: "/login",
+  },
 ];
 
 export const getLanguagesOptions = (t, changeLanguage) => [
@@ -61,6 +80,10 @@ export const getLoginForm = (t) => [
     type: "password",
     placeholder: t("login.password.placeholder"),
     required: t("login.password.required"),
+    pattern: {
+      value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+      message: t("login.password.invalid"),
+    },
     minLength: {
       value: 8,
       message: t("login.password.minLength"),
@@ -97,7 +120,7 @@ export const getRegisterForm = (t) => [
   },
   ...getLoginForm(t),
   {
-    name: "confirmPassword",
+    name: "cPassword",
     label: t("login.confirmPassword.label"),
     type: "password",
     placeholder: t("login.confirmPassword.placeholder"),
@@ -115,5 +138,164 @@ export const registerDefult = {
   userName: "",
   email: "",
   password: "",
-  confirmPassword: "",
+  cPassword: "",
 };
+
+export const singleLanguageEventForm = (lang, t) => {
+  const languageSpecificFields = [
+    {
+      baseName: "eventName",
+      type: "text",
+    },
+    {
+      baseName: "eventDescription",
+      type: "text",
+    },
+    {
+      baseName: "eventVenue",
+      type: "text",
+    },
+  ];
+
+  const sharedFields = [
+    {
+      name: "eventCategory",
+      type: "text",
+    },
+    {
+      name: "eventDate",
+      type: "date",
+    },
+    {
+      name: "eventTime",
+      type: "time",
+    },
+    {
+      name: "eventCapacity",
+      type: "number",
+    },
+  ];
+  const langFields = languageSpecificFields.map((field) => ({
+    name: `${field.baseName}${lang}`,
+    label: t(`eventForm.${field.baseName}.label${lang}`),
+    type: field.type,
+    placeholder: t(`eventForm.${field.baseName}.placeholder${lang}`),
+    required: t(`eventForm.${field.baseName}.required${lang}`),
+  }));
+  const sharedFieldsFormatted = sharedFields.map((field) => ({
+    name: field.name,
+    label: t(`eventForm.${field.name}.label${lang}`),
+    type: field.type,
+    placeholder: t(`eventForm.${field.name}.placeholder${lang}`),
+    required: t(`eventForm.${field.name}.required${lang}`),
+  }));
+  return [...langFields, ...sharedFieldsFormatted];
+};
+
+export const bothLanguageEventForm = (lang, t) => {
+  const languageSpecificFields = [
+    {
+      id: "eventNameEn",
+      baseName: "eventName",
+      type: "text",
+      label: "labelEn",
+      required: "requiredEn",
+    },
+    {
+      id: "eventNameAr",
+      baseName: "eventName",
+      type: "text",
+      label: "labelAr",
+      required: "requiredAr",
+      placeholder: "placeholderAr",
+    },
+    {
+      id: "eventDescriptionEn",
+      baseName: "eventDescription",
+      type: "text",
+      label: "labelEn",
+      required: "requiredEn",
+      placeholder: "placeholderEn",
+    },
+    {
+      id: "eventDescriptionAr",
+      baseName: "eventDescription",
+      type: "text",
+      label: "labelAr",
+      required: "requiredAr",
+      placeholder: "placeholderAr",
+    },
+    {
+      id: "eventVenueEn",
+      baseName: "eventVenue",
+      type: "text",
+      label: "labelEn",
+      placeholder: "placeholderEn",
+      required: "requiredEn",
+    },
+    {
+      id: "eventVenueAr",
+      baseName: "eventVenue",
+      type: "text",
+      label: "labelAr",
+      required: "requiredAr",
+      placeholder: "placeholderAr",
+    },
+  ];
+  const sharedFields = [
+    {
+      id: "eventCategory",
+      name: "eventCategory",
+      type: "text",
+    },
+    {
+      id: "eventDate",
+      name: "eventDate",
+      type: "date",
+    },
+    {
+      id: "eventTime",
+      name: "eventTime",
+      type: "time",
+    },
+    {
+      id: "eventCapacity",
+      name: "eventCapacity",
+      type: "number",
+    },
+  ];
+  const langFields = languageSpecificFields.map((field) => ({
+    name: field.baseName,
+    id: field.id,
+    label: t(`eventForm.${field.baseName}.${field.label}`),
+    type: field.type,
+    placeholder: t(`eventForm.${field.baseName}.${field.placeholder}`),
+    required: t(`eventForm.${field.baseName}.${field.required}`),
+  }));
+  const sharedFieldsFormatted = sharedFields.map((field) => ({
+    name: field.name,
+    id: field.id,
+    label: t(`eventForm.${field.name}.label${lang}`),
+    type: field.type,
+    placeholder: t(`eventForm.${field.name}.placeholder${lang}`),
+    required: t(`eventForm.${field.name}.required${lang}`),
+  }));
+  return [...langFields, ...sharedFieldsFormatted];
+};
+
+export const addCategoryForm = (t) => [
+  {
+    name: "categoryEn",
+    label: t("categoriesForm.labelEn"),
+    type: "text",
+    placeholder: t("categoriesForm.placeholderEn"),
+    required: t("categoriesForm.requiredEn"),
+  },
+  {
+    name: "categoryAr",
+    label: t("categoriesForm.labelAr"),
+    type: "text",
+    placeholder: t("categoriesForm.placeholderAr"),
+    required: t("categoriesForm.requiredAr"),
+  },
+];

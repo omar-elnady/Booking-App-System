@@ -5,6 +5,7 @@ import VideoBG from "./../assets/Video.mp4";
 import SliderEvents from "../components/SliderEvents";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Features from "../components/Features";
 function HomeEventsSection() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ function HomeEventsSection() {
           </div>
         </div>
       </div>
-
+      <Features />
       <SliderEvents />
       <div className="flex justify-center  pb-20">
         <motion.button

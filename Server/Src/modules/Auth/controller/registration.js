@@ -13,8 +13,7 @@ import {
 } from "../../../utils/emailTemplates.js";
 import { customAlphabet } from "nanoid";
 
-const successfullRedirectUrl =
-  process.env.FE_URL || "https://www.facebook.com/omarahmedelnadey";
+const successfullRedirectUrl = process.env.FE_URL || "http://localhost:5173";
 
 export const register = asyncHandler(async (req, res, next) => { 
    const { userName, email, password } = req.body;
@@ -118,6 +117,7 @@ export const requestNewConfirmEmail = asyncHandler(async (req, res, next) => {
 
 export const login = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
+   console.log(email, password);
   const user = await userModel.findOne({ email: email.toLowerCase() });
   if (!user) {
     return next(new Error(req.t("errors.notRegisterAccount"), { cause: 404 }));

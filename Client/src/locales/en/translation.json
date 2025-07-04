@@ -74,7 +74,8 @@
       "label": "Password",
       "placeholder": "Enter your password",
       "required": "Password is required",
-      "minLength": "Password must be at least 8 characters"
+      "minLength": "Password must be at least 8 characters",
+      "invalid": "Password must contain at least one uppercase letter, one lowercase letter and 6 digits"
     },
     "firstName": {
       "label": "First Name",
@@ -105,6 +106,76 @@
     "followUs": "Follow Us",
     "copyright": "2025 DAGHTA . All rights reserved.",
     "phone": "Phone :  +20 (010) 133 418 63"
+  },
+  "eventForm": {
+    "eventName": {
+      "labelEn": "Event Name (English)",
+      "labelAr": "Event Name (Arabic)",
+      "placeholderEn": "Enter event name in English",
+      "placeholderAr": "Enter Event Name in Arabic",
+      "requiredEn": "Event name is required",
+      "requiredAr": "Event name is required"
+    },
+    "eventDescription": {
+      "labelEn": "Description (English)",
+      "labelAr": "Description (Arabic)",
+      "placeholderEn": "Enter event description in English",
+      "placeholderAr": "Enter Event Description in Arabic",
+      "requiredEn": "Event Description is required",
+      "requiredAr": "Event Description is required"
+    },
+    "eventVenue": {
+      "labelEn": "Venue (English)",
+      "labelAr": "Venue (Arabic)",
+      "placeholderEn": "Enter venue in English",
+      "placeholderAr": "Enter Venue in Arabic",
+      "requiredEn": "Event Venue is required",
+      "requiredAr": "Event Venue is required"
+    },
+    "eventCategory": {
+      "labelEn": "Category",
+      "labelAr": "Category",
+      "placeholderEn": "Select category",
+      "placeholderAr": "Select Category",
+      "requiredEn": "Category is required",
+      "requiredAr": "Category is required"
+    },
+    "eventDate": {
+      "labelEn": "Date",
+      "labelAr": "Date",
+      "placeholderEn": "Select date",
+      "placeholderAr": "Select Date",
+      "requiredEn": "Date is required",
+      "requiredAr": "Date is required"
+    },
+    "eventTime": {
+      "labelEn": "Time",
+      "labelAr": "Time",
+      "placeholderEn": "Select time",
+      "placeholderAr": "Select Time",
+      "requiredEn": "Time is required",
+      "requiredAr": "Time is required"
+    },
+    "eventCapacity": {
+      "labelEn": "Capacity",
+      "labelAr": "Capacity",
+      "placeholderEn": "Enter capacity",
+      "placeholderAr": "Enter Capacity",
+      "requiredEn": ""
+    }
+  },
+  "categoriesForm": {
+    "labelEn": "Category Name (English)",
+    "labelAr": "Category Name (Arabic)",
+    "placeholderEn": "Enter category name in English",
+    "placeholderAr": "Enter Category Name in Arabic",
+    "requiredEn": "Category name is required",
+    "requiredAr": "Category name is required"
+  },
+  "dashboard" : {
+    "adminDashboard" : "Admin Dashboard",
+    "userDashboard" : "User Dashboard",
+    "adminDesc" : "Manage events and track performance "
   },
   "categories": "Categories",
   "clearFilters": "Clear Filters",

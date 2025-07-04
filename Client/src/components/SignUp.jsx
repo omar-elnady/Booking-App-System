@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { useForm } from "react-hook-form";
 import { getRegisterForm, registerDefult } from "../constants";
 import { YouAlreadyHaveAccount } from "./SignSections";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
+import { toast } from "sonner";
 
 const SignUp = ({ setIsLogin }) => {
   const { t, i18n } = useTranslation();
@@ -20,17 +21,24 @@ const SignUp = ({ setIsLogin }) => {
     },
   });
 
-  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     setIsLoading(true);
     try {
-      console.log("Sign Up data:", data);
-      // Add your API call here
-      // Example: await registerUser(data);
-      navigate("/dashboard");
+      const response = await axios.post(
+        `${import.meta.env.VITE_USER_REGISTER}`,
+        data,
+        {
+          headers: {
+            "accept-language": i18n.language,
+          },
+        }
+      );
+      toast.success(response.data.message);
+      setIsLogin(true);
+      return ;
     } catch (error) {
-      console.error("Sign Up failed:", error);
+      toast.error(error.response.data.message);
     } finally {
       setIsLoading(false);
     }
@@ -43,7 +51,11 @@ const SignUp = ({ setIsLogin }) => {
           {t("login.signup")}
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 ">
-          <div className={`max-h-[450px] overflow-y-auto space-y-4 ${i18n.language === "ar" ? "pl-3" : "pr-3"} `}>
+          <div
+            className={`max-h-[420px] pb-5 overflow-y-auto space-y-4 ${
+              i18n.language === "ar" ? "pl-3" : "pr-3"
+            } `}
+          >
             {getRegisterForm(t).map((element) => (
               <div key={element.name}>
                 <label
@@ -74,7 +86,11 @@ const SignUp = ({ setIsLogin }) => {
             ))}
           </div>
 
-          <Button type="submit" disabled={isLoading} className="w-full text-lg">
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="w-full text-lg text-white"
+          >
             {isLoading ? t("login.signingUp") + "..." : t("login.signup")}
           </Button>
         </form>

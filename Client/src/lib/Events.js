@@ -13,6 +13,7 @@ export const events = [
     price: 299,
     createdAt: "2024-01-01",
     popularity: 95,
+    capacity: 150,
   },
   {
     id: "2",
@@ -28,6 +29,7 @@ export const events = [
     price: 149,
     createdAt: "2024-01-02",
     popularity: 88,
+    capacity: 150,
   },
   {
     id: "3",
@@ -43,6 +45,7 @@ export const events = [
     price: 45,
     createdAt: "2024-01-03",
     popularity: 72,
+    capacity: 150,
   },
   {
     id: "4",
@@ -58,6 +61,7 @@ export const events = [
     price: 125,
     createdAt: "2024-01-04",
     popularity: 91,
+    capacity: 150,
   },
   {
     id: "5",
@@ -73,6 +77,7 @@ export const events = [
     price: 399,
     createdAt: "2024-01-05",
     popularity: 85,
+    capacity: 150,
   },
   {
     id: "6",
@@ -88,5 +93,6 @@ export const events = [
     price: 275,
     createdAt: "2024-01-06",
     popularity: 79,
+    capacity: 150,
   },
 ];

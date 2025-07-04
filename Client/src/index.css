@@ -11,6 +11,7 @@
   --color-darkCard: hsl(222.2, 47.4%, 11.2%);
   --color-textDark: hsl(210, 40%, 98%);
   --color-muted: #d1d5dc;
+  --color-test: 0 0% 100%;
   --duration: 500ms;
 }
 
@@ -21,11 +22,9 @@
   --card-border-color-dark: #4b5563; /* Tailwind's border-gray-700 */
   --perforation-line-color: #9ca3af; /* Tailwind's gray-400 */
 }
-
-.dark nav {
-  @apply bg-[var(--color-darkNavbar)];
+.bg-gradient-whiteToBlue {
+  @apply bg-gradient-to-br from-slate-50 to-blue-50;
 }
-
 .dropdown-container {
   @apply relative w-[130px] font-sans;
 }

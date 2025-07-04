@@ -7,19 +7,22 @@ import {
   Autoplay,
 } from "swiper/modules";
 import EventsFullCard from "../components/Events/EventsFullCard";
-import { events } from "../lib/Events";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useTranslation } from "react-i18next";
+import TitleSection from "./TitleSection";
+import { useEvent } from "../context/EventsContext";
 
 function SliderEvents() {
+  const {events} = useEvent();
   const { t, i18n } = useTranslation();
   const swiperRef = useRef(null);
 
   return (
     <div className="   h-fit w-10/12 relative mx-auto my-10 px-4 sm:px-6 lg:px-8">
+      <TitleSection title={t("Events")} />
       <Swiper
         key={i18n.language}
         ref={swiperRef}

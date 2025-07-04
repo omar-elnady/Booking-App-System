@@ -38,6 +38,10 @@ const eventSchema = new Schema(
       },
       public_id: { type: String, default: null },
     },
+    capacity: {
+      type: Number,
+      default: 100
+    },
     availableTickets: {
       type: Number,
       default: 100,

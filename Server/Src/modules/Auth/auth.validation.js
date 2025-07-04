@@ -12,6 +12,8 @@ export const token = joi
 
 export const signup = joi
   .object({
+    firstName : joi.string() ,
+    lastName : joi.string() ,
     userName: joi
       .string()
       .min(2)

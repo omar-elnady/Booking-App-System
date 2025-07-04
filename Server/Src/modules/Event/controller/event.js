@@ -11,12 +11,12 @@ export const createSingleLanguageEvent = asyncHandler(
     const {
       name,
       description,
+      capacity,
       category,
       venue,
       eventCode,
       price,
       date,
-      availableTickets,
     } = cleanedData;
     const file = req.file || {};
 
@@ -42,8 +42,8 @@ export const createSingleLanguageEvent = asyncHandler(
       existingEvent.venue[language] = venue;
       existingEvent.price = price || existingEvent.price;
       existingEvent.date = date || existingEvent.date;
-      existingEvent.availableTickets =
-        availableTickets || existingEvent.availableTickets;
+      existingEvent.capacity =
+        capacity || existingEvent.capacity;
       if (file) {
         if (existingEvent.image.public_id) {
           await cloudinary.uploader.destroy(existingEvent.image.public_id);
@@ -83,7 +83,8 @@ export const createSingleLanguageEvent = asyncHandler(
       price,
       date,
       image,
-      availableTickets,
+      capacity,
+      availableTickets: capacity,
     });
 
     res.status(201).json({
@@ -101,6 +102,7 @@ export const createMultiLanguageEvent = asyncHandler(async (req, res, next) => {
     category,
     venue,
     eventCode,
+    capacity,
     price,
     date,
     availableTickets,
@@ -139,8 +141,9 @@ export const createMultiLanguageEvent = asyncHandler(async (req, res, next) => {
     eventCode: generateEventCode,
     price,
     date,
+    capacity,
     image,
-    availableTickets,
+    availableTickets: capacity,
   });
 
   res.status(201).json({
@@ -171,6 +174,7 @@ export const getAllEvents = asyncHandler(async (req, res, next) => {
           { [`description.${language}`]: { $regex: regex } },
           { [`category.${language}`]: { $regex: regex } },
           { [`venue.${language}`]: { $regex: regex } },
+
         ],
       },
     },
@@ -180,6 +184,19 @@ export const getAllEvents = asyncHandler(async (req, res, next) => {
         description: `$description.${language}`,
         category: `$category.${language}`,
         venue: `$venue.${language}`,
+        eventCode: 1,
+        capacity: 1,
+        date: 1,
+        price: 1,
+        image: 1,
+        availableTickets: 1,
+        createdAt: 1,
+        updatedAt: 1,
+        availableTickets: 1,
+        image: {
+          secure_url: "$image.secure_url",
+          public_id: "$image.public_id",
+        }
       },
     },
     { $skip: skip },

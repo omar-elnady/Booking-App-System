@@ -21,10 +21,9 @@ router.post(
   auth([roles.Admin]),
   eventController.createMultiLanguageEvent
 );
-router.get("/", auth([roles.User, roles.Admin]), eventController.getAllEvents);
+router.get("/", eventController.getAllEvents);
 router.get(
   "/:id",
-  auth([roles.User, roles.Admin]),
   eventController.getSpicificEvent
 );
 router.patch(
