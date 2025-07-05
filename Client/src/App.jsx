@@ -17,11 +17,11 @@ import { EventsProvider } from "./context/EventsContext";
 
 export default function App() {
   function ProdectedAdminRoute({ children }) {
-    const { userData, isLogin } = useAuth();
-    console.log(userData, isLogin);
-    if (!isLogin || userData?.role !== "admin") {
-      return <Navigate to="/" />;
-    }
+    // const { userData, isLogin } = useAuth();
+    // console.log(userData, isLogin);
+    // if (!isLogin || userData?.role !== "admin") {
+    //   return <Navigate to="/" />;
+    // }
     return children;
   }
 

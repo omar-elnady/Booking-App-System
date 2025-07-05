@@ -6,13 +6,41 @@ import { useEvent } from "../context/EventsContext";
 
 export default function AdminDashboard() {
   const { events } = useEvent();
-  const totalEvents = events.length;
-  const totalRevenue = events.reduce(
-    (sum, event) => sum + event.price * (event.capacity - event.availableTickets) ,
+  const totalEvents = events?.length;
+  console.log(totalEvents);
+  const totalRevenue = events?.reduce(
+    (sum, event) =>
+      sum + event.price * (event.capacity - event.availableTickets),
     0
   );
-  const totalCapacity = events.reduce((sum, event) => sum + event.availableTickets, 0);
-console.log(events[0]?.availableTickets)
+  const totalCapacity = events?.reduce(
+    (sum, event) => sum + event.availableTickets,
+    0
+  );
+  const cards = [
+    {
+      label: "Total Events",
+      value: "events",
+      icon: <CalendarDays className="w-6 h-6" />,
+
+      color: "purple",
+    },
+    {
+      label: "Revenue Collected",
+      value: "revenue",
+      icon: <DollarSign className="w-6 h-6" />,
+
+      color: "green",
+    },
+    {
+      label: "Capacity Not Booked",
+      value: "capacity",
+      icon: <Users className="w-6 h-6" />,
+
+      color: "blue",
+    },
+  ];
+
   return (
     <div>
       <div className="space-y-8  mx-auto">
@@ -25,43 +53,33 @@ console.log(events[0]?.availableTickets)
 
         {/* Statistics Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-center gap-6 mb-8">
-          <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-6 text-white shadow-md">
-            <div className="flex items-center gap-3">
-              <CalendarDays className="h-6 w-6" />
-              <div>
-                <h3 className="text-sm font-medium opacity-90">Total Events</h3>
-                <p className="text-2xl font-bold">{totalEvents}</p>
+          {cards.map((card, index) => (
+            <div
+              key={card.label}
+              className={`bg-gradient-to-r from-${card.color}-500 to-${card.color}-600 rounded-xl p-6 text-white shadow-md`}
+            >
+              <div className="flex items-center justify-center  gap-3">
+                {card.icon}
+                <h3 className="text-xl font-medium opacity-90">{card.label}</h3>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl font-bold">
+                  {card.value == "events"
+                    ? totalEvents
+                    : card.value == "revenue"
+                    ? totalRevenue 
+                    : card.value == "capacity"
+                    ? totalCapacity
+                    : "0"}
+                </p>
               </div>
             </div>
-          </div>
-          <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white shadow-md">
-            <div className="flex items-center gap-3">
-              <DollarSign className="h-6 w-6" />
-              <div>
-                <h3 className="text-sm font-medium opacity-90">
-                   Revenue of booked tickets
-                </h3>
-                <p className="text-2xl font-bold">${totalRevenue.toFixed(0)}</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white shadow-md">
-            <div className="flex items-center gap-3">
-              <Users className="h-6 w-6" />
-              <div>
-                <h3 className="text-sm font-medium opacity-90">
-                  Total Capacity Not Booked
-                </h3>
-                <p className="text-2xl font-bold">{totalCapacity}</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
-        {/* Charts Section */}
 
+        {/* Charts Section */}
         <div className="space-y-6">
           <h2 className="text-2xl font-semibold text-slate-800">Analytics</h2>
-
           <div className="grid grid-cols-1 lg:grid-cols-2  gap-6 mb-6">
             <PieChart
               items={events}
@@ -71,7 +89,6 @@ console.log(events[0]?.availableTickets)
             />
             <LineChart items={events} />
           </div>
-
           <div className="grid grid-cols-1 gap-6"></div>
         </div>
       </div>
