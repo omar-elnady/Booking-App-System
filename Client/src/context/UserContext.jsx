@@ -8,12 +8,12 @@ import { toast } from "sonner";
 const UserContext = createContext();
 
 export function AuthProvider({ children }) {
+  const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [isLogin, setIsLogin] = useState(false);
   const [userToken, setUserToken] = useState(null);
   const { t, i18n } = useTranslation();
   const [loadingLoginBtn, setLoadingLoginBtn] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("userToken");
@@ -34,16 +34,16 @@ export function AuthProvider({ children }) {
     setUserData(null);
     setIsLogin(false);
     setUserToken(null);
-    navigate("/login");
+    // navigate("/login");
   };
 
-  const ProdectedRoute = ({ children }) => {
+  const prodectedRoute = ({ children }) => {
     if (!localStorage.getItem("userToken")) {
-      return <Navigate to="/sign-in" />;
+      return <Navigate to="/login" />;
     }
     return children;
   };
-  const IsLogin = ({ children }) => {
+  const ProductAuthLayout = ({ children }) => {
     if (localStorage.getItem("userToken")) {
       return <Navigate to="/" />;
     }
@@ -58,16 +58,14 @@ export function AuthProvider({ children }) {
         data,
         { headers: { "accept-language": i18n.language } }
       );
-      console.log(response);
       const token = response.data.access_token;
-      console.log(token);
       if (!token) throw new Error("No token in response");
       localStorage.setItem("userToken", token);
       const decoded = jwtDecode(token);
       setUserData(decoded);
-      console.log(userData);
       toast.success(response.data.message);
       setIsLogin(true);
+      navigate("/");
       return true;
     } catch (error) {
       toast.error(error?.response?.data?.message || "Login failed");
@@ -87,6 +85,7 @@ export function AuthProvider({ children }) {
         userToken,
         loginSumbit,
         loadingLoginBtn,
+        ProductAuthLayout,
       }}
     >
       {children}

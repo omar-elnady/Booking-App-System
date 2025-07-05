@@ -17,9 +17,9 @@ import { jwtDecode } from "jwt-decode";
 import { useAuth } from "../context/UserContext.jsx";
 
 const SignIn = ({ setIsLogin }) => {
-  const { loginSumbit , loadingLoginBtn } = useAuth();
-  const { t, i18n } = useTranslation();
-  const [isLoading, setIsLoading] = useState(false);
+  const { loginSumbit, loadingLoginBtn } = useAuth();
+  const { t } = useTranslation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -30,11 +30,13 @@ const SignIn = ({ setIsLogin }) => {
     },
   });
 
-  const onSubmit = () => {
-    console.log()
-  }
-
-  const navigate = useNavigate();
+  const signIn = async (data) => {
+    const response = await loginSumbit(data);
+    if (response === true) {
+      navigate("/");
+    }
+    console.log(response)
+  };
 
   return (
     <div className="w-full flex justify-center px-5 md:px-10 dark:bg-darkCard">
@@ -42,10 +44,7 @@ const SignIn = ({ setIsLogin }) => {
         <h2 className="text-3xl font-bold text-gray-900 dark:text-textDark mb-5 text-center">
           {t("login.signIn")}
         </h2>
-        <form
-          onSubmit={handleSubmit(loginSumbit)}
-          className="space-y-4"
-        >
+        <form onSubmit={handleSubmit(signIn)} className="space-y-4">
           <div className="max-h-[450px] overflow-y-auto space-y-4 pr-2">
             {getLoginForm(t).map((element) => (
               <div key={element.name}>

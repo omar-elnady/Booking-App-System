@@ -1,62 +1,65 @@
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from "react-router-dom";
+// App.jsx
+import { Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "./Layouts/MainLayout";
-import { useAuth } from "./context/UserContext";
 //    import Router Pages
 import Home from "./pages/Home";
 import Events from "./pages/Events";
 import EventDetails from "./pages/EventDetails";
 import Login from "./pages/Login";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
 import { PasswordSettings } from "./components/Dashboard/PasswordSettings";
 import { UserProfile } from "./components/Dashboard/UserProfile";
 import DashboardLayout from "./Layouts/DashboardLayout";
 import ManageEvents from "./pages/ManageEvents";
+import { AuthProvider, useAuth } from "./context/UserContext";
+import AuthLayout from "./Layouts/AuthLayout";
+import { EventsProvider } from "./context/EventsContext";
 
 export default function App() {
-  const { userData } = useAuth();
   function ProdectedAdminRoute({ children }) {
-    if (!localStorage.getItem("userToken") || userData?.role == "User") {
+    const { userData, isLogin } = useAuth();
+    console.log(userData, isLogin);
+    if (!isLogin || userData?.role !== "admin") {
       return <Navigate to="/" />;
     }
     return children;
   }
 
-  let routers = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout />,
-      children: [
-        { path: "/", element: <Home /> },
-        { path: "/events", element: <Events /> },
-        { path: "/events/:eventId", element: <EventDetails /> },
-        {
-          path: "/login",
-          element: <Login />,
-        },
-        // { path: "*", element: <Navigate to="/" /> },
-      ],
-    },
-    {
-      path: "/",
-      element: (
-        <ProdectedAdminRoute>
-          <DashboardLayout />
-        </ProdectedAdminRoute>
-      ),
-      children: [
-        { path: "/dashboard", element: <AdminDashboard /> },
-        { path: "/manage-events", element: <ManageEvents /> },
-        { path: "/security", element: <PasswordSettings /> },
-        { path: "/manage-events", element: <ManageEvents /> },
-        { path: "/profile", element: <UserProfile /> },
-      ],
-    },
-  ]);
-  return <RouterProvider router={routers} />;
+  return (
+    <EventsProvider>
+      <AuthProvider>
+        <Routes>
+          {/* Main Layout Routes */}
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="events" element={<Events />} />
+            <Route path="events/:eventId" element={<EventDetails />} />
+          </Route>
+
+          {/* Admin Dashboard Routes (Protected) */}
+          <Route
+            path="/"
+            element={
+              <ProdectedAdminRoute>
+                <DashboardLayout />
+              </ProdectedAdminRoute>
+            }
+          >
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="manage-events" element={<ManageEvents />} />
+            <Route path="security" element={<PasswordSettings />} />
+            <Route path="profile" element={<UserProfile />} />
+          </Route>
+
+          {/* Auth Layout Routes */}
+          <Route path="/" element={<AuthLayout />}>
+            <Route path="login" element={<Login />} />
+          </Route>
+
+          {/* Catch-all route for 404 or redirect */}
+          {/* <Route path="*" element={<Navigate to="/" />} /> */}
+        </Routes>
+      </AuthProvider>
+    </EventsProvider>
+  );
 }

@@ -14,7 +14,6 @@ import { useAuth } from "../../context/UserContext";
 
 const AuthSection = () => {
   const { userData, isLogin, logout } = useAuth();
-  console.log(userData, isLogin);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
