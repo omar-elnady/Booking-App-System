@@ -43,7 +43,7 @@ export default function AdminDashboard() {
 
   return (
     <div>
-      <div className="space-y-8  mx-auto">
+      <div className="h-screen md:h-auto overflow-hidden mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-slate-800 mb-2">
             Admin Dashboard
@@ -67,7 +67,7 @@ export default function AdminDashboard() {
                   {card.value == "events"
                     ? totalEvents
                     : card.value == "revenue"
-                    ? totalRevenue 
+                    ? totalRevenue
                     : card.value == "capacity"
                     ? totalCapacity
                     : "0"}
@@ -78,9 +78,9 @@ export default function AdminDashboard() {
         </div>
 
         {/* Charts Section */}
-        <div className="space-y-6">
+        <div className="flex flex-col gap-2">
           <h2 className="text-2xl font-semibold text-slate-800">Analytics</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2  gap-6 mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2  gap-6 ">
             <PieChart
               items={events}
               itemBy="category"

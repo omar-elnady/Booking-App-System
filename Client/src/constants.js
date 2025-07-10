@@ -299,3 +299,68 @@ export const addCategoryForm = (t) => [
     required: t("categoriesForm.requiredAr"),
   },
 ];
+
+export const userDataForm = (t) => [
+  {
+    name: "firstName",
+    label: t("userForm.firstName"),
+    type: "text",
+  },
+  {
+    name: "lastName",
+    label: t("userForm.lastName"),
+    type: "text",
+  },
+  {
+    name: "userName",
+    label: t("userForm.userName"),
+    type: "text",
+  },
+  {
+    name: "email",
+    label: t("userForm.email"),
+    type: "email",
+  },
+  {
+    name: "phone",
+    label: t("userForm.phone"),
+    type: "text",
+  },
+
+
+]
+
+export const changePassword = (t , getValues) => [
+  {
+    name: "currentPassword",
+    label: t("changePassword.currentPassword"),
+    type: "password",
+    required: t("changePassword.currentPasswordRequired"),
+  },
+  {
+    name: "newPassword",
+    label: t("changePassword.newPassword"),
+    type: "password",
+    required: t("login.password.required"),
+    pattern: {
+      value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+      message: t("login.password.invalid"),
+    },
+    minLength: {
+      value: 8,
+      message: t("login.password.minLength"),
+    },
+  },
+  {
+    name: "confirmPassword",
+    label: t("changePassword.confirmPassword"),
+    type: "password",
+    required: t("changePassword.confirmPasswordRequired"),
+    validate: {
+      matchesPreviousPassword: (value) => {
+        const { newPassword } = getValues();
+        return newPassword === value || t("changePassword.passwordsShouldMatch");
+      }
+    }
+  },
+]

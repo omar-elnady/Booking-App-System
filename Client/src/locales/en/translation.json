@@ -177,6 +177,14 @@
     "userDashboard" : "User Dashboard",
     "adminDesc" : "Manage events and track performance "
   },
+  "userForm":{
+    "firstName"  : "First Name", 
+    "lastName" : "Last Name",
+    "userName" : "User Name",
+    "email" : "Email",
+    "phone" : "Phone",
+    "address" : "Address"
+  },
   "categories": "Categories",
   "clearFilters": "Clear Filters",
   "currency": " EGP ",

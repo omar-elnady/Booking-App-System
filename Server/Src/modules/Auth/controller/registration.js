@@ -15,8 +15,8 @@ import { customAlphabet } from "nanoid";
 
 const successfullRedirectUrl = process.env.FE_URL || "http://localhost:5173";
 
-export const register = asyncHandler(async (req, res, next) => { 
-   const { userName, email, password } = req.body;
+export const register = asyncHandler(async (req, res, next) => {
+  const { userName, email, password } = req.body;
 
   if (await userModel.findOne({ email: email.toLowerCase() })) {
     return next(new Error(req.t("errors.emailExist"), { cause: 409 }));
@@ -117,7 +117,7 @@ export const requestNewConfirmEmail = asyncHandler(async (req, res, next) => {
 
 export const login = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
-   console.log(email, password);
+  console.log(email, password);
   const user = await userModel.findOne({ email: email.toLowerCase() });
   if (!user) {
     return next(new Error(req.t("errors.notRegisterAccount"), { cause: 404 }));
@@ -133,7 +133,16 @@ export const login = asyncHandler(async (req, res, next) => {
     return next(new Error(req.t("errors.invalidLoginData"), { cause: 400 }));
   }
   const access_token = generateToken({
-    payload: { id: user._id, role: user.role, userName: user.userName },
+    payload: {
+      id: user._id,
+      role: user.role,
+      userName: user.userName,
+      email: user.email,
+      phone: user.phone,
+      address: user.address,
+      firstName: user.firstName,
+      lastName: user.lastName
+    },
     expiresIn: 60 * 60 * 24,
   });
 

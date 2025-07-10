@@ -20,7 +20,7 @@ export function EventsProvider({ children }) {
         { headers: { "accept-language": i18n.language } }
       );
       setEvents(respose?.data?.events);
-      console.log(respose);
+    //   console.log(respose);
     } catch (error) {
       console.log(error?.response?.data?.message);
     }

@@ -9,8 +9,8 @@ import {
   PanelLeft,
   List,
 } from "lucide-react";
-import { UserProfile } from "./UserProfile";
-import { PasswordSettings } from "./PasswordSettings";
+import { UserProfile } from "../../pages/UserProfile";
+import { PasswordSettings } from "../../pages/PasswordSettings";
 import ManageEvents from "../../pages/ManageEvents";
 
 const userMenuItems = [

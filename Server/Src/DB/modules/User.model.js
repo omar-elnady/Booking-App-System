@@ -34,17 +34,12 @@ const userSchema = new Schema(
     },
     phone: String,
     address: String,
-    gender: {
-      type: String,
-      default: "male",
-      enum: ["male", "female"],
-    },
     role: {
       type: String,
-      default: "User",
-      enum: ["User", "Admin"],
+      default: "user",
+      enum: ["user", "admin"],
+      lowercase: true,
     },
-    age: Number,
     forgetCode: {
       type: Number,
       default: null,

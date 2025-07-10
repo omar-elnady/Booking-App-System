@@ -169,6 +169,14 @@
     "requiredAr": "اسم التصنيف مطلوب",
     "requiredEn": "اسم التصنيف مطلوب"
   },
+  "userForm" : {
+    "firstName" : "الاسم الاول",
+    "lastName" : "الاسم الاخير",
+    "userName" : "اسم المستخدم",
+    "email" : "البريد الالكتروني",
+    "phone" : "رقم الهاتف",
+    "address" : "العنوان"
+  },
   "categories": "أنواع الإيفنتات",
   "clearFilters": "مسح كل التصفيات",
   "currency": " جـنية ",
