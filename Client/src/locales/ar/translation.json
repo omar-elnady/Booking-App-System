@@ -105,6 +105,18 @@
     "copyright": "جميع الحقوق محفوظة , ضغطة 2025",
     "phone": "رقم الهاتف : 01013341863"
   },
+  "dashboard": {
+    "adminTitle" : "لوحة التحكم الادمن",
+    "sideBar" : {
+      "title" : "لوحة التحكم",
+      "adminDashboard" : "تحليل بيانات الايفنتات",
+      "magageEvents" : "اداره الايفنتات",
+      "profileSettings" : "بيانات الحساب",
+      "changePassword": "تعديل كلمة المرور",
+      "goBack" : "العودة للصفحة الرئيسية",
+      "logout" : "تسجيل الخروج"
+    }
+  },
   "eventForm": {
     "eventName": {
       "labelAr": "اسم الايفنت (العربية)",
@@ -170,6 +182,7 @@
     "requiredEn": "اسم التصنيف مطلوب"
   },
   "userForm" : {
+    "title" : "تعديل بيانات المستخدم",
     "firstName" : "الاسم الاول",
     "lastName" : "الاسم الاخير",
     "userName" : "اسم المستخدم",
@@ -177,16 +190,24 @@
     "phone" : "رقم الهاتف",
     "address" : "العنوان"
   },
+  "changePassword" : {
+    "title" : "تغيير كلمة المرور",
+    "description" : "لأسباب أمنية، تحتاج إلى إدخال كلمة المرور الحالية الخاصة بك لتغييرها.",
+    "currentPassword" : "كلمة المرور الحالية",
+    "currentPasswordRequired" : "كلمة المرور الحالية مطلوبة",
+    "newPassword" : "كلمة المرور الجديدة",
+    "confirmPassword" : "تاكيد كلمة المرور",
+    "confirmPasswordRequired" : "تاكيد كلمة المرور مطلوب",
+    "passwordsShouldMatch" : "كلمة المرور يجب ان تتطابق"
+  },
+  "saveChanges" : "حفظ التغييرات",
   "categories": "أنواع الإيفنتات",
   "clearFilters": "مسح كل التصفيات",
   "currency": " جـنية ",
   "bookNow": "احجز الان",
-
-  "welcomeMessage": "أهلاً بك في منصة الفعاليات الخاصة بنا!",
   "loginButton": "تسجيل الدخول",
   "signupButton": "إنشاء حساب",
   "searchEvents": "البحث عن فعاليات",
-  "greeting": "مرحباً، {{name}}",
   "menu": {
     "dashboard": "لوحة التحكم",
     "settings": "الإعدادات",

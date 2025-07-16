@@ -3,12 +3,12 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import i18n from "./i18n.config.js";
-import { BrowserRouter } from "react-router-dom";
+import { EventsProvider } from "./context/EventsContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
+    <EventsProvider>
       <App />
-    </BrowserRouter>
+    </EventsProvider>
   </StrictMode>
 );

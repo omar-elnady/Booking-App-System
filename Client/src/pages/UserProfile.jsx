@@ -4,6 +4,7 @@ import { useAuth } from "../context/UserContext";
 import Input from "../components/Input";
 import { userDataForm } from "../constants";
 import { useTranslation } from "react-i18next";
+import Button from "../components/Button";
 
 export const UserProfile = () => {
   const { t, i18n } = useTranslation();
@@ -32,7 +33,7 @@ export const UserProfile = () => {
     <div className="text-center mb-8">
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold text-slate-800 mb-2">
-          Profile Settings
+          {t("userForm.title")}
         </h1>
       </div>
 
@@ -75,12 +76,12 @@ export const UserProfile = () => {
             ))}
           </div>
 
-          <button
+          <Button
             type="submit"
             className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-colors duration-200"
           >
-            Save Edits
-          </button>
+            {t("saveChanges")}
+          </Button>
         </form>
       </div>
     </div>

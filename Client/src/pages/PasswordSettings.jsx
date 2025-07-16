@@ -1,26 +1,19 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Settings } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/UserContext";
 import { changePassword } from "../constants";
 import Input from "../components/Input";
-
-const PasswordForm = {
-  currentPassword: "",
-  newPassword: "",
-  confirmPassword: "",
-};
+import Button from "../components/Button";
 
 export const PasswordSettings = () => {
   const { t, i18n } = useTranslation();
   const language = i18n.language;
-  const { userToken } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
-    getValues ,
+    getValues,
   } = useForm({
     defaultValues: {
       currentPassword: "",
@@ -37,20 +30,19 @@ export const PasswordSettings = () => {
     <>
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold text-slate-800 mb-2">
-          Change Password
+          {t("changePassword.title")}
         </h1>
       </div>
       <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-sm">
         <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2"></h2>
         <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
           <p className="text-sm text-blue-800">
-            For security reasons, you need to enter your current password to
-            change it.
+            {t("changePassword.description")}
           </p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="p-4 space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-            {changePassword(t , getValues).map((element) => (
+            {changePassword(t, getValues).map((element) => (
               <div
                 key={element.name}
                 className={`${language === "ar" ? "text-right" : "text-left"}`}
@@ -86,12 +78,12 @@ export const PasswordSettings = () => {
             ))}
           </div>
 
-          <button
+          <Button
             type="submit"
             className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-colors duration-200"
           >
-            Save Edits
-          </button>
+           {t("saveChanges")}
+          </Button>
         </form>
       </div>
     </>

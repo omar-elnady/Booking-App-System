@@ -172,12 +172,18 @@
     "requiredEn": "Category name is required",
     "requiredAr": "Category name is required"
   },
-  "dashboard" : {
-    "adminDashboard" : "Admin Dashboard",
-    "userDashboard" : "User Dashboard",
-    "adminDesc" : "Manage events and track performance "
+  "dashboard" : { 
+    "adminTitle" : "Admin Dashboard",
+    "sideBar" : {
+      "title" : "Dashboard",
+      "adminDashboard" : "Analytics of Events",
+      "magageEvents" : "Manage Events",
+      "profileSettings" : "Profile Information",
+      "changePassword": "Change Password",
+      "goBack" : "Go Back"    }
   },
   "userForm":{
+    "title" : "Profile Information",
     "firstName"  : "First Name", 
     "lastName" : "Last Name",
     "userName" : "User Name",
@@ -185,15 +191,24 @@
     "phone" : "Phone",
     "address" : "Address"
   },
+  "changePassword" : {
+    "title" : "Change Password",
+    "description" : "For security reasons, you need to enter your current password to change it.",
+    "currentPassword" : "Current Password",
+    "currentPasswordRequired" : "Current Password is required",
+    "newPassword" : "New Password",
+    "confirmPassword" : "Confirm Password",
+    "confirmPasswordRequired" : "Confirm Password is required",
+    "passwordsDontMatch" : "Passwords don't match"
+  },
+  "saveChanges" : "Save Changes",
   "categories": "Categories",
   "clearFilters": "Clear Filters",
   "currency": " EGP ",
   "bookNow": "Book Now",
-  "welcomeMessage": "Welcome to our Event Platform!",
   "loginButton": "Login",
   "signupButton": "Sign Up",
   "searchEvents": "Search Events",
-  "greeting": "Hello, {{name}}",
   "menu": {
     "dashboard": "Dashboard",
     "settings": "Settings",

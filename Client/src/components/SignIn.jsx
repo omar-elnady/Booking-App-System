@@ -35,7 +35,6 @@ const SignIn = ({ setIsLogin }) => {
     if (response === true) {
       navigate("/");
     }
-    console.log(response)
   };
 
   return (
@@ -91,6 +90,13 @@ const SignIn = ({ setIsLogin }) => {
           <ContinueAsGuest t={t} />
           <DemoAccounts t={t} />
         </div>
+      </div>
+    </div>
+  );
+};
+
+export default SignIn;
+      </div>
       </div>
     </div>
   );
