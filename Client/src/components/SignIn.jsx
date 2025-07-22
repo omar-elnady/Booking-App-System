@@ -96,10 +96,3 @@ const SignIn = ({ setIsLogin }) => {
 };
 
 export default SignIn;
-      </div>
-      </div>
-    </div>
-  );
-};
-
-export default SignIn;

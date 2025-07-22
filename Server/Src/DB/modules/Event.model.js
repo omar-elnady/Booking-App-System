@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
 const eventSchema = new Schema(
   {
@@ -12,8 +12,9 @@ const eventSchema = new Schema(
       ar: String,
     },
     category: {
-      en: String,
-      ar: String,
+      type: Types.ObjectId,
+      ref: "category", 
+      required: true,
     },
     venue: {
       en: String,

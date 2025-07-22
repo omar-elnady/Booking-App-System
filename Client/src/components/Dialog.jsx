@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./Button";
 
-function Dialog({ btnLabel, title, desc, onSubmit, children }) {
+function Dialog({ btnLabel, title, desc, onSubmit, children , useDefultButtons }) {
   const [open, setOpen] = useState(false);
 
   const handleOverlayClick = (e) => {
@@ -45,20 +45,22 @@ function Dialog({ btnLabel, title, desc, onSubmit, children }) {
                 <p className="text-gray-500">{desc}</p>
               </div>
               <div className="my-3">{children}</div>
-              <div className="mt-3 py-2 text-right gap-2 flex justify-end">
-                <Button
-                  onClick={() => setOpen(false)}
-                  className="bg-red-600 text-white hover:bg-red-700"
-                >
-                  Cancel
-                </Button>
-                <Button
-                  onClick={onSubmit}
-                  className="bg-green-600 text-white hover:bg-green-700"
-                >
-                  Create
-                </Button>
-              </div>
+              {useDefultButtons && (
+                <div className="mt-3 py-2 text-right gap-2 flex justify-end">
+                  <Button
+                    onClick={() => setOpen(false)}
+                    className="bg-red-600 text-white hover:bg-red-700"
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    onClick={onSubmit}
+                    className="bg-green-600 text-white hover:bg-green-700"
+                  >
+                    Create
+                  </Button>
+                </div>
+              )}
             </motion.div>
           </motion.div>
         )}

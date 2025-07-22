@@ -15,6 +15,11 @@ const bookingSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  category: {
+    type: Types.ObjectId,
+    ref: "category",
+    required: true,
+  },
   status: {
     type: String,
     enum: ["booked", "cancelled"],

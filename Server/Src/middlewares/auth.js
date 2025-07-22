@@ -10,6 +10,7 @@ export const auth = (accessRoles = []) => {
   const bearerKey = process.env.BEARER_KEY;
   return asyncHandler(async (req, res, next) => {
     const { authorization } = req.headers;
+    console.log(authorization)
     if (!authorization?.startsWith(process.env.BEARER_KEY)) {
       console.log(authorization)
       return next(new Error("In-valid Bearer Key", { cause: 400 }));

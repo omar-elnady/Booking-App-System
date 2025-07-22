@@ -39,13 +39,13 @@ export function AuthProvider({ children }) {
 
   const prodectedRoute = ({ children }) => {
     if (!localStorage.getItem("userToken")) {
-      return <Navigate to="/login" />;
+      // return <Navigate to="/login" />;
     }
     return children;
   };
   const ProductAuthLayout = ({ children }) => {
     if (localStorage.getItem("userToken")) {
-      return <Navigate to="/" />;
+      // return <Navigate to="/" />;
     }
     return children;
   };

@@ -19,9 +19,7 @@ export const createSingleLanguageEvent = asyncHandler(
       date,
     } = cleanedData;
     const file = req.file || {};
-
     const language = req.language || "en";
-
     const existingEvent = await eventModel.findOne({ eventCode });
 
     if (existingEvent) {
@@ -156,14 +154,15 @@ export const getAllEvents = asyncHandler(async (req, res, next) => {
   const { skip, limit } = paginate(req.query.page, req.query.size);
   const search = req.query.search || "";
   const cleanSearch = search.replace(/"/g, "");
+
   const regex = new RegExp(cleanSearch, "i");
   const language = req.language || "en";
   const totalEvents = await eventModel.countDocuments({
     $or: [
-      { name: { $regex: regex } },
-      { description: { $regex: regex } },
-      { category: { $regex: regex } },
-      { venue: { $regex: regex } },
+      { $expr: { $regexMatch: { input: { $getField: `name.${language}` }, regex: cleanSearch, options: "i" } } },
+      { $expr: { $regexMatch: { input: { $getField: `description.${language}` }, regex: cleanSearch, options: "i" } } },
+      { $expr: { $regexMatch: { input: { $getField: `name.${language}` }, regex: cleanSearch, options: "i" } } },
+      { $expr: { $regexMatch: { input: { $getField: `venue.${language}` }, regex: cleanSearch, options: "i" } } },
     ],
   });
   const events = await eventModel.aggregate([
@@ -172,7 +171,7 @@ export const getAllEvents = asyncHandler(async (req, res, next) => {
         $or: [
           { [`name.${language}`]: { $regex: regex } },
           { [`description.${language}`]: { $regex: regex } },
-          { [`category.${language}`]: { $regex: regex } },
+          { [`name.${language}`]: { $regex: regex } },
           { [`venue.${language}`]: { $regex: regex } },
 
         ],

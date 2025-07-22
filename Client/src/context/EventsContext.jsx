@@ -20,14 +20,14 @@ export function EventsProvider({ children }) {
         { headers: { "accept-language": i18n.language } }
       );
       setEvents(respose?.data?.events);
-    //   console.log(respose);
+      //   console.log(respose);
     } catch (error) {
       console.log(error?.response?.data?.message);
     }
   };
   useEffect(() => {
     getEvents(page, size);
-  }, [page, size , i18n.language]);
+  }, [page, size, i18n.language]);
 
   return (
     <EventsContext.Provider

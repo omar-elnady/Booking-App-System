@@ -11,9 +11,10 @@ import { PasswordSettings } from "./pages/PasswordSettings";
 import { UserProfile } from "./pages/UserProfile";
 import DashboardLayout from "./Layouts/DashboardLayout";
 import ManageEvents from "./pages/ManageEvents";
-import { AuthProvider, useAuth } from "./context/UserContext";
+import { AuthProvider } from "./context/UserContext";
 import AuthLayout from "./Layouts/AuthLayout";
 import { EventsProvider } from "./context/EventsContext";
+import { CategoriesProvider } from "./context/CategoriesContext";
 
 export default function App() {
   function ProdectedAdminRoute({ children }) {
@@ -26,40 +27,41 @@ export default function App() {
   }
 
   return (
-    <EventsProvider>
-      <AuthProvider>
-        <Routes>
-          {/* Main Layout Routes */}
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<Home />} />
-            <Route path="events" element={<Events />} />
-            <Route path="events/:eventId" element={<EventDetails />} />
-          </Route>
+    <AuthProvider>
+      <CategoriesProvider>
+        <EventsProvider>
+          <Routes>
+            {/* Main Layout Routes */}
+            <Route path="/" element={<MainLayout />}>
+              <Route index element={<Home />} />
+              <Route path="events" element={<Events />} />
+              <Route path="events/:eventId" element={<EventDetails />} />
+            </Route>
 
-          {/* Admin Dashboard Routes (Protected) */}
-          <Route
-            path="/"
-            element={
-              <ProdectedAdminRoute>
-                <DashboardLayout />
-              </ProdectedAdminRoute>
-            }
-          >
-            <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="manage-events" element={<ManageEvents />} />
-            <Route path="security" element={<PasswordSettings />} />
-            <Route path="profile" element={<UserProfile />} />
-          </Route>
+            {/* Admin Dashboard Routes (Protected) */}
+            <Route
+              path="/"
+              element={
+                <ProdectedAdminRoute>
+                  <DashboardLayout />
+                </ProdectedAdminRoute>
+              }
+            >
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="manage-events" element={<ManageEvents />} />
+              <Route path="security" element={<PasswordSettings />} />
+              <Route path="profile" element={<UserProfile />} />
+            </Route>
 
-          {/* Auth Layout Routes */}
-          <Route path="/" element={<AuthLayout />}>
-            <Route path="login" element={<Login />} />
-          </Route>
+            {/* Auth Layout Routes */}
+            <Route path="/" element={<AuthLayout />}>
+              <Route path="login" element={<Login />} />
+            </Route>
 
-          {/* Catch-all route for 404 or redirect */}
-          {/* <Route path="*" element={<Navigate to="/" />} /> */}
-        </Routes>
-      </AuthProvider>
-    </EventsProvider>
+            {/* <Route path="*" element={<Navigate to="/" />} /> */}
+          </Routes>
+        </EventsProvider>
+      </CategoriesProvider>
+    </AuthProvider>
   );
 }
