@@ -3,16 +3,17 @@ import { asyncHandler } from "../utils/errorHandling.js";
 import { verifyToken } from "../utils/GenerateAndVerifyToken.js";
 
 export const roles = {
-  Admin: "Admin",
+  Admin: "admin",
   User: "User",
 };
 export const auth = (accessRoles = []) => {
   const bearerKey = process.env.BEARER_KEY;
   return asyncHandler(async (req, res, next) => {
+    
     const { authorization } = req.headers;
-    console.log(authorization)
+    
     if (!authorization?.startsWith(process.env.BEARER_KEY)) {
-      console.log(authorization)
+    
       return next(new Error("In-valid Bearer Key", { cause: 400 }));
     }
     const token = authorization.split(process.env.BEARER_KEY)[1];
@@ -20,7 +21,6 @@ export const auth = (accessRoles = []) => {
       return next(new Error("In-valid token", { cause: 400 }));
     }
     const decoded = verifyToken({ token });
-    return console.log(decoded);
     if (!decoded?.id) {
       return next(new Error ("In-valid token payload", { cause: 400 }));
     }

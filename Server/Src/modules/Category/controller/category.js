@@ -4,7 +4,6 @@ import { asyncHandler } from "../../../utils/errorHandling.js";
 export const createCategory = asyncHandler(
     async (req, res, next) => {
         const { name } = req.body
-        return console.log(name)
         const isExistCategory = await categoryModel.findOne({ $or: [{ "name.en": name.en }, { "name.ar": name.ar }] })
         if (isExistCategory) {
             return next(new Error(req.t("errors.categoryAlreadyExist"), { cause: 400 }));
@@ -21,7 +20,7 @@ export const getCategories = asyncHandler(async (req, res, next) => {
     const queryFilter = {};
 
     if (search) {
-        const regex = new RegExp(search, 'i'); 
+        const regex = new RegExp(search, 'i');
         queryFilter.$or = [
             { "name.en": regex },
             { "name.ar": regex }
@@ -35,7 +34,7 @@ export const getCategories = asyncHandler(async (req, res, next) => {
         categories
     });
 });
- 
+
 export const getCategoryById = asyncHandler(async (req, res, next) => {
     const { _id } = req.params;
     const category = await categoryModel.findById(_id);

@@ -12,21 +12,18 @@ export function CategoriesProvider({ children }) {
   const [categories, setCategories] = useState([]);
   const { userToken } = useAuth();
 
-  const getEvents = async (page, size) => {
+  const getCategories = async (page, size) => {
     try {
       const respose = await axios.get(
-        `${import.meta.env.VITE_CATEGORIES_GET}`,
+        `${import.meta.env.VITE_CATEGORIES_API}`,
         { headers: { "accept-language": i18n.language } }
       );
-      setCategories(respose?.data);
-      console.log(respose);
+      setCategories(respose?.data?.categories);
     } catch (error) {
       console.log(error?.response?.data?.message);
     }
   };
   const createCategory = async (data) => {
-    console.log(data);
-    console.log(userToken)
     try {
       if (!data || !data.categoryEn || !data.categoryAr) {
         return toast.error("All fields are required");
@@ -46,17 +43,66 @@ export function CategoriesProvider({ children }) {
           },
         }
       );
+      console.log(response?.data);
+    } catch (error) {
+      console.log(error?.response);
+    }
+  };
+  const updateCategory = async (id, data) => {
+    try {
+      if (!data || !data.categoryEn || !data.categoryAr) {
+        return toast.error("All fields are required");
+      }
+      const response = await axios.patch(
+        `${import.meta.env.VITE_CATEGORIES_API}/${id}`,
+        {
+          name: {
+            ar: data.categoryAr,
+            en: data.categoryEn,
+          },
+        },
+        {
+          headers: {
+            "accept-language": i18n.language,
+            authorization: import.meta.env.VITE_BEARER_TOKEN + userToken,
+          },
+        }
+      );
+      console.log(response?.data);
+    } catch (error) {
+      console.log(error?.response);
+    }
+  };
+  const deleteCategory = async (id) => {
+    try {
+      const response = await axios.delete(
+        `${import.meta.env.VITE_CATEGORIES_API}/${id}`,
+        {
+          headers: {
+            "accept-language": i18n.language,
+            authorization: import.meta.env.VITE_BEARER_TOKEN + userToken,
+          },
+        }
+      );
+      console.log(response?.data);
     } catch (error) {
       console.log(error?.response);
     }
   };
   useEffect(() => {
-    // getEvents(page, size);
+    getCategories();
   }, [i18n.language]);
 
   return (
     <CategoriesContext.Provider
-      value={{ categories, setCategories, createCategory }}
+      value={{
+        categories,
+        setCategories,
+        createCategory,
+        getCategories,
+        updateCategory,
+        deleteCategory,
+      }}
     >
       {children}
     </CategoriesContext.Provider>

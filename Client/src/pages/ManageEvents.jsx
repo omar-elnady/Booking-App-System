@@ -6,7 +6,7 @@ import { EventMultiForm } from "../components/Dashboard/EventMultiForm";
 import ManageCategories from "../components/Dashboard/ManageCategories";
 
 function ManageEvents() {
-  const [activeTab, setActiveTab] = useState("singleEvent");
+  const [activeTab, setActiveTab] = useState("categories");
   const categories = [
     "Music & Concerts",
     "Technology",
