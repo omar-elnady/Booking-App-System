@@ -12,6 +12,89 @@
     "login": "Login",
     "signup": "Sign Up"
   },
+  "adminDashboard": {
+    "totalEvents": "Total Events",
+    "revenueCollected": "Revenue Collected",
+    "availableCapacity": "Available Capacity",
+    "activeBookings": "Active Bookings",
+    "overview": "Dashboard Overview",
+    "overviewSubtitle": "Track your events performance and revenue",
+    "last30Days": "Last 30 Days",
+    "categoriesDistribution": "Categories Distribution",
+    "revenueTrends": "Revenue Trends",
+    "totalRevenue": "Total Revenue"
+  },
+  "features": {
+    "title": "Key Features",
+    "ticketManagement": {
+      "title": "Secure Booking",
+      "description": "Book your tickets confidently with our secure payment system and instant confirmation."
+    },
+    "eventOrganization": {
+      "title": "Easy Discovery",
+      "description": "Find the perfect events for you with smart categorization and personalized recommendations."
+    },
+    "analyticsDashboard": {
+      "title": "Live Updates",
+      "description": "Stay informed with real-time notifications about your events and ticket status."
+    }
+  },
+  "forgotPassword": {
+    "step1Title": "Forgot Password?",
+    "step1Desc": "Don't worry! It happens. Please enter the email associated with your account.",
+    "step2Title": "Check your email",
+    "step2Desc": "We've sent a 6-digit verification code to your email",
+    "step3Title": "Reset Password",
+    "step3Desc": "Create a new strong password to secure your account."
+  },
+  "buttons": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "next": "Next",
+    "back": "Back",
+    "sendCode" : "Send Code",
+    "verify" : "Verify",
+    "resetPassword" : "Reset Password",
+    "confirmPassword" : "Confirm Password",
+    "confirm" : "Confirm",
+    "confirmDelete" : "Confirm Delete",
+    "confirmDeleteDesc" : "Are you sure you want to delete this category?",
+    "categoryLabel" : "Category",
+    "selectCategory" : "Select Category"
+  },
+  "manageEvents": {
+    "title": "Event Management",
+    "subtitle": "Create and manage your events and categories",
+    "tabSingle": "Single Events",
+    "tabMulti": "Multi-language Events",
+    "tabCategories": "Categories",
+    "addNew": "Add New Event",
+    "multiLanguageDetails": "Multi-Language Event Details",
+    "eventDetails": "Event Details",
+    "createEvent": "Create Event",
+    "addCategory": "Add Category",
+    "editCategory": "Edit Category",
+    "updateCategoryDesc": "Update the category details",
+    "addCategoryDesc": "Add a new category to the event",
+    "confirmDelete": "Confirm Delete",
+    "confirmDeleteDesc": "Are you sure you want to delete this category?",
+    "categoryLabel": "Category",
+    "selectCategory": "Select category"
+  },
+  "common": {
+    "success": "Success",
+    "error": "Error",
+    "eventAdded": "Event added successfully!",
+    "fillAllFields": "Please fill in all required fields for the selected language(s).",
+    "invalid": "is invalid"
+  },
+  "userProfile": {
+    "subtitle": "Manage your personal information and preferences"
+  },
+  "passwordSettings": {
+    "subtitle": "Update your password and secure your account"
+  },
   "home": {
     "title": "Discover the Latest Exciting Events",
     "subTitle": " Join Now and Don’t Miss Your Chance for an Extraordinary Experience!",
@@ -63,7 +146,13 @@
     "alreadyHaveAccount": "Already have an account ? ",
     "signInHere": "Sign in here",
     "demoAccounts": "Demo Accounts",
-    "continueAsGuest": "Continue as Guest",
+    "continueAsGuest": "Continue as Guest", 
+    "newPasswordPlaceholder" : "Enter new password" ,
+    "confirmNewPasswordPlaceholder" : "Confirm new password" ,
+    "useDifferentEmail" : "Use different email" ,
+    "backToLogin" : "Back to login" ,
+    "emailPlaceholder" : "Enter your email" ,
+    "passwordPlaceholder" : "Enter your password" ,
     "email": {
       "label": "E-mail",
       "placeholder": "Enter your e-mail",
@@ -162,6 +251,15 @@
       "placeholderEn": "Enter capacity",
       "placeholderAr": "Enter Capacity",
       "requiredEn": ""
+    },
+    "eventForm": {
+      "eventName": {
+        "labelEn": "Event Name",
+        "labelAr": "Event Name",
+        "placeholderEn": "Enter Event Name",
+        "placeholderAr": "Enter Event Name",
+        "requiredEn": "Event Name is required"
+      }
     }
   },
   "categoriesForm": {
@@ -180,7 +278,18 @@
       "magageEvents" : "Manage Events",
       "profileSettings" : "Profile Information",
       "changePassword": "Change Password",
-      "goBack" : "Go Back"    }
+      "goBack" : "Go Back",
+      "logout" : "Logout",
+      "theme" : "Theme",
+      "language" : "Language",
+      "returnHome" : "Return Home",
+      "dark" : "Dark",
+      "light" : "Light",
+      "english" : "English",
+      "arabic" : "Arabic",
+      "menuLabel": "Menu",
+      "systemLabel": "System"
+    }
   },
   "userForm":{
     "title" : "Profile Information",

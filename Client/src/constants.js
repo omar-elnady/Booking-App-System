@@ -70,7 +70,7 @@ export const getLoginForm = (t) => [
     placeholder: t("login.email.placeholder"),
     required: t("login.email.required"),
     pattern: {
-      value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+      value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
       message: t("login.email.invalid"),
     },
   },
@@ -176,7 +176,7 @@ export const singleLanguageEventForm = (lang, t) => {
     },
   ];
   const langFields = languageSpecificFields.map((field) => ({
-    name: `${field.baseName}${lang}`,
+    name: `${field.baseName}_${lang.toLowerCase()}`,
     label: t(`eventForm.${field.baseName}.label${lang}`),
     type: field.type,
     placeholder: t(`eventForm.${field.baseName}.placeholder${lang}`),
@@ -265,7 +265,7 @@ export const bothLanguageEventForm = (lang, t) => {
     },
   ];
   const langFields = languageSpecificFields.map((field) => ({
-    name: field.baseName,
+    name: field.id,
     id: field.id,
     label: t(`eventForm.${field.baseName}.${field.label}`),
     type: field.type,
@@ -326,11 +326,9 @@ export const userDataForm = (t) => [
     label: t("userForm.phone"),
     type: "text",
   },
+];
 
-
-]
-
-export const changePassword = (t , getValues) => [
+export const changePassword = (t, getValues) => [
   {
     name: "currentPassword",
     label: t("changePassword.currentPassword"),
@@ -359,8 +357,10 @@ export const changePassword = (t , getValues) => [
     validate: {
       matchesPreviousPassword: (value) => {
         const { newPassword } = getValues();
-        return newPassword === value || t("changePassword.passwordsShouldMatch");
-      }
-    }
+        return (
+          newPassword === value || t("changePassword.passwordsShouldMatch")
+        );
+      },
+    },
   },
-]
+];

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 export function ForgetYourPassword({ t }) {
   return (
-    <span className="text-mainColor hover:text-indigo-800 cursor-pointer">
+    <Link to="/forget-password" className="text-mainColor hover:text-indigo-800 cursor-pointer">
       {t("login.forgetPassword")}
-    </span>
+    </Link>
   );
 }
 
@@ -52,11 +52,11 @@ export function ContinueAsGuest({ t }) {
 
 export function DemoAccounts({ t }) {
   return (
-    <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-      <p className="text-sm font-medium text-gray-700 mb-2">
+    <div className="mt-6 p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
+      <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
         {t("login.demoAccounts")}:
       </p>
-      <div className="text-xs text-gray-600 space-y-1">
+      <div className="text-xs text-gray-600 dark:text-gray-400 space-y-1">
         <p>
           <strong>Admin:</strong> admin@events.com / password
         </p>

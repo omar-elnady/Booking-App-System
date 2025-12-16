@@ -12,6 +12,90 @@
     "login": "تسجيل الدخول",
     "signup": "انشاء حساب"
   },
+  "adminDashboard": {
+    "totalEvents": "إجمالي الفعاليات",
+    "revenueCollected": "الإيرادات المحصلة",
+    "availableCapacity": "السعة المتاحة",
+    "activeBookings": "الحجوزات النشطة",
+    "overview": "نظرة عامة على اللوحة",
+    "overviewSubtitle": "تتبع أداء فعالياتك وإيراداتها",
+    "last30Days": "آخر 30 يومًا",
+    "categoriesDistribution": "توزيع الفئات",
+    "revenueTrends": "اتجاهات الإيرادات",
+    "totalRevenue": "إجمالي الإيرادات",
+    "currency": "EGP"
+  },
+  "features": {
+    "title": "الميزات الرئيسية",
+    "ticketManagement": {
+      "title": "حجز آمن",
+      "description": "احجز تذاكرك بثقة مع نظام الدفع الآمن وتأكيد فوري للحجز."
+    },
+    "eventOrganization": {
+      "title": "استكشاف سهل",
+      "description": "اعثر على الفعاليات المثالية لك مع التصنيف الذكي والتوصيات الشخصية."
+    },
+    "analyticsDashboard": {
+      "title": "تحديثات لحظية",
+      "description": "ابق على اطلاع دائم بإشعارات فورية حول فعالياتك وحالة التذاكر."
+    }
+  },
+  "forgotPassword": {
+    "step1Title": "نسيت كلمة المرور؟",
+    "step1Desc": "لا تقلق! يحدث هذا. الرجاء إدخال البريد الإلكتروني المرتبط بحسابك.",
+    "step2Title": "تحقق من بريدك الإلكتروني",
+    "step2Desc": "لقد أرسلنا رمز تحقق مكون من 6 أرقام إلى بريدك الإلكتروني",
+    "step3Title": "إعادة تعيين كلمة المرور",
+    "step3Desc": "قم بإنشاء كلمة مرور قوية جديدة لتأمين حسابك."
+  },
+  "buttons": {
+    "submit": "إرسال",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "next": "التالي",
+    "back": "رجوع",
+    "sendCode" : "إرسال رمز",
+    "verify" : "تحقق من الرمز",
+    "resetPassword" : "إعادة تعيين كلمة المرور",
+    "confirmPassword" : "تأكيد كلمة المرور",
+    "confirm" : "تأكيد",
+    "confirmDelete" : "تأكيد الحذف",
+    "confirmDeleteDesc" : "هل أنت متأكد أنك تريد حذف هذه الفئة؟",
+    "categoryLabel" : "الفئة",
+    "selectCategory" : "اختر الفئة"
+  },
+  "manageEvents": {
+    "title": "إدارة الفعاليات",
+    "subtitle": "إنشاء وإدارة الفعاليات والفئات الخاصة بك",
+    "tabSingle": "فعاليات فردية",
+    "tabMulti": "فعاليات متعددة اللغات",
+    "tabCategories": "الفئات",
+    "addNew": "إضافة فعالية جديدة",
+    "multiLanguageDetails": "تفاصيل الفعالية متعددة اللغات",
+    "eventDetails": "تفاصيل الفعالية",
+    "createEvent": "إنشاء فعالية",
+    "addCategory": "إضافة فئة",
+    "editCategory": "تحرير الفئة",
+    "updateCategoryDesc": "تحديث تفاصيل الفئة",
+    "addCategoryDesc": "إضافة فئة جديدة للفعالية",
+    "confirmDelete": "تأكيد الحذف",
+    "confirmDeleteDesc": "هل أنت متأكد أنك تريد حذف هذه الفئة؟",
+    "categoryLabel": "الفئة",
+    "selectCategory": "اختر الفئة"
+  },
+  "common": {
+    "success": "نجاح",
+    "error": "خطأ",
+    "eventAdded": "تم إضافة الفعالية بنجاح!",
+    "fillAllFields": "يرجى تعبئة جميع الحقول المطلوبة للغة (اللغات) المختارة.",
+    "invalid": "غير صالح"
+  },
+  "userProfile": {
+    "subtitle": "إدارة معلوماتك الشخصية وتفضيلاتك"
+  },
+  "passwordSettings": {
+    "subtitle": "تحديث كلمة المرور الخاصة بك وتأمين حسابك"
+  },
   "home": {
     "title": "اكتشف أحدث الإيفنتات المثيرة",
     "subTitle": "انضم الآن ولا تفوت فرصتك لتجربة استثنائية !",
@@ -52,16 +136,21 @@
     "signIn": "تسجيل الدخول",
     "signup": "انشاء حساب",
     "signingUp": "جاري انشاء الحساب",
-
+    "emailPlaceholder": "البريد الالكتروني",
+    "passwordPlaceholder": "كلمة المرور",
+    "backToLogin": "رجوع للتسجيل الدخول",
     "loginButton": "تسجيل الدخول",
     "signingIn": "جاري تسجيل الدخول",
-    "forgetPassword": "نسيت كلمة المرور ؟ ",
+    "forgetPassword": "نسيت كلمة المرور ؟",
     "dontHaveAccount": "ليس لديك حساب ؟  ",
     "signUpHere": "سجل الان",
     "alreadyHaveAccount": "لديك حساب بالفعل ؟ ",
     "signInHere": "سجل دخول من هنا ",
     "demoAccounts": " حسابات للتجربة ",
     "continueAsGuest": "متابعة كضيف ",
+    "newPasswordPlaceholder" : "ادخل كلمة مرور جديدة"    ,
+    "confirmNewPasswordPlaceholder" : "تاكيد كلمة المرور الجديدة" ,
+    "useDifferentEmail" :"استخدم ايميل مختلف" ,
     "email": {
       "label": "البريد الإلكتروني",
       "placeholder": "أدخل بريدك الإلكتروني",
@@ -114,7 +203,16 @@
       "profileSettings" : "بيانات الحساب",
       "changePassword": "تعديل كلمة المرور",
       "goBack" : "العودة للصفحة الرئيسية",
-      "logout" : "تسجيل الخروج"
+      "logout" : "تسجيل الخروج",
+      "theme" : "الثيم",
+      "language" : "اللغة",
+      "returnHome" : "العودة للصفحة الرئيسية",
+      "dark" : "داكن",
+      "light" : "فاتح",
+      "english" : "الانجليزيه",
+      "arabic" : "العربية",
+      "menuLabel": "القائمة",
+      "systemLabel": "النظام"
     }
   },
   "eventForm": {
@@ -171,6 +269,15 @@
       "placeholderAr": "أدخل السعة",
       "placeholderEn": "ادخل السعة",
       "requiredAr": ""
+    },
+    "eventForm": {
+      "eventName": {
+        "labelAr": "اسم الايفنت",
+        "labelEn": "اسم الايفنت",
+        "placeholderAr": "ادخل اسم الايفنت",
+        "placeholderEn": "ادخل اسم الايفنت",
+        "requiredAr": "اسم الايفنت مطلوب"
+      }
     }
   },
   "categoriesForm": {

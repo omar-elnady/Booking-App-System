@@ -1,7 +1,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./Button";
-
+import { useTranslation } from "react-i18next";
 function Dialog({
   title,
   desc,
@@ -14,6 +14,8 @@ function Dialog({
   open,
   setOpen,
 }) {
+  
+  const { t } = useTranslation();
   const handleOverlayClick = (e) => {
     if (e.target.classList.contains("overlay")) {
       setOpen(false);
@@ -56,13 +58,13 @@ function Dialog({
                     }}
                     className="bg-red-600 text-white hover:bg-red-700"
                   >
-                    {closeDialog || "Cancel"}
+                    {closeDialog || t("buttons.cancel")}
                   </Button>
                   <Button
                     type="submit"
                     className="bg-green-600 text-white hover:bg-green-700"
                   >
-                    {submitDialog || "Submit"}
+                    {submitDialog || t("buttons.submit")}
                   </Button>
                 </div>
               </form>
@@ -75,13 +77,13 @@ function Dialog({
                     onClick={() => setOpen(false)}
                     className="bg-red-600 text-white hover:bg-red-700"
                   >
-                    {closeDialog || "Cancel"}
+                    {closeDialog || t("buttons.cancel")}
                   </Button>
                   <Button
                     onClick={onSubmit}
                     className="bg-green-600 text-white hover:bg-green-700"
                   >
-                    {submitDialog || "Confirm"}
+                    {submitDialog || t("buttons.confirm")}
                   </Button>
                 </div>
               </>

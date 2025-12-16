@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import Input from "../Input";
 import { useCategories } from "../../context/CategoriesContext";
 import Button from "../Button";
-import { Edit, Trash } from "lucide-react";
+import { Edit, Trash, Plus } from "lucide-react";
 import CategoryCard from "./CategoryCard";
 
 function ManageCategories() {
@@ -53,7 +53,7 @@ function ManageCategories() {
       setTimeout(() => setToast(null), 3000);
     } catch (error) {
       setToast({
-        title: "Error",
+        title: t("common.error"),
         description: `Failed to ${
           editCategory ? "update" : "add"
         } category. Please try again.`,
@@ -89,27 +89,31 @@ function ManageCategories() {
 
   return (
     <>
-      {/* Add Category Button */}
-      <div className="text-right mb-4">
+      {/* Add Category Button Area */}
+      <div className="flex justify-between items-center mb-6">
+        <div>
+           {/* Optional: Add a small sub-header or filter here if needed */}
+        </div>
         <Button
           onClick={() => {
             setEditCategory(null); // Clear edit mode
             reset(); // Reset form
             setIsAddEditDialogOpen(true); // Open dialog
           }}
-          className="bg-blue-600 text-white hover:bg-blue-700"
+          className="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-lg flex items-center gap-2 shadow-sm transition-all"
         >
-          Add Category
+          <Plus className="w-4 h-4" />
+          <span>{t("manageEvents.addCategory")}</span>
         </Button>
       </div>
 
       {/* Add/Edit Category Dialog */}
       <Dialog
-        title={editCategory ? "Edit Category" : "Add Category"}
+        title={editCategory ? t("manageEvents.editCategory") : t("manageEvents.addCategory")}
         desc={
           editCategory
-            ? "Update the category details"
-            : "Add a new category to the event"
+            ? t("manageEvents.updateCategoryDesc")
+            : t("manageEvents.addCategoryDesc")
         }
         onSubmit={handleSubmit(onSubmit)}
         isForm={true}
@@ -154,8 +158,8 @@ function ManageCategories() {
 
       {/* Delete Confirmation Dialog */}
       <Dialog
-        title="Confirm Delete"
-        desc="Are you sure you want to delete this category?"
+        title={t("manageEvents.confirmDelete")}
+        desc={t("manageEvents.confirmDeleteDesc")}
         onSubmit={handleDeleteConfirm}
         isForm={false}
         open={!!deleteCategoryId}

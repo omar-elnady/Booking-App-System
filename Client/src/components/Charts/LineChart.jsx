@@ -12,6 +12,10 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
+import { useThemeContext } from "../../context/ThemeContext";
+import { useTranslation } from "react-i18next";
+
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -24,6 +28,8 @@ ChartJS.register(
 );
 
 export const LineChart = ({ items }) => {
+  const { isDark } = useThemeContext();
+  const { t } = useTranslation();
   const months = [
     "Jan",
     "Feb",
@@ -51,7 +57,7 @@ export const LineChart = ({ items }) => {
     labels: months,
     datasets: [
       {
-        label: "Projected Revenue (EGP)",
+        label: t("adminDashboard.revenueTrends"),
         data: months.map((_, index) => monthlyRevenue[index] || 0),
         borderColor: "#2563eb",
         backgroundColor: "rgba(37, 99, 235, 0.1)",
@@ -70,32 +76,40 @@ export const LineChart = ({ items }) => {
     plugins: {
       legend: {
         position: "top",
+        labels: {
+          color: isDark ? "#e2e8f0" : "#475569",
+          font: {
+             family: "'Inter', sans-serif",
+          }
+        },
       },
       title: {
-        display: true,
-        text: "Monthly Projected Revenue",
-        font: {
-          size: 16,
-          weight: "bold",
-        },
-        color: "#374151",
+        display: false,
       },
     },
     scales: {
+      x: {
+        ticks: {
+          color: isDark ? "#94a3b8" : "#64748b", // slate-400 : slate-500
+        },
+        grid: {
+          color: isDark ? "#334155" : "#e2e8f0", // slate-700 : slate-200
+        }
+      },
       y: {
         beginAtZero: true,
         ticks: {
+          color: isDark ? "#94a3b8" : "#64748b",
           callback: function (value) {
             return "$" + value.toLocaleString();
           },
         },
+        grid: {
+           color: isDark ? "#334155" : "#e2e8f0",
+        }
       },
     },
   };
 
-  return (
-    <div className="bg-white/80 backdrop-blur-sm border border-slate-200 rounded-xl p-6 shadow-md">
-      <Line data={data} options={options} />
-    </div>
-  );
+  return <Line data={data} options={options} />;
 };

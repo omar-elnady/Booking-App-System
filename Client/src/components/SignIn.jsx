@@ -38,18 +38,18 @@ const SignIn = ({ setIsLogin }) => {
   };
 
   return (
-    <div className="w-full flex justify-center px-5 md:px-10 dark:bg-darkCard">
-      <div className="lg:w-5/6  w-full">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-textDark mb-5 text-center">
+    <div className="w-full flex justify-center px-5 md:px-10 dark:bg-black"> 
+      <div className="lg:w-5/6 w-full bg-white dark:bg-gray-900/70 rounded-2xl shadow-lg p-8 transition-colors duration-300">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-5 text-center">
           {t("login.signIn")}
         </h2>
         <form onSubmit={handleSubmit(signIn)} className="space-y-4">
-          <div className="max-h-[450px] overflow-y-auto space-y-4 pr-2">
+          <div className="space-y-4 pr-2">
             {getLoginForm(t).map((element) => (
-              <div key={element.name}>
+              <div key={element.name} className="flex flex-col gap-3">
                 <label
                   htmlFor={element.name}
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
                 >
                   {element.label}
                 </label>
@@ -63,7 +63,7 @@ const SignIn = ({ setIsLogin }) => {
                     minLength: element.minLength,
                     maxLength: element.maxLength,
                   })}
-                  className="py-2"
+                  className="py-2 dark:bg-slate-800 dark:border-slate-700 dark:text-white"
                 />
                 {errors[element.name] && (
                   <p className="text-red-500 text-xs mt-1">

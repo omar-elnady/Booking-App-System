@@ -18,16 +18,16 @@ const SearchBar = ({
       </h1>
 
       <div className="md:w-[600px] m-auto">
-        <div className="flex gap-4 mr-auto bg-white dark:bg-darkCard rounded-lg p-2 shadow-lg backdrop-blur-md bg-opacity-80 dark:bg-opacity-80">
+        <div className="flex gap-4 mr-auto bg-white dark:bg-black rounded-lg p-2 shadow-lg backdrop-blur-md bg-opacity-80 dark:bg-opacity-80 border border-transparent dark:border-slate-800">
           <Input
             type="text"
             placeholder={t("events.searchPlaceholder")}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onKeyPress={handleKeyPress}
-            className="flex-1 border-0  focus:ring-0 bg-transparent text-gray-900 dark:text-gray-300"
+            className="flex-1 border-0 focus:ring-0 bg-transparent text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
           />
-          <Button onClick={handleSearch} className="flex">
+          <Button onClick={handleSearch} className="flex text-white">
             <SearchIcon
               className={`w-5 h-5 ${i18n.language === "ar" ? "ml-2" : "mr-2"}`}
             />

@@ -13,6 +13,22 @@
   --color-muted: #d1d5dc;
   --color-test: 0 0% 100%;
   --duration: 500ms;
+
+  /* Semantic Layers (Light/Dark) */
+  --color-layer-1: #f8fafc; /* slate-50 */
+  --color-layer-2: #ffffff; /* white */
+  --color-border-1: #e2e8f0; /* slate-200 */
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Dark Mode Overrides applied via CSS variables or utility classes */
+@layer base {
+  .dark {
+    --color-layer-1: #000000; /* Pure Black */
+    --color-layer-2: #171717; /* Neutral-900 */
+    --color-border-1: #262626; /* Neutral-800 */
+  }
 }
 
 :root {

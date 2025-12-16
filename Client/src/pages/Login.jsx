@@ -4,12 +4,22 @@ import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 import RotationLogin from "../components/RotationLogin";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 const Login = () => {
+  const location = useLocation();
   const [isLogin, setIsLogin] = useState(true);
   const transitionDuration = 0.5;
   const { t, i18n } = useTranslation();
   const langauge = i18n.language;
+
+  useEffect(() => {
+    if (location.pathname.includes("register") || location.pathname.includes("signup")) {
+      setIsLogin(false);
+    } else {
+      setIsLogin(true);
+    }
+  }, [location.pathname]);
 
   const [isMobile, setIsMobile] = useState(
     window.matchMedia("(max-width: 767px)").matches
@@ -53,7 +63,7 @@ const Login = () => {
         };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-darkCard flex items-center justify-center">
+    <div className="min-h-screen bg-gray-100 dark:bg-black flex items-center justify-center">
       {isMobile ? (
         <div className="w-full ">
           <AnimatePresence mode="wait">
@@ -85,14 +95,17 @@ const Login = () => {
       ) : (
         <div className="relative w-full  flex h-screen">
           <motion.div
-            className="absolute w-1/2 top-0 left-0 h-full z-20 bg-indigo-600"
+            className="absolute w-1/2 top-0 left-0 h-full z-20 overflow-hidden"
             variants={desktopPanelVariants}
             initial="initial"
             animate="animate"
             transition={{ duration: transitionDuration, ease: "easeInOut" }}
           >
+            <div className="absolute inset-0 bg-cover bg-center z-0" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1551434678-e076c223603b?q=80&w=2070&auto=format&fit=crop')" }}></div>
+            <div className="absolute inset-0 dark:bg-gray-900/70 bg-mainColor  backdrop-blur-[1px] z-10"></div>
+            
             <div
-              className="h-full px-12 flex flex-col items-center justify-center text-center"
+              className="relative h-full px-12 flex flex-col items-center justify-center text-center z-20"
               style={{ perspective: "1000px" }}
             >
               <RotationLogin isLogin={isLogin} />

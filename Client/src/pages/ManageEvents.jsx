@@ -4,9 +4,18 @@ import { EventSingleForm } from "../components/Dashboard/EventSingleForm";
 import AdminDashboard from "./AdminDashboard";
 import { EventMultiForm } from "../components/Dashboard/EventMultiForm";
 import ManageCategories from "../components/Dashboard/ManageCategories";
+import { DashboardPageHeader } from "../components/Dashboard/DashboardPageHeader";
+// import { Calendar, Layers, LayoutGrid } from "lucide-react";
+// Actually, let's just delete them if unused.
+// But wait, the previous turn added them. I will comment them out or remove.
+
+import { useTranslation } from "react-i18next";
 
 function ManageEvents() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("categories");
+  
+  // Categories list could be fetched from API later
   const categories = [
     "Music & Concerts",
     "Technology",
@@ -17,6 +26,7 @@ function ManageEvents() {
     "Health & Wellness",
     "Education",
   ];
+
   const renderActiveTab = () => {
     switch (activeTab) {
       case "singleEvent":
@@ -24,32 +34,28 @@ function ManageEvents() {
       case "multiLanguageEvent":
         return <EventMultiForm categories={categories} />;
       case "categories":
-        return (
-          <ManageCategories 
-          // categories={categories}
-           />
-          // <CategoryManager
-          //   categories={categories}
-          //   onAdd={addCategory}
-          //   onUpdate={updateCategory}
-          //   onDelete={deleteCategory}
-          // />
-        );
+        return <ManageCategories />;
       default:
         return <AdminDashboard />;
     }
   };
 
   return (
-    <div>
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-slate-800 mb-2">
-          Management Categories
-        </h1>
-        <p className="text-slate-600">Manage events and track performance</p>
+    <div className="space-y-6">
+      <DashboardPageHeader 
+        title={t("manageEvents.title")}
+        subtitle={t("manageEvents.subtitle")}
+      />
+
+      <div className="bg-[var(--color-layer-2)] rounded-2xl shadow-sm border border-[var(--color-border-1)] min-h-[600px] flex flex-col">
+        <div className="p-6 border-b border-[var(--color-border-1)]">
+           <NavigateManagemants activeTab={activeTab} onTabChange={setActiveTab} />
+        </div>
+        
+        <div className="p-8 flex-1">
+          {renderActiveTab()}
+        </div>
       </div>
-      <NavigateManagemants activeTab={activeTab} onTabChange={setActiveTab} />
-      <div className="mt-5">{renderActiveTab()}</div>
     </div>
   );
 }

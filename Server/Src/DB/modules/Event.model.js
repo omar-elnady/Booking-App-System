@@ -1,55 +1,72 @@
-import { Schema, Types, model } from "mongoose";
+import { Schema, model, Types } from "mongoose";
+
+const localizedString = {
+  ar: { type: String, trim: true },
+  en: { type: String, trim: true },
+};
 
 const eventSchema = new Schema(
   {
     name: {
-      en: String,
-      ar: String,
+      ...localizedString,
     },
 
     description: {
-      en: String,
-      ar: String,
+      ...localizedString,
     },
+
+    venue: {
+      ...localizedString,
+    },
+
     category: {
       type: Types.ObjectId,
-      ref: "category", 
+      ref: "category",
       required: true,
     },
-    venue: {
-      en: String,
-      ar: String,
-    },
+
     eventCode: {
       type: String,
       required: true,
+      unique: true,
+      index: true,
     },
+
     date: {
       type: Date,
       required: true,
     },
+
     price: {
       type: Number,
       required: true,
+      min: 0,
     },
-    image: {
-      secure_url: {
-        type: String,
-        default: "",
-      },
-      public_id: { type: String, default: null },
-    },
+
     capacity: {
       type: Number,
-      default: 100
+      default: 100,
+      min: 1,
     },
+
     availableTickets: {
       type: Number,
-      default: 100,
+      min: 0,
+    },
+
+    image: {
+      secure_url: { type: String, default: "" },
+      public_id: { type: String, default: null },
     },
   },
   { timestamps: true }
 );
 
-const eventModel = model("event", eventSchema);
-export default eventModel;
+eventSchema.pre("save", function (next) {
+  if (this.isNew) {
+    this.availableTickets = this.capacity;
+  }
+  next();
+});
+
+export default model("event", eventSchema);
