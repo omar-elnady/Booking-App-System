@@ -37,8 +37,13 @@ const userSchema = new Schema(
     role: {
       type: String,
       default: "user",
-      enum: ["user", "admin"],
+      enum: ["user", "organizer", "admin", "super-admin"],
       lowercase: true,
+    },
+    status: {
+      type: String,
+      default: "active",
+      enum: ["active", "inactive", "blocked"],
     },
     forgetCode: {
       type: Number,

@@ -58,6 +58,16 @@ const eventSchema = new Schema(
       secure_url: { type: String, default: "" },
       public_id: { type: String, default: null },
     },
+    status: {
+      type: String,
+      default: "Active",
+      enum: ["Active", "Draft", "Cancelled", "Sold Out"],
+    },
+    createdBy: {
+      type: Types.ObjectId,
+      ref: "user",
+      required: true,
+    },
   },
   { timestamps: true }
 );

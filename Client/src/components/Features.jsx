@@ -5,52 +5,56 @@ import TitleSection from "./TitleSection";
 
 function Features() {
   const { t } = useTranslation();
-  
+
   const features = [
     {
       icon: Ticket,
       title: t("features.ticketManagement.title"),
       desc: t("features.ticketManagement.description"),
-      color: "text-green-600 dark:text-green-400",
-      bg: "bg-green-100 dark:bg-green-900/30",
+      color: "text-black dark:text-white",
+      bg: "bg-white dark:bg-black border border-gray-300 dark:border-gray-700",
     },
     {
       icon: Calendar,
       title: t("features.eventOrganization.title"),
       desc: t("features.eventOrganization.description"),
-      color: "text-blue-600 dark:text-blue-400",
-      bg: "bg-blue-100 dark:bg-blue-900/30",
+      color: "text-black dark:text-white",
+      bg: "bg-white dark:bg-black border border-gray-300 dark:border-gray-700",
     },
     {
       icon: LayoutDashboard,
       title: t("features.analyticsDashboard.title"),
       desc: t("features.analyticsDashboard.description"),
-      color: "text-purple-600 dark:text-purple-400",
-      bg: "bg-purple-100 dark:bg-purple-900/30",
+      color: "text-black dark:text-white",
+      bg: "bg-white dark:bg-black border border-gray-300 dark:border-gray-700",
     },
   ];
 
   return (
-    <div className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-sm rounded-2xl p-8 border border-slate-200 dark:border-slate-800">
-      <TitleSection title={t("features.title")} />
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-white dark:bg-black border mt-10 border-gray-200 dark:border-gray-900  rounded-lg p-8">
+        <TitleSection title={t("features.title")} />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-        {features.map((feature, index) => (
-          <div 
-            key={index} 
-            className="text-center space-y-4 p-6 rounded-2xl hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 group"
-          >
-            <div className={`w-14 h-14 ${feature.bg} rounded-2xl flex items-center justify-center mx-auto transition-transform duration-300 group-hover:scale-110`}>
-              <feature.icon className={`h-7 w-7 ${feature.color}`} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="text-center space-y-4 p-6 rounded-2xl hover:opacity-80 transition-all duration-300 group dark:bg-gray-900/40 bg-gray-100"
+            >
+              <div
+                className={`w-14 h-14 ${feature.bg} rounded-2xl flex items-center justify-center mx-auto transition-transform duration-300 group-hover:scale-110`}
+              >
+                <feature.icon className={`h-7 w-7 ${feature.color}`} />
+              </div>
+              <h3 className="text-lg font-bold text-black dark:text-white">
+                {feature.title}
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {feature.desc}
+              </p>
             </div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">
-              {feature.title}
-            </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              {feature.desc}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

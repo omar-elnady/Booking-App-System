@@ -1,18 +1,14 @@
 import React from "react";
+import { Button as ShadcnButton } from "./ui/button";
 
 const Button = ({ children, className = "", ...props }) => {
-  const hasBgColor = className.includes("bg-");
-  const hasHoverBg = className.includes("hover:bg-");
-
   return (
-    <button
+    <ShadcnButton 
+      className={className} 
       {...props}
-      className={`${className} ${!hasBgColor ? "bg-mainColor" : ""} ${
-        !hasHoverBg ? "hover:bg-indigo-700" : ""
-      } cursor-pointer transition duration-300 ease-in font-semibold py-1.5 px-4 rounded`}
     >
       {children}
-    </button>
+    </ShadcnButton>
   );
 };
 

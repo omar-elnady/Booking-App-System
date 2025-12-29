@@ -1,38 +1,42 @@
 import { Router } from "express";
 import * as eventController from "./controller/event.js";
 import { validation } from "../../middlewares/validation.js";
-import * as validators from "./event.validation.js";
-import { fileUplode, fileVaildation } from "../../utils/multer.cloudinary.js";
+import {
+  createEventSchema,
+  updateEventSchema,
+} from "../../utils/validators.js";
 import { auth, roles } from "../../middlewares/auth.js";
+import { fileUplode, fileVaildation } from "../../utils/multer.cloudinary.js";
 
 const router = Router();
 
 router.post(
-  "/singleLanguageEvent",
-  validation(validators.createSingleEvent),
+  "/addEvent",
   auth([roles.Admin]),
-  fileUplode(fileVaildation.image).any(),
+  fileUplode(fileVaildation.image).single("image"),
+  validation(createEventSchema),
   eventController.createSingleLanguageEvent
 );
+
 router.post(
-  "/multiLanguageEvent",
-  validation(validators.createMultiLanguageEvent),
-  fileUplode(fileVaildation.image).any(),
+  "/create",
   auth([roles.Admin]),
+  fileUplode(fileVaildation.image).single("image"),
+  validation(createEventSchema),
   eventController.createMultiLanguageEvent
 );
+
 router.get("/", eventController.getAllEvents);
-router.get(
-  "/:id",
-  eventController.getSpicificEvent
-);
+router.get("/:id", eventController.getSpicificEvent);
+
 router.patch(
-  "/:id",
-  validation(validators.updateEvent),
+  "/update/:id",
   auth([roles.Admin]),
-  fileUplode(fileVaildation.image).any(),
+  fileUplode(fileVaildation.image).single("image"),
+  validation(updateEventSchema),
   eventController.updateEvent
 );
-router.delete("/:id", auth([roles.Admin]), eventController.deleteEvent);
+
+router.delete("/delete/:id", auth([roles.Admin]), eventController.deleteEvent);
 
 export default router;

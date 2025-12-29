@@ -11,10 +11,16 @@ export const createSingleEvent = joi
       "string.base": "eventDescriptionInvalid",
       "any.required": "eventDescriptionRequired",
     }),
-    category: joi.string().required().messages({
-      "string.base": "eventCategoryInvalid",
-      "any.required": "eventCategoryRequired",
-    }),
+    category: joi
+      .string()
+      .custom((value, helper) => {
+        return value && value.length ? value : helper.message("eventCategoryInvalid");
+      })
+      .required()
+      .messages({
+        "any.required": "eventCategoryRequired",
+        "string.base": "eventCategoryInvalid",
+      }),
     venue: joi.string().required().messages({
       "string.base": "eventVenueInvalid",
       "any.required": "eventVenueRequired",
@@ -33,7 +39,7 @@ export const createSingleEvent = joi
     }),
     availableTickets: joi.number().min(1).messages({
       "number.base": "minAvailableTicketsInvalid",
-      "number.min": "minAvailableTicketsRequired",
+      "number.min": "minAvailableTickets",
     }),
     image: generalFields.file,
   })
@@ -73,22 +79,10 @@ export const createMultiLanguageEvent = joi
         "object.base": "eventDescriptionInvalidType",
         "any.required": "eventDescriptionRequired",
       }),
-    category: joi
-      .object({
-        en: joi.string().required().messages({
-          "string.base": "eventCategoryEnInvalid",
-          "any.required": "eventCategoryEnRequired",
-        }),
-        ar: joi.string().required().messages({
-          "string.base": "eventCategoryArInvalid",
-          "any.required": "eventCategoryArRequired",
-        }),
-      })
-      .required()
-      .messages({
-        "object.base": "eventCategoryInvalidType",
-        "any.required": "eventCategoryRequired",
-      }),
+    categoryId: generalFields.id.messages({
+      "any.required": "eventIdRequired",
+      "string.base": "invalidEventId",
+    }),
     venue: joi
       .object({
         en: joi.string().required().messages({
@@ -119,5 +113,27 @@ export const createMultiLanguageEvent = joi
       "number.min": "minAvailableTickets",
     }),
     image: generalFields.file,
+  })
+  .required();
+
+export const updateEvent = joi
+  .object({
+    id: generalFields.id.messages({
+      "any.required": "eventIdRequired",
+      "string.base": "invalidEventId",
+    }),
+    name: joi.string(),
+    description: joi.string(),
+    category: generalFields.optionalId,
+    venue: joi.string(),
+    date: joi.date(),
+    price: joi.number().min(0).messages({
+      "number.base": "minPriceInvalid",
+      "number.min": "minPriceInvalid",
+    }),
+    availableTickets: joi.number().min(0).messages({
+      "number.base": "minAvailableTicketsInvalid",
+      "number.min": "minAvailableTicketsInvalid",
+    }),
   })
   .required();

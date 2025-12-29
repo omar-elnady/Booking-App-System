@@ -11,9 +11,11 @@ import { fileURLToPath } from "url";
 import authRouter from "./modules/Auth/auth.router.js";
 import eventRouter from "./modules/Event/event.router.js";
 import bookingRouter from "./modules/Booking/booking.router.js";
-import categoriesRouter from "./modules/Category/category.router.js"
+import categoriesRouter from "./modules/Category/category.router.js";
+import adminRouter from "./modules/Admin/admin.router.js";
 
 const initApp = (app, express) => {
+  app.use("/booking/webhook", express.raw({ type: "application/json" }));
   app.use(express.json());
   app.use(morgan("dev"));
   app.use(cors());
@@ -46,7 +48,8 @@ const initApp = (app, express) => {
   app.use("/auth", authRouter);
   app.use("/event", eventRouter);
   app.use("/booking", bookingRouter);
-  app.use("/categories" , categoriesRouter)
+  app.use("/categories", categoriesRouter);
+  app.use("/admin", adminRouter);
 
   // app.get("*", (req, res, next) => {
   //   res.status(404).send("In-valid Routing Please check url or method");

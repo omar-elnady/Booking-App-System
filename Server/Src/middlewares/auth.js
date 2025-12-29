@@ -3,17 +3,17 @@ import { asyncHandler } from "../utils/errorHandling.js";
 import { verifyToken } from "../utils/GenerateAndVerifyToken.js";
 
 export const roles = {
+  SuperAdmin: "super-admin",
   Admin: "admin",
-  User: "User",
+  Organizer: "organizer",
+  User: "user",
 };
 export const auth = (accessRoles = []) => {
   const bearerKey = process.env.BEARER_KEY;
   return asyncHandler(async (req, res, next) => {
-    
     const { authorization } = req.headers;
-    
+
     if (!authorization?.startsWith(process.env.BEARER_KEY)) {
-    
       return next(new Error("In-valid Bearer Key", { cause: 400 }));
     }
     const token = authorization.split(process.env.BEARER_KEY)[1];
@@ -22,7 +22,7 @@ export const auth = (accessRoles = []) => {
     }
     const decoded = verifyToken({ token });
     if (!decoded?.id) {
-      return next(new Error ("In-valid token payload", { cause: 400 }));
+      return next(new Error("In-valid token payload", { cause: 400 }));
     }
     const user = await userModel
       .findById(decoded.id)
@@ -34,7 +34,12 @@ export const auth = (accessRoles = []) => {
       return next(new Error("Expired token", { cause: 400 }));
     }
 
-    if (!accessRoles.includes(user.role)) {
+    if (!accessRoles.includes(user.role?.trim().toLowerCase())) {
+      console.log("Auth Failed:", {
+        required: accessRoles,
+        userRole: user.role,
+        uid: user._id,
+      });
       return next(new Error("Not authorized user", { cause: 403 }));
     }
     req.user = user;

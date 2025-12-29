@@ -1,16 +1,16 @@
 {
   "navbar": {
-    "logoName": "DAGHTA",
+    "logoName": "Daghata",
     "home": "Home",
     "events": "Events",
     "en": "English",
-    "ar": "عـربـي",
+    "ar": "Arabic",
     "dashboard": "Dashboard",
     "settings": "Settings",
     "bookings": "Bookings",
     "logout": "Logout",
     "login": "Login",
-    "signup": "Sign Up"
+    "signup": "Signup"
   },
   "adminDashboard": {
     "totalEvents": "Total Events",
@@ -18,34 +18,35 @@
     "availableCapacity": "Available Capacity",
     "activeBookings": "Active Bookings",
     "overview": "Dashboard Overview",
-    "overviewSubtitle": "Track your events performance and revenue",
+    "overviewSubtitle": "Track your event performance and revenue",
     "last30Days": "Last 30 Days",
     "categoriesDistribution": "Categories Distribution",
     "revenueTrends": "Revenue Trends",
-    "totalRevenue": "Total Revenue"
+    "totalRevenue": "Total Revenue",
+    "currency": "EGP"
   },
   "features": {
     "title": "Key Features",
     "ticketManagement": {
       "title": "Secure Booking",
-      "description": "Book your tickets confidently with our secure payment system and instant confirmation."
+      "description": "Book your tickets with confidence with our secure payment system and instant booking confirmation."
     },
     "eventOrganization": {
       "title": "Easy Discovery",
       "description": "Find the perfect events for you with smart categorization and personalized recommendations."
     },
     "analyticsDashboard": {
-      "title": "Live Updates",
-      "description": "Stay informed with real-time notifications about your events and ticket status."
+      "title": "Real-time Updates",
+      "description": "Stay always up to date with instant notifications about your events and ticket status."
     }
   },
   "forgotPassword": {
     "step1Title": "Forgot Password?",
-    "step1Desc": "Don't worry! It happens. Please enter the email associated with your account.",
+    "step1Desc": "No worries! It happens. Please enter the email address associated with your account.",
     "step2Title": "Check your email",
-    "step2Desc": "We've sent a 6-digit verification code to your email",
+    "step2Desc": "We have sent a 6-digit verification code to your email",
     "step3Title": "Reset Password",
-    "step3Desc": "Create a new strong password to secure your account."
+    "step3Desc": "Create a strong new password to secure your account."
   },
   "buttons": {
     "submit": "Submit",
@@ -53,41 +54,51 @@
     "save": "Save",
     "next": "Next",
     "back": "Back",
-    "sendCode" : "Send Code",
-    "verify" : "Verify",
-    "resetPassword" : "Reset Password",
-    "confirmPassword" : "Confirm Password",
-    "confirm" : "Confirm",
-    "confirmDelete" : "Confirm Delete",
-    "confirmDeleteDesc" : "Are you sure you want to delete this category?",
-    "categoryLabel" : "Category",
-    "selectCategory" : "Select Category"
+    "sendCode": "Send Code",
+    "verify": "Verify Code",
+    "resetPassword": "Reset Password",
+    "confirmPassword": "Confirm Password",
+    "confirm": "Confirm",
+    "confirmDelete": "Confirm Delete",
+    "confirmDeleteDesc": "Are you sure you want to delete this category?",
+    "categoryLabel": "Category",
+    "selectCategory": "Select Category"
   },
   "manageEvents": {
     "title": "Event Management",
     "subtitle": "Create and manage your events and categories",
     "tabSingle": "Single Events",
+    "tabSingleDesc": "Enter details for the single language version.",
     "tabMulti": "Multi-language Events",
+    "tabMultiDesc": "Enter details for both Arabic and English versions.",
     "tabCategories": "Categories",
     "addNew": "Add New Event",
-    "multiLanguageDetails": "Multi-Language Event Details",
+    "multiLanguageDetails": "Multi-language Event Details",
     "eventDetails": "Event Details",
     "createEvent": "Create Event",
     "addCategory": "Add Category",
     "editCategory": "Edit Category",
-    "updateCategoryDesc": "Update the category details",
-    "addCategoryDesc": "Add a new category to the event",
+    "updateCategoryDesc": "Update Category Details",
+    "addCategoryDesc": "Add a new category for the event",
     "confirmDelete": "Confirm Delete",
-    "confirmDeleteDesc": "Are you sure you want to delete this category?",
+    "confirmDeleteDesc": "Are you sure you want to delete this event?",
     "categoryLabel": "Category",
-    "selectCategory": "Select category"
+    "selectCategory": "Select Category"
   },
   "common": {
     "success": "Success",
     "error": "Error",
+    "required": "This field is required",
     "eventAdded": "Event added successfully!",
-    "fillAllFields": "Please fill in all required fields for the selected language(s).",
-    "invalid": "is invalid"
+    "eventUpdated": "Event updated successfully!",
+    "eventDeleted": "Event deleted successfully!",
+    "fillAllFields": "Please fill all required fields for selected language(s).",
+    "invalid": "Invalid",
+    "all": "All",
+    "allStatuses": "All Statuses",
+    "noResults": "No results found",
+    "noResultsDesc": "Try adjusting your search or filters to find what you're looking for.",
+    "clearAllFilters": "Clear all filters"
   },
   "userProfile": {
     "subtitle": "Manage your personal information and preferences"
@@ -96,85 +107,77 @@
     "subtitle": "Update your password and secure your account"
   },
   "home": {
-    "title": "Discover the Latest Exciting Events",
-    "subTitle": " Join Now and Don’t Miss Your Chance for an Extraordinary Experience!",
-    "goToEvents": "View All Events"
+    "title": "Discover the latest exciting events",
+    "subTitle": "Join now and don't miss your chance for an extraordinary experience!",
+    "goToEvents": "View all events"
   },
   "events": {
-    "title": "Join Now and Don’t Miss Your Chance for an Extraordinary Experience!",
-    "searchPlaceholder": "Search for an Event",
+    "title": "Join now and don't miss your chance for an extraordinary experience!",
+    "searchPlaceholder": "Search for event",
     "searchButton": "Search",
-    "evnetsFound": "Events Found",
-    "event": " Event ",
-    "evnets": " Events ",
+    "evnets": "Events",
+    "event": "Event",
     "founds": "found",
     "found": "found",
     "for": "for",
-    "noEventsFound": "No Events Found",
-    "adjustSearch": "Try Adjusting Your Search Criteria or Filters to Find More Events"
+    "noEventsFound": "No events found",
+    "adjustSearch": "Try adjusting your search or filters to find more events"
   },
-
   "sortOpition": {
-    "filters": "Filters",
+    "filters": "Filter Options",
     "sortBy": "Sort By",
-    "newest": "Newest First",
+    "newest": "Newest",
     "popular": "Most Popular",
     "priceLowToHigh": "Price: Low to High",
     "priceHighToLow": "Price: High to Low",
-    "date": "Event Date"
-  },
-  "eventDetails": {
-    "back": "Back",
-    "booked": "Event Booked",
-    "eventDetails": "Event Details",
-    "ticketPrice": "Ticket Price"
+    "status": "Status",
+    "date": "Date"
   },
   "login": {
     "welcomeMessage": "Welcome to our events platform!",
     "signToContinue": "Sign in to book the latest events",
-    "joinUs": "Join Us!",
+    "joinUs": "Join us!",
     "createAccount": "Create a new account to book the best events",
     "signIn": "Sign In",
     "signup": "Sign Up",
-    "signingUp": "Creating Account",
-
-    "loginButton": "Sign In",
-    "signingIn": "Signing In",
-    "forgetPassword": "Forgot your password ? ",
-    "dontHaveAccount": "Don't have an account ? ",
-    "signUpHere": "Sign up now",
-    "alreadyHaveAccount": "Already have an account ? ",
+    "signingUp": "Signing Up...",
+    "emailPlaceholder": "Email address",
+    "passwordPlaceholder": "Password",
+    "backToLogin": "Back to login",
+    "loginButton": "Login",
+    "signingIn": "Signing In...",
+    "forgetPassword": "Forgot Password?",
+    "dontHaveAccount": "Don't have an account?",
+    "signUpHere": "Sign up here",
+    "alreadyHaveAccount": "Already have an account?",
     "signInHere": "Sign in here",
     "demoAccounts": "Demo Accounts",
-    "continueAsGuest": "Continue as Guest", 
-    "newPasswordPlaceholder" : "Enter new password" ,
-    "confirmNewPasswordPlaceholder" : "Confirm new password" ,
-    "useDifferentEmail" : "Use different email" ,
-    "backToLogin" : "Back to login" ,
-    "emailPlaceholder" : "Enter your email" ,
-    "passwordPlaceholder" : "Enter your password" ,
+    "continueAsGuest": "Continue as guest",
+    "newPasswordPlaceholder": "Enter new password",
+    "confirmNewPasswordPlaceholder": "Confirm new password",
+    "useDifferentEmail": "Use different email",
     "email": {
-      "label": "E-mail",
-      "placeholder": "Enter your e-mail",
-      "required": "E-mail is required",
-      "invalid": "Invalid e-mail format"
+      "label": "Email",
+      "placeholder": "Enter your email",
+      "required": "Email is required",
+      "invalid": "Invalid email format"
     },
     "password": {
       "label": "Password",
       "placeholder": "Enter your password",
       "required": "Password is required",
       "minLength": "Password must be at least 8 characters",
-      "invalid": "Password must contain at least one uppercase letter, one lowercase letter and 6 digits"
+      "invalid": "Password must contain at least one uppercase letter, one lowercase letter and six numbers"
     },
     "firstName": {
       "label": "First Name",
       "placeholder": "Enter your first name",
-      "required": "First Name is required"
+      "required": "First name is required"
     },
     "lastName": {
       "label": "Last Name",
       "placeholder": "Enter your last name",
-      "required": "Last Name is required"
+      "required": "Last name is required"
     },
     "userName": {
       "label": "Username",
@@ -183,145 +186,338 @@
     },
     "confirmPassword": {
       "label": "Confirm Password",
-      "placeholder": "Enter your password",
-      "required": "Confirm Password is required",
+      "placeholder": "Confirm your password",
+      "required": "Password confirmation is required",
       "minLength": "Password must be at least 8 characters"
     }
   },
   "footer": {
-    "logo": "DAGHTA",
-    "description": "Book your event in seconds!",
     "contactUs": "Contact Us",
     "followUs": "Follow Us",
-    "copyright": "2025 DAGHTA . All rights reserved.",
-    "phone": "Phone :  +20 (010) 133 418 63"
+    "logo": "Daghata",
+    "description": "With Daghata... your booking in a second!",
+    "copyright": "All rights reserved, Daghata 2025",
+    "phone": "Phone: 01013341863"
+  },
+  "dashboard": {
+    "adminTitle": "Admin Dashboard",
+    "sideBar": {
+      "title": "Control Panel",
+      "adminDashboard": "Event Analytics",
+      "magageEvents": "Manage Events",
+      "profileSettings": "Account Profile",
+      "changePassword": "Change Password",
+      "goBack": "Back to Home",
+      "logout": "Logout",
+      "theme": "Theme",
+      "language": "Language",
+      "returnHome": "Return Home",
+      "dark": "Dark",
+      "light": "Light",
+      "english": "English",
+      "arabic": "Arabic",
+      "menuLabel": "Menu",
+      "systemGroup": "System Control",
+      "controlPanel": "Control Panel",
+      "dashboardGroup": "Main Dashboard",
+      "manageUsersGroup": "User Management",
+      "dashboard": "Main Dashboard"
+    },
+    "currency": "EGP",
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "blocked": "Blocked",
+      "pending": "Pending",
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "failed": "Failed",
+      "soldout": "Sold Out",
+      "sold out": "Sold Out",
+      "booked": "Booked",
+      "draft": "Draft",
+      "confirmed": "Confirmed"
+    }
   },
   "eventForm": {
     "eventName": {
-      "labelEn": "Event Name (English)",
-      "labelAr": "Event Name (Arabic)",
+      "labelAr": "Event Name (AR)",
+      "labelEn": "Event Name (EN)",
+      "placeholderAr": "Enter event name in Arabic",
       "placeholderEn": "Enter event name in English",
-      "placeholderAr": "Enter Event Name in Arabic",
-      "requiredEn": "Event name is required",
       "requiredAr": "Event name is required"
     },
     "eventDescription": {
-      "labelEn": "Description (English)",
-      "labelAr": "Description (Arabic)",
+      "labelAr": "Description (AR)",
+      "labelEn": "Description (EN)",
+      "placeholderAr": "Enter event description in Arabic",
       "placeholderEn": "Enter event description in English",
-      "placeholderAr": "Enter Event Description in Arabic",
-      "requiredEn": "Event Description is required",
-      "requiredAr": "Event Description is required"
+      "requiredAr": "Description is required",
+      "requiredEn": "Description is required"
     },
     "eventVenue": {
-      "labelEn": "Venue (English)",
-      "labelAr": "Venue (Arabic)",
+      "labelAr": "Venue (AR)",
+      "labelEn": "Venue (EN)",
+      "placeholderAr": "Enter venue in Arabic",
       "placeholderEn": "Enter venue in English",
-      "placeholderAr": "Enter Venue in Arabic",
-      "requiredEn": "Event Venue is required",
-      "requiredAr": "Event Venue is required"
+      "requiredAr": "Venue is required",
+      "requiredEn": "Venue is required"
     },
     "eventCategory": {
-      "labelEn": "Category",
       "labelAr": "Category",
-      "placeholderEn": "Select category",
+      "labelEn": "Category",
       "placeholderAr": "Select Category",
-      "requiredEn": "Category is required",
-      "requiredAr": "Category is required"
+      "placeholderEn": "Select Category",
+      "requiredAr": "Category is required",
+      "requiredEn": "Category is required"
     },
     "eventDate": {
-      "labelEn": "Date",
       "labelAr": "Date",
-      "placeholderEn": "Select date",
+      "labelEn": "Date",
       "placeholderAr": "Select Date",
-      "requiredEn": "Date is required",
-      "requiredAr": "Date is required"
+      "placeholderEn": "Select Date",
+      "requiredAr": "Date is required",
+      "requiredEn": "Date is required"
     },
     "eventTime": {
-      "labelEn": "Time",
       "labelAr": "Time",
-      "placeholderEn": "Select time",
+      "labelEn": "Time",
       "placeholderAr": "Select Time",
-      "requiredEn": "Time is required",
-      "requiredAr": "Time is required"
+      "placeholderEn": "Select Time",
+      "requiredAr": "Time is required",
+      "requiredEn": "Time is required"
     },
     "eventCapacity": {
-      "labelEn": "Capacity",
       "labelAr": "Capacity",
+      "labelEn": "Capacity",
+      "placeholderAr": "Enter capacity",
       "placeholderEn": "Enter capacity",
-      "placeholderAr": "Enter Capacity",
-      "requiredEn": ""
-    },
-    "eventForm": {
-      "eventName": {
-        "labelEn": "Event Name",
-        "labelAr": "Event Name",
-        "placeholderEn": "Enter Event Name",
-        "placeholderAr": "Enter Event Name",
-        "requiredEn": "Event Name is required"
-      }
+      "requiredAr": ""
     }
   },
   "categoriesForm": {
-    "labelEn": "Category Name (English)",
-    "labelAr": "Category Name (Arabic)",
+    "labelAr": "Category Name (AR)",
+    "labelEn": "Category Name (EN)",
+    "placeholderAr": "Enter category name in Arabic",
     "placeholderEn": "Enter category name in English",
-    "placeholderAr": "Enter Category Name in Arabic",
-    "requiredEn": "Category name is required",
-    "requiredAr": "Category name is required"
+    "requiredAr": "Category name is required",
+    "requiredEn": "Category name is required"
   },
-  "dashboard" : { 
-    "adminTitle" : "Admin Dashboard",
-    "sideBar" : {
-      "title" : "Dashboard",
-      "adminDashboard" : "Analytics of Events",
-      "magageEvents" : "Manage Events",
-      "profileSettings" : "Profile Information",
-      "changePassword": "Change Password",
-      "goBack" : "Go Back",
-      "logout" : "Logout",
-      "theme" : "Theme",
-      "language" : "Language",
-      "returnHome" : "Return Home",
-      "dark" : "Dark",
-      "light" : "Light",
-      "english" : "English",
-      "arabic" : "Arabic",
-      "menuLabel": "Menu",
-      "systemLabel": "System"
-    }
+  "userForm": {
+    "title": "Edit User Data",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "userName": "Username",
+    "email": "Email",
+    "phone": "Phone Number",
+    "address": "Address"
   },
-  "userForm":{
-    "title" : "Profile Information",
-    "firstName"  : "First Name", 
-    "lastName" : "Last Name",
-    "userName" : "User Name",
-    "email" : "Email",
-    "phone" : "Phone",
-    "address" : "Address"
+  "changePassword": {
+    "title": "Change Password",
+    "description": "For security reasons, you need to enter your current password to change it.",
+    "currentPassword": "Current Password",
+    "currentPasswordRequired": "Current password is required",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordRequired": "Confirm password is required",
+    "passwordsShouldMatch": "Passwords should match"
   },
-  "changePassword" : {
-    "title" : "Change Password",
-    "description" : "For security reasons, you need to enter your current password to change it.",
-    "currentPassword" : "Current Password",
-    "currentPasswordRequired" : "Current Password is required",
-    "newPassword" : "New Password",
-    "confirmPassword" : "Confirm Password",
-    "confirmPasswordRequired" : "Confirm Password is required",
-    "passwordsDontMatch" : "Passwords don't match"
-  },
-  "saveChanges" : "Save Changes",
-  "categories": "Categories",
+  "saveChanges": "Save Changes",
+  "categories": "Event Types",
   "clearFilters": "Clear Filters",
   "currency": " EGP ",
   "bookNow": "Book Now",
   "loginButton": "Login",
-  "signupButton": "Sign Up",
+  "signupButton": "Signup",
   "searchEvents": "Search Events",
   "menu": {
     "dashboard": "Dashboard",
     "settings": "Settings",
-    "bookings": "Booking App",
+    "bookings": "Bookings app",
     "logout": "Logout"
+  },
+  "messages": {
+    "resendVerificationCode": "Verification code resent",
+    "codeVerified": "Code verified successfully!",
+    "passwordChangedSuccessfully": "Password reset successfully!"
+  },
+  "eventDetails": {
+    "back": "Back to Events",
+    "about": "About this event",
+    "eventDetails": "Event Details",
+    "date": "Date",
+    "time": "Time",
+    "venue": "Venue",
+    "ticketPrice": "Ticket Price",
+    "booked": "Booked",
+    "alreadyBooked": "Already Booked",
+    "bookSuccessMessage": "You have booked this event successfully!",
+    "toBook": "To book this event",
+    "limitedSeats": "Limited seats available",
+    "instantConfirmation": "Instant Confirmation",
+    "linkCopied": "Link copied!",
+    "copyFailed": "Failed to copy link"
+  },
+  "userDashboard": {
+    "title": "My Dashboard",
+    "subtitle": "Manage your bookings and profile.",
+    "upcomingBookings": "Upcoming Bookings",
+    "eventsAttended": "Events Attended",
+    "myTickets": "My Tickets",
+    "viewTicket": "View Ticket",
+    "nextBooking": "Next Booking"
+  },
+  "organizerDashboard": {
+    "title": "Organizer Dashboard",
+    "subtitle": "Monitor your events and sales.",
+    "activeEvents": "Active Events",
+    "ticketsSold": "Tickets Sold",
+    "revenue": "Revenue",
+    "upcomingEvents": "Upcoming Events",
+    "actions": "Actions",
+    "createNewEvent": "Create New Event",
+    "viewBookings": "View Bookings"
+  },
+  "errors": {
+    "eventNotFound": "Event not found"
+  },
+  "superAdmin": {
+    "menu": "Super Admin",
+    "dashboard": "Main Dashboard",
+    "dashboardSubtitle": "System overview and statistics",
+    "users": "All Users",
+    "usersSubtitle": "Manage all system users",
+    "events": "All Events",
+    "eventsSubtitle": "Manage all system events",
+    "bookings": "All Bookings",
+    "bookingsSubtitle": "Manage all system bookings",
+    "transactions": "Transactions",
+    "transactionsSubtitle": "View and manage all transactions",
+    "settings": "System Settings",
+    "settingsSubtitle": "Configure system settings",
+    "roles": "Roles & Permissions",
+    "rolesSubtitle": "Manage roles and permissions",
+    "totalUsers": "Total Users",
+    "totalEvents": "Total Events",
+    "totalBookings": "Total Bookings",
+    "totalRevenue": "Total Revenue",
+    "recentActivity": "Recent Activity",
+    "quickActions": "Quick Actions",
+    "manageUsers": "Manage Users",
+    "manageEvents": "Manage Events",
+    "manageBookings": "Manage Bookings",
+    "viewReports": "View Reports",
+    "addUser": "Add User",
+    "searchUsers": "Search users...",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "status": "Status",
+    "joinedDate": "Joined Date",
+    "actions": "Actions",
+    "userManagement": "User Management",
+    "userManagementSubtitle": "View and manage all system users and their permissions.",
+    "userTable": "User",
+    "user": "User",
+    "event": "Event",
+    "alreadyIs": "is already",
+    "viewFullProfile": "View Full Profile",
+    "securityAndRoles": "Security & Roles",
+    "userAccount": "User Account",
+    "organizerAccess": "Organizer Access",
+    "superAdmin": "Super Admin",
+    "administrator": "Admin",
+    "accountStatus": "Account Status",
+    "reactivateProfile": "Reactivate Profile",
+    "deactivateTemporary": "Deactivate Temporary",
+    "terminateAccess": "Terminate Access",
+    "userProfileDetail": "User Profile Detail",
+    "reviewingParameters": "Reviewing account parameters for",
+    "functionalRole": "Functional Role",
+    "registrationDate": "Registration Date",
+    "systemArchitecture": "System Architecture",
+    "configurePermissions": "Configure feature availability and routing permissions per user role.",
+    "saveConfiguration": "Save Configuration",
+    "structureRoles": "Structure Roles",
+    "routeAccess": "Route Access",
+    "toggleModules": "Toggle system modules enabled for this role.",
+    "featuresCount": "Features",
+    "routingInfo": "Routing security is enforced both in the UI sidebar and at the API level. Ensure correct mapping before saving.",
+    "bookingId": "Order ID",
+    "payment": "Payment",
+    "price": "Price",
+    "customer": "Customer",
+    "downloadReport": "Download Report",
+    "systemHealth": "System Health",
+    "backendApi": "Backend API",
+    "database": "Database",
+    "gateway": "Payment Gateway",
+    "online": "Online",
+    "connected": "Connected",
+    "live": "Live",
+    "activateEvent": "Activate Event",
+    "setDraft": "Set to Draft",
+    "cancelEvent": "Cancel Event"
+  },
+  "management": {
+    "users": "Users Management",
+    "events": "Events Management",
+    "bookings": "Bookings Management",
+    "userManagement": "User Management",
+    "userManagementSubtitle": "Manage user accounts, roles, and permissions",
+    "manageEvents": "Manage Events",
+    "eventsSubtitle": "Create, edit, and manage all events",
+    "bookingsSubtitle": "View and manage all bookings",
+    "userTable": "User",
+    "role": "Role",
+    "status": "Status",
+    "joinedDate": "Joined",
+    "actions": "Actions",
+    "email": "Email",
+    "functionalRole": "Role",
+    "registrationDate": "Registration Date",
+    "viewFullProfile": "View Profile",
+    "securityAndRoles": "Security & Roles",
+    "accountStatus": "Account Status",
+    "reactivateProfile": "Activate",
+    "deactivateTemporary": "Deactivate",
+    "terminateAccess": "Block",
+    "user": "User",
+    "alreadyIs": "is already",
+    "userProfileDetail": "User Profile",
+    "reviewingParameters": "Reviewing profile for",
+    "event": "Event",
+    "price": "Price",
+    "customer": "Attendees",
+    "payment": "Payment",
+    "activateEvent": "Activate",
+    "setDraft": "Set Draft",
+    "cancelEvent": "Cancel",
+    "bookingId": "Booking ID",
+    "searchUsers": "Search by name, email, event...",
+    "downloadReport": "Export CSV",
+    "dashboard": "Dashboard",
+    "overview": "Overview",
+    "categories": "Categories",
+    "roles": "Roles & Permissions",
+    "profile": "Profile",
+    "security": "Security",
+    "system": "System",
+    "cannotChangeSuperAdmin": "Cannot change Super Admin role"
+  },
+
+  "breadcrumbs": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "events": "Events",
+    "bookings": "Bookings",
+    "settings": "Settings",
+    "roles": "Roles",
+    "profile": "Profile",
+    "security": "Security",
+    "revenue": "Revenue",
+    "categories": "Categories",
+    "super-admin": "System Administration",
+    "organizer": "Organizer Control"
   }
 }

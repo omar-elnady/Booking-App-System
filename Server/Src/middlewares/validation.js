@@ -3,7 +3,7 @@ import { Types } from "mongoose";
 
 const validateObjectId = (value, helper) => {
   return Types.ObjectId.isValid(value)
-    ? true
+    ? value
     : helper.message("joiValidation.idInvalid");
 };
 
@@ -28,14 +28,10 @@ export const generalFields = {
       "string.pattern.base": "joiValidation.passwordInvalid",
       "any.required": "joiValidation.passwordRequired",
     }),
-  cPassword: joi
-    .string()
-    .valid(joi.ref("password"))
-    .required()
-    .messages({
-      "any.only": "joiValidation.confirmPasswordInvalid",
-      "any.required": "joiValidation.confirmPasswordRequired",
-    }),
+  cPassword: joi.string().valid(joi.ref("password")).required().messages({
+    "any.only": "joiValidation.confirmPasswordInvalid",
+    "any.required": "joiValidation.confirmPasswordRequired",
+  }),
   id: joi.string().custom(validateObjectId).required().messages({
     "any.required": "joiValidation.idRequired",
     "string.base": "joiValidation.idInvalid",
@@ -67,16 +63,23 @@ export const generalFields = {
 
 export const validation = (schema, considerHeaders = false) => {
   return (req, res, next) => {
-    let inputsData = { ...req.body, ...req.params, ...req.query };
-    if (req.file || req.files) {
-      inputsData.file = req.file || req.files;
-    }
-    if (req.headers.authorization && considerHeaders) {
-      inputsData = { authorization: req.headers.authorization };
-    }
-    const validationResult = schema.validate(inputsData, { abortEarly: false });
-    if (validationResult.error?.details) {
-      const errors = validationResult.error.details.map((error) => {
+    const methods = ["body", "params", "query", "headers", "file"];
+    const validationErrors = [];
+
+    methods.forEach((key) => {
+      if (schema[key]) {
+        const validationResult = schema[key].validate(req[key], {
+          abortEarly: false,
+        });
+
+        if (validationResult.error?.details) {
+          validationErrors.push(...validationResult.error.details);
+        }
+      }
+    });
+
+    if (validationErrors.length > 0) {
+      const errors = validationErrors.map((error) => {
         const translationKey = error.message.startsWith("joiValidation.")
           ? error.message
           : `joiValidation.${error.message}`;
@@ -88,11 +91,15 @@ export const validation = (schema, considerHeaders = false) => {
           message: translatedMessage,
         };
       });
+
       return res.status(400).json({
-        message: `${req.t("joiValidation.validationError")}: ${errors[0].message}`,
+        message: `${req.t("joiValidation.validationError")}: ${
+          errors[0].message
+        }`,
         validationErrors: errors,
       });
     }
+
     return next();
   };
 };
