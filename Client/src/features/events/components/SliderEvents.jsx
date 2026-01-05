@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import EventsFullCard from "@features/events/components/EventsFullCard";
 import { useTranslation } from "react-i18next";
-import TitleSection from "@/components/TitleSection";
+import TitleSection from "@/components/common/TitleSection";
 import { useEvents } from "@/hooks/useEvents";
 import {
   Carousel,
@@ -13,9 +13,9 @@ import {
 } from "@/components/ui/carousel";
 
 function SliderEvents() {
-  const { data } = useEvents({ limit: 5 });
+  const { t, i18n } = useTranslation();
+  const { data } = useEvents({ size: 5, lang: i18n.language });
   const events = data?.events || [];
-  const { t } = useTranslation();
   const plugin = useRef(Autoplay({ delay: 6000, stopOnInteraction: true }));
 
   if (!events || events.length === 0) {
@@ -24,7 +24,7 @@ function SliderEvents() {
 
   return (
     <div className="w-10/12 mx-auto mt-20 px-4 sm:px-6 lg:px-8">
-      <TitleSection title={t("Events")} />
+      <TitleSection title={t("events.events")} />
 
       <div className="relative group">
         <Carousel

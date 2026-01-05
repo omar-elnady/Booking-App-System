@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 const EventCard = ({ event }) => {
   const { t, i18n } = useTranslation();
@@ -23,13 +24,13 @@ const EventCard = ({ event }) => {
       <span
         className={`absolute ${
           lang === "ar" ? "right-2 top-2" : "left-2 top-2"
-        } bg-mainColor text-white px-2  py-1 rounded z-10`}
+        } bg-background  px-2  py-1 rounded z-10`}
       >
         {event.category || "General"}
       </span>
       <div className="flex flex-col h-full">
         <img
-          src={event.image?.secure_url || event.image} // Handle both object and string (legacy)
+          src={event.image?.secure_url || event.image}
           alt={event.name}
           className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
         />
@@ -52,17 +53,35 @@ const EventCard = ({ event }) => {
               <MapPin className="w-4 h-4" /> {event.venue}
             </span>
             <span className="text-sm text-gray-600 dark:text-gray-400 gap-2 flex">
-              <Banknote className="w-4 h-4" /> {event.price} EGP
+              <Banknote className="w-4 h-4" /> {event.price}{" "}
+              {t("common.currency")}
             </span>
           </div>
           <Button
             onClick={(e) => {
-              e.stopPropagation(); // Prevent double navigation if button is clicked
+              e.stopPropagation();
               handleGoToEvent(event);
             }}
-            className="w-full"
+            className={cn(
+              "w-full mt-2 font-bold",
+              event.status === "Cancelled" ||
+                event.status === "Sold Out" ||
+                event.availableTickets === 0
+                ? "bg-gray-400 text-white"
+                : "bg-primary text-white"
+            )}
+            disabled={
+              event.status === "Cancelled" ||
+              event.status === "Sold Out" ||
+              event.availableTickets === 0
+            }
+            variant={event.status === "Cancelled" ? "destructive" : "default"}
           >
-            {t("bookNow")}
+            {event.status === "Cancelled"
+              ? t("dashboard.status.cancelled") || "Cancelled"
+              : event.status === "Sold Out" || event.availableTickets === 0
+              ? t("dashboard.status.soldOut") || "Sold Out"
+              : t("buttons.bookNow")}
           </Button>
         </CardContent>
       </div>

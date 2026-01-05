@@ -1,70 +1,77 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 export function ForgetYourPassword({ t }) {
   return (
-    <Link
-      to="/forgot-password"
-      className="text-mainColor hover:text-indigo-800 cursor-pointer"
+    <Button
+      variant="link"
+      asChild
+      className="px-0 font-normal h-auto text-primary"
     >
-      {t("login.forgetPassword")}
-    </Link>
+      <Link to="/forgot-password">{t("login.forgetPassword")}</Link>
+    </Button>
   );
 }
 
 export function CreateYourAccount({ setIsLogin, t }) {
   return (
-    <p className="text-gray-600 dark:text-muted">
-      {t("login.dontHaveAccount")}
+    <div className="text-sm text-muted-foreground">
+      {t("login.dontHaveAccount")}{" "}
       <span
         onClick={() => setIsLogin(false)}
-        className="text-mainColor hover:text-indigo-800 font-medium cursor-pointer"
-        aria-label="Sign up"
+        className="text-primary hover:underline cursor-pointer font-medium"
+        role="button"
+        tabIndex={0}
       >
         {t("login.signUpHere")}
       </span>
-    </p>
+    </div>
   );
 }
 
 export function YouAlreadyHaveAccount({ setIsLogin, t }) {
   return (
-    <p className="text-gray-600 dark:text-muted">
-      {t("login.alreadyHaveAccount")}
+    <div className="text-sm text-muted-foreground">
+      {t("login.alreadyHaveAccount")}{" "}
       <span
         onClick={() => setIsLogin(true)}
-        className="text-mainColor hover:text-indigo-800 font-medium cursor-pointer"
-        aria-label="Sign in"
+        className="text-primary hover:underline cursor-pointer font-medium"
+        role="button"
+        tabIndex={0}
       >
         {t("login.signInHere")}
       </span>
-    </p>
+    </div>
   );
 }
 export function ContinueAsGuest({ t }) {
   return (
-    <Link
-      to={"/"}
-      className="text-mainColor hover:text-indigo-800 font-medium cursor-pointer"
+    <Button
+      variant="link"
+      asChild
+      className="px-0 font-normal h-auto text-primary"
     >
-      {t("login.continueAsGuest")}
-    </Link>
+      <Link to={"/"}>{t("login.continueAsGuest")}</Link>
+    </Button>
   );
 }
 
 export function DemoAccounts({ t }) {
   return (
-    <div className="mt-6 p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
-      <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+    <div className="mt-4 p-4 bg-muted/50 rounded-lg text-left w-full border border-border">
+      <p className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wider">
         {t("login.demoAccounts")}:
       </p>
-      <div className="text-xs text-gray-600 dark:text-gray-400 space-y-1">
-        <p>
-          <strong>Admin:</strong> admin@events.com / password
-        </p>
-        <p>
-          <strong>User:</strong> user@demo.com / password
-        </p>
+      <div className="text-xs text-muted-foreground space-y-1 font-mono">
+        <div className="flex justify-between">
+          <span>Admin:</span>
+          <span>admin@events.com / password</span>
+        </div>
+        <div className="flex justify-between">
+          <span>User:</span>
+          <span>user@demo.com / password</span>
+        </div>
       </div>
     </div>
   );

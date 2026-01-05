@@ -13,43 +13,46 @@ import eventRouter from "./modules/Event/event.router.js";
 import bookingRouter from "./modules/Booking/booking.router.js";
 import categoriesRouter from "./modules/Category/category.router.js";
 import adminRouter from "./modules/Admin/admin.router.js";
+import userRouter from "./modules/User/user.router.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+i18next
+  .use(i18nextFsBackend)
+  .use(i18nextHttpMiddleware.LanguageDetector)
+  .init({
+    fallbackLng: "en",
+    backend: {
+      loadPath: path.join(__dirname, "locales/{{lng}}/translation.json"),
+    },
+    detection: {
+      order: ["header"],
+    },
+  });
 
 const initApp = (app, express) => {
-  app.use("/booking/webhook", express.raw({ type: "application/json" }));
-  app.use(express.json());
-  app.use(morgan("dev"));
-  app.use(cors());
-
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-
-  i18next
-    .use(i18nextFsBackend)
-    .use(i18nextHttpMiddleware.LanguageDetector)
-    .init({
-      fallbackLng: "en",
-      preload: ["en", "ar"],
-      backend: {
-        loadPath: path.join(__dirname, "locales/{{lng}}/translation.json"),
-      },
-      detection: {
-        order: ["header", "querystring", "cookie"],
-        lookupHeader: "accept-language",
-        caches: [],
-        debug: true,
-      },
-      interpolation: {
-        escapeValue: false,
-      },
-    });
-
   app.use(i18nextHttpMiddleware.handle(i18next));
+  app.use(morgan("dev"));
+
+  // Handle Stripe Webhook Raw Body
+  app.use((req, res, next) => {
+    if (req.originalUrl.includes("/booking/webhook")) {
+      next();
+    } else {
+      express.json()(req, res, next);
+    }
+  });
+  app.use("/booking/webhook", express.raw({ type: "application/json" }));
+
+  app.use(cors()); // Allow all origins for dev simplicity or configure specifically
 
   app.use("/auth", authRouter);
   app.use("/event", eventRouter);
   app.use("/booking", bookingRouter);
   app.use("/categories", categoriesRouter);
   app.use("/admin", adminRouter);
+  app.use("/user", userRouter);
 
   // app.get("*", (req, res, next) => {
   //   res.status(404).send("In-valid Routing Please check url or method");

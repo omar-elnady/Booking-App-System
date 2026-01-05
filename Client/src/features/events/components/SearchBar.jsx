@@ -8,7 +8,7 @@ const SearchBar = ({ searchQuery, setSearchQuery, handleSearch }) => {
   const { t, i18n } = useTranslation();
   return (
     <div className="mb-8">
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-textDark mb-6 text-center">
+      <h1 className="text-2xl font-bold text-black dark:text-white mb-6 text-center">
         {t("events.title")}
       </h1>
 
@@ -18,7 +18,7 @@ const SearchBar = ({ searchQuery, setSearchQuery, handleSearch }) => {
             e.preventDefault();
             handleSearch();
           }}
-          className="flex gap-4 mr-auto bg-white dark:bg-black rounded-lg p-2 shadow-lg backdrop-blur-md bg-opacity-80 dark:bg-opacity-80 border border-transparent dark:border-slate-800"
+          className="flex gap-4 mr-auto bg-neutral-50 dark:bg-neutral-900 focus:outline-0 focus:ring-0 rounded-lg p-2  backdrop-blur-md bg-opacity-80 dark:bg-opacity-80 border border-transparent dark:border-slate-800"
         >
           <Input
             type="search"
@@ -31,16 +31,15 @@ const SearchBar = ({ searchQuery, setSearchQuery, handleSearch }) => {
                 handleSearch(val);
               }
             }}
-            // onKeyDown captures Enter key better than onKeyPress
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 e.preventDefault();
                 handleSearch();
               }
             }}
-            className="flex-1 border-0 focus:ring-0 bg-transparent text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+            className="flex-1  shadow-none border-none outline-none focus:ring-0 px-3 py-1 text-base transition-colors focus-visible:outline-none focus-visible:ring-0"
           />
-          <Button type="submit" className="flex text-white">
+          <Button type="submit" className="flex">
             <SearchIcon
               className={`w-5 h-5 ${i18n.language === "ar" ? "ml-2" : "mr-2"}`}
             />

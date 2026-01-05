@@ -17,6 +17,7 @@ export const createSingleLanguageEvent = asyncHandler(
       eventCode,
       price,
       date,
+      time,
     } = cleanedData;
     const file =
       req.file || (Array.isArray(req.files) ? req.files[0] : null) || {};
@@ -44,6 +45,7 @@ export const createSingleLanguageEvent = asyncHandler(
       // But preserving original logic:
       if (price) updateData.price = price;
       if (date) updateData.date = date;
+      if (time) updateData.time = time;
       if (capacity) updateData.capacity = capacity;
       if (category && Types.ObjectId.isValid(category))
         updateData.category = new Types.ObjectId(category);
@@ -97,6 +99,7 @@ export const createSingleLanguageEvent = asyncHandler(
       eventCode: generateEventCode,
       price,
       date,
+      time,
       image,
       capacity,
       availableTickets: capacity,
@@ -202,16 +205,29 @@ export const getAllEvents = asyncHandler(async (req, res, next) => {
   const language = req.language || "en";
 
   // Use aggregation to filter
-  const pipeline = [
-    {
+  const pipeline = [];
+
+  // Filter out Draft events (public view should not show drafts)
+  pipeline.push({
+    $match: { status: { $ne: "Draft" } },
+  });
+
+  if (cleanSearch) {
+    pipeline.push({
       $match: {
         $or: [
-          { [`name.${language}`]: { $regex: regex } },
-          { [`description.${language}`]: { $regex: regex } },
-          { [`venue.${language}`]: { $regex: regex } },
+          { [`name.en`]: { $regex: regex } },
+          { [`name.ar`]: { $regex: regex } },
+          { [`description.en`]: { $regex: regex } },
+          { [`description.ar`]: { $regex: regex } },
+          { [`venue.en`]: { $regex: regex } },
+          { [`venue.ar`]: { $regex: regex } },
         ],
       },
-    },
+    });
+  }
+
+  pipeline.push(
     {
       $lookup: {
         from: "categories",
@@ -222,8 +238,8 @@ export const getAllEvents = asyncHandler(async (req, res, next) => {
     },
     {
       $unwind: { path: "$categoryDoc", preserveNullAndEmptyArrays: true },
-    },
-  ];
+    }
+  );
 
   // Category Filtering
   if (categories.length > 0) {
@@ -240,14 +256,28 @@ export const getAllEvents = asyncHandler(async (req, res, next) => {
   // Project fields
   pipeline.push({
     $project: {
-      name: `$name.${language}`,
-      description: `$description.${language}`,
-      category: `$categoryDoc.name.${language}`,
-      venue: `$venue.${language}`,
+      name: { $ifNull: [`$name.${language}`, `$name.en`, `$name.ar`] },
+      description: {
+        $ifNull: [
+          `$description.${language}`,
+          `$description.en`,
+          `$description.ar`,
+        ],
+      },
+      category: {
+        $ifNull: [
+          `$categoryDoc.name.${language}`,
+          `$categoryDoc.name.en`,
+          `$categoryDoc.name.ar`,
+        ],
+      },
+      venue: { $ifNull: [`$venue.${language}`, `$venue.en`, `$venue.ar`] },
       eventCode: 1,
       capacity: 1,
       date: 1,
+      time: 1,
       price: 1,
+      status: 1,
       image: {
         secure_url: "$image.secure_url",
         public_id: "$image.public_id",
@@ -290,16 +320,22 @@ export const getAllEvents = asyncHandler(async (req, res, next) => {
   // Note: Standard countDocuments cannot easily handle the complex pipeline (lookup/unwind filter).
   // We should run a count pipeline.
 
-  const countPipeline = [
-    {
+  const countPipeline = [];
+  if (cleanSearch) {
+    countPipeline.push({
       $match: {
         $or: [
-          { [`name.${language}`]: { $regex: regex } },
-          { [`description.${language}`]: { $regex: regex } },
-          { [`venue.${language}`]: { $regex: regex } },
+          { [`name.en`]: { $regex: regex } },
+          { [`name.ar`]: { $regex: regex } },
+          { [`description.en`]: { $regex: regex } },
+          { [`description.ar`]: { $regex: regex } },
+          { [`venue.en`]: { $regex: regex } },
+          { [`venue.ar`]: { $regex: regex } },
         ],
       },
-    },
+    });
+  }
+  countPipeline.push(
     {
       $lookup: {
         from: "categories",
@@ -310,8 +346,8 @@ export const getAllEvents = asyncHandler(async (req, res, next) => {
     },
     {
       $unwind: { path: "$categoryDoc", preserveNullAndEmptyArrays: true },
-    },
-  ];
+    }
+  );
 
   if (categories.length > 0) {
     countPipeline.push({
@@ -367,6 +403,7 @@ export const getSpicificEvent = asyncHandler(async (req, res, next) => {
           category: "$categoryDoc.name.ar",
           venue: "$venue.ar",
           date: "$date",
+          time: "$time",
           price: "$price",
           availableTickets: "$availableTickets",
           eventCode: "$eventCode",
@@ -381,6 +418,7 @@ export const getSpicificEvent = asyncHandler(async (req, res, next) => {
           category: "$categoryDoc.name.en",
           venue: "$venue.en",
           date: "$date",
+          time: "$time",
           price: "$price",
           availableTickets: "$availableTickets",
           eventCode: "$eventCode",
@@ -412,8 +450,16 @@ export const getSpicificEvent = asyncHandler(async (req, res, next) => {
 
 export const updateEvent = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
-  const { name, description, category, venue, date, price, availableTickets } =
-    req.body;
+  const {
+    name,
+    description,
+    category,
+    venue,
+    date,
+    time,
+    price,
+    availableTickets,
+  } = req.body;
   const language = req.language || "en";
 
   const isEventExist = await eventModel.findById(id);
@@ -427,14 +473,32 @@ export const updateEvent = asyncHandler(async (req, res, next) => {
   // Construct update object using dot notation only for changed fields
   const updateQuery = { $set: {} };
 
-  if (name) updateQuery.$set[`name.${language}`] = name;
-  if (description) updateQuery.$set[`description.${language}`] = description;
-  if (venue) updateQuery.$set[`venue.${language}`] = venue;
+  // Helper for localized updates
+  const updateLocalizedField = (fieldValue, fieldName) => {
+    if (!fieldValue) return;
+    try {
+      const parsed =
+        typeof fieldValue === "string" ? JSON.parse(fieldValue) : fieldValue;
+      if (typeof parsed === "object" && parsed !== null) {
+        if (parsed.en) updateQuery.$set[`${fieldName}.en`] = parsed.en;
+        if (parsed.ar) updateQuery.$set[`${fieldName}.ar`] = parsed.ar;
+      } else {
+        updateQuery.$set[`${fieldName}.${language}`] = fieldValue;
+      }
+    } catch (error) {
+      updateQuery.$set[`${fieldName}.${language}`] = fieldValue;
+    }
+  };
+
+  updateLocalizedField(name, "name");
+  updateLocalizedField(description, "description");
+  updateLocalizedField(venue, "venue");
 
   if (category && Types.ObjectId.isValid(category)) {
     updateQuery.$set.category = new Types.ObjectId(category);
   }
   if (date) updateQuery.$set.date = date;
+  if (time) updateQuery.$set.time = time;
   if (price !== undefined) updateQuery.$set.price = price;
 
   if (availableTickets !== undefined) {

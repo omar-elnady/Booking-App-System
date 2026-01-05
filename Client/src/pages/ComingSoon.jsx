@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Construction } from "lucide-react";
-import { DashboardPageHeader } from "@/components/DashboardPageHeader";
+import { DashboardPageHeader } from "@/components/layout/dashboard/DashboardPageHeader";
 
 export default function ComingSoon() {
   const { t } = useTranslation();

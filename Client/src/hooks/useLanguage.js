@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { getLanguagesOptions } from "../constants";
+import { getLanguagesOptions } from "@/config/constants";
 
 export const useLanguage = () => {
   const { t, i18n } = useTranslation();

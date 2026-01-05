@@ -15,6 +15,8 @@ export const signUpSchema = {
       password: joi.string().min(6).required(),
       firstName: joi.string().optional(),
       lastName: joi.string().optional(),
+      requestOrganizer: joi.boolean().optional(),
+      organizerSummary: joi.string().optional().allow(""),
     })
     .required(),
 };
@@ -24,6 +26,7 @@ export const loginSchema = {
     .object({
       email: joi.string().email().required(),
       password: joi.string().required(),
+      code: joi.string().length(6).optional(),
     })
     .required(),
 };
@@ -78,10 +81,11 @@ export const updateCategorySchema = {
     .object({
       name: joi
         .object({
-          en: joi.string().min(2).required(),
-          ar: joi.string().min(2).required(),
+          en: joi.string().min(2).optional(),
+          ar: joi.string().min(2).optional(),
         })
-        .required(),
+        .optional(),
+      status: joi.string().valid("Active", "Pending").optional(),
     })
     .required(),
 };

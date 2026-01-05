@@ -45,6 +45,15 @@ const userSchema = new Schema(
       default: "active",
       enum: ["active", "inactive", "blocked"],
     },
+    organizerRequestStatus: {
+      type: String,
+      default: "none",
+      enum: ["none", "pending", "approved", "rejected"],
+    },
+    organizerSummary: {
+      type: String,
+      default: "",
+    },
     forgetCode: {
       type: Number,
       default: null,
@@ -55,6 +64,35 @@ const userSchema = new Schema(
     changePasswordTime: {
       type: Date,
     },
+    tempEmail: {
+      type: String,
+      default: null,
+      lowercase: true,
+    },
+    tempEmailCode: {
+      type: String,
+      default: null,
+    },
+    twoFactorEnabled: {
+      type: Boolean,
+      default: false,
+    },
+    twoFactorCode: {
+      type: String,
+      default: null,
+    },
+    provider: {
+      type: String,
+      default: "local",
+      enum: ["local", "google"],
+    },
+    googleId: String,
+    bookedEvents: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "event",
+      },
+    ],
   },
   { timestamps: true }
 );

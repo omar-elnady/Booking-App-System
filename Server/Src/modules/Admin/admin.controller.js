@@ -198,43 +198,57 @@ export const deleteEvent = asyncHandler(async (req, res, next) => {
   return res.status(200).json({ message: "Event deleted successfully" });
 });
 
-export const createEvent = asyncHandler(async (req, res, next) => {
-  // Simple version for super admin
-  const { name, description, venue, price, capacity, date, category } =
-    req.body;
-  const file = req.file;
+export const createEvent = async (req, res, next) => {
+  try {
+    const { name, description, venue, price, capacity, date, category } =
+      req.body;
+    const file = req.file;
 
-  let image = {};
-  if (file?.path) {
-    const { secure_url, public_id } = await cloudinary.uploader.upload(
-      file.path,
-      {
-        folder: `admin-events`,
-      }
-    );
-    image = { secure_url, public_id };
+    let image = {};
+    if (file?.path) {
+      const { secure_url, public_id } = await cloudinary.uploader.upload(
+        file.path,
+        {
+          folder: `admin-events`,
+        }
+      );
+      image = { secure_url, public_id };
+    }
+
+    const eventCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+
+    const event = await eventModel.create({
+      name: typeof name === "string" ? JSON.parse(name) : name,
+      description:
+        typeof description === "string" ? JSON.parse(description) : description,
+      venue: typeof venue === "string" ? JSON.parse(venue) : venue,
+      price,
+      capacity,
+      availableTickets: capacity,
+      date,
+      category,
+      image,
+      eventCode,
+      createdBy: req.user._id,
+      status: "Active",
+    });
+
+    return res
+      .status(201)
+      .json({ message: "Event created successfully", event });
+  } catch (error) {
+    console.error("Create Event Failed:", error);
+    return res.status(500).json({
+      message: "Failed to create event",
+      error: error.message,
+      stack: error.stack,
+    });
   }
-
-  const event = await eventModel.create({
-    name: typeof name === "string" ? JSON.parse(name) : name,
-    description:
-      typeof description === "string" ? JSON.parse(description) : description,
-    venue: typeof venue === "string" ? JSON.parse(venue) : venue,
-    price,
-    capacity,
-    availableTickets: capacity,
-    date,
-    category,
-    createdBy: req.user._id,
-    status: "Active",
-  });
-
-  return res.status(201).json({ message: "Event created successfully", event });
-});
+};
 
 export const updateEvent = asyncHandler(async (req, res, next) => {
   const { eventId } = req.params;
-  const { name, description, venue, price, capacity, date, category } =
+  const { name, description, venue, price, capacity, date, category, status } =
     req.body;
   const file = req.file;
 
@@ -250,6 +264,7 @@ export const updateEvent = asyncHandler(async (req, res, next) => {
     capacity,
     date,
     category,
+    status,
   };
 
   if (file?.path) {

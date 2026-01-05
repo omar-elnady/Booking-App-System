@@ -1,16 +1,25 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
 import apiClient from "../lib/axios";
 import { toast } from "sonner";
 
-// Fetch Categories
-export const useCategories = (search = "") => {
-  return useQuery({
-    queryKey: ["categories", { search }],
-    queryFn: async () => {
+// Fetch Categories with Infinite Scroll
+export const useCategories = (search = "", limit = 5) => {
+  return useInfiniteQuery({
+    queryKey: ["categories", { search, limit }],
+    queryFn: async ({ pageParam = 1 }) => {
       const response = await apiClient.get("/categories", {
-        params: { search },
+        params: { search, page: pageParam, limit },
       });
-      return response.data; // { categories: [], count: N, message: ... }
+      return response.data;
+    },
+    getNextPageParam: (lastPage) => {
+      return lastPage.pagination?.hasNextPage
+        ? lastPage.pagination.currentPage + 1
+        : undefined;
     },
   });
 };
@@ -52,6 +61,7 @@ export const useUpdateCategory = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["categories"]);
+      queryClient.invalidateQueries(["admin", "category-requests"]);
       toast.success("Category updated successfully");
     },
     onError: (error) => {
@@ -70,6 +80,7 @@ export const useDeleteCategory = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["categories"]);
+      queryClient.invalidateQueries(["admin", "category-requests"]);
       toast.success("Category deleted successfully");
     },
     onError: (error) => {

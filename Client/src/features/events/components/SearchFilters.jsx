@@ -44,7 +44,7 @@ const SearchFilters = ({
                   value={option.value}
                   checked={sortBy === option.value}
                   onChange={() => onSortChange(option.value)}
-                  className={`h-5 w-5 border-gray-300 dark:border-gray-600 text-mainColor focus:ring-mainColor cursor-pointer accent-mainColor ${
+                  className={`h-5 w-5 border-gray-300 dark:border-gray-600 text-blue-500 focus:ring-blue-500 cursor-pointer accent-blue-500 ${
                     isRTL ? "ml-3" : "mr-3"
                   }`}
                 />
@@ -73,7 +73,7 @@ const SearchFilters = ({
                   type="checkbox"
                   checked={selectedCategories.includes(category)}
                   onChange={(e) => onCategoryChange(category, e.target.checked)}
-                  className={`h-5 w-5 rounded border-gray-300 dark:border-gray-600 checked:bg-mainColor checked:border-mainColor focus:ring-mainColor cursor-pointer transition-all ${
+                  className={`h-5 w-5 rounded border-gray-300 dark:border-gray-600 checked:bg-blue-500 checked:border-blue-500 focus:ring-blue-500 cursor-pointer transition-all ${
                     isRTL ? "ml-3" : "mr-3"
                   }`}
                 />
@@ -86,11 +86,11 @@ const SearchFilters = ({
         </div>
 
         {selectedCategories?.length > 0 && (
-          <div className="pt-4 border-t border-gray-300 dark:border-gray-700">
+          <div className="pt-4 border-t border-border">
             <Button
               onClick={onClearFilters}
               variant="link"
-              className="text-red-500 hover:text-red-700 p-0"
+              className="text-red-500 hover:text-red-700 p-0 cursor-pointer"
             >
               {t("clearFilters")}
             </Button>

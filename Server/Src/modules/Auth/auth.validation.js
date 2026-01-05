@@ -12,22 +12,19 @@ export const token = joi
 
 export const signup = joi
   .object({
-    firstName : joi.string() ,
-    lastName : joi.string() ,
-    userName: joi
-      .string()
-      .min(2)
-      .max(20)
-      .required()
-      .messages({
-        "any.required": "joiValidation.userNameRequired",
-        "string.min": "joiValidation.userNameInvalid",
-        "string.max": "joiValidation.userNameInvalid",
-        "string.base": "joiValidation.userNameInvalid",
-      }),
+    firstName: joi.string(),
+    lastName: joi.string(),
+    userName: joi.string().min(2).max(20).required().messages({
+      "any.required": "joiValidation.userNameRequired",
+      "string.min": "joiValidation.userNameInvalid",
+      "string.max": "joiValidation.userNameInvalid",
+      "string.base": "joiValidation.userNameInvalid",
+    }),
     email: generalFields.email,
     password: generalFields.password,
     cPassword: generalFields.cPassword,
+    requestOrganizer: joi.boolean(),
+    organizerSummary: joi.string().optional().allow(""),
   })
   .required();
 

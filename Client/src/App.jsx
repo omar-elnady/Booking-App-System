@@ -4,37 +4,37 @@ import { useTranslation } from "react-i18next";
 import { Toaster } from "sonner";
 
 // Shared & App
-import MainLayout from "@app/layouts/MainLayout";
-import AuthLayout from "@app/layouts/AuthLayout";
+import MainLayout from "@/layouts/MainLayout";
+import AuthLayout from "@/layouts/AuthLayout";
 import { ThemeProvider } from "@app/providers/ThemeContext";
 import ComingSoon from "@/pages/ComingSoon";
 import { ROLES, getDashboardRoute } from "@/lib/roles";
 
 // Dashboard Components
-import DashboardLayout from "@features/dashboards/components/layout/DashboardLayout";
-import { useAdminSettings } from "@features/dashboards/super-admin/hooks/useAdmin";
+import DashboardLayout from "@/layouts/DashboardLayout";
+import { useAdminSettings } from "@/hooks/useAdmin";
 
 // Dashboard Pages (role-specific)
-import AdminDashboard from "@features/dashboards/pages/AdminDashboard"; // For super-admin & admin
-import OrganizerDashboard from "@features/dashboards/pages/OrganizerDashboard";
-import UserDashboard from "@features/dashboards/pages/UserDashboard";
+import AdminDashboard from "@/pages/dashboard/AdminDashboard"; // For super-admin & admin
+import OrganizerDashboard from "@/pages/dashboard/OrganizerDashboard";
+import UserDashboard from "@/pages/dashboard/UserDashboard";
 
 // Public Features
-import Home from "@features/home/pages/Home";
-import Events from "@features/events/pages/Events";
-import EventDetails from "@features/events/pages/EventDetails";
-import TicketConfirmation from "@features/bookings/pages/TicketConfirmation";
-import Login from "@features/auth/pages/Login";
-import ForgotPassword from "@features/auth/pages/ForgotPassword";
+import Home from "@/pages/home/Home";
+import Events from "@/pages/events/Events";
+import EventDetails from "@/pages/events/EventDetails";
+import TicketConfirmation from "@/pages/bookings/TicketConfirmation";
+import TicketCancelled from "@/pages/bookings/TicketCancelled";
+import Login from "@/pages/auth/Login";
+import ForgotPassword from "@/pages/auth/ForgotPassword";
 
 // Shared Dashboard Pages (accessible based on permissions)
-import ManageAllUsers from "@features/dashboards/pages/ManageAllUsers";
-import ManageAllEvents from "@features/dashboards/pages/ManageAllEvents";
-import ManageAllBookings from "@features/dashboards/pages/ManageAllBookings";
-import RolesPermissions from "@features/dashboards/pages/RolesPermissions";
-import ManageCategories from "@features/dashboards/pages/ManageCategories";
-import { PasswordSettings } from "@features/dashboards/pages/PasswordSettings";
-import { UserProfile } from "@features/dashboards/pages/UserProfile";
+import ManageAllUsers from "@/pages/dashboard/ManageAllUsers";
+import ManageAllEvents from "@/pages/dashboard/ManageAllEvents";
+import ManageAllBookings from "@/pages/dashboard/ManageAllBookings";
+import RolesPermissions from "@/pages/dashboard/RolesPermissions";
+import ManageCategories from "@/pages/dashboard/ManageCategories";
+import { UserProfile } from "@/pages/dashboard/UserProfile";
 
 import { useAuthStore } from "@features/auth/store/authStore";
 
@@ -42,7 +42,9 @@ export default function App() {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    document.body.dir = i18n.dir();
+    const direction = i18n.language === "ar" ? "rtl" : "ltr";
+    document.documentElement.dir = direction;
+    document.body.dir = direction;
   }, [i18n, i18n.language]);
 
   // Protected Route Component
@@ -88,6 +90,7 @@ export default function App() {
           <Route path="events" element={<Events />} />
           <Route path="events/:id" element={<EventDetails />} />
           <Route path="ticket-confirmation" element={<TicketConfirmation />} />
+          <Route path="ticket-cancelled" element={<TicketCancelled />} />
         </Route>
 
         {/* Super Admin Routes */}
@@ -159,14 +162,6 @@ export default function App() {
               </PermissionGuard>
             }
           />
-          <Route
-            path="security"
-            element={
-              <PermissionGuard permission="/security">
-                <PasswordSettings />
-              </PermissionGuard>
-            }
-          />
         </Route>
 
         {/* Admin Routes */}
@@ -219,19 +214,12 @@ export default function App() {
               </PermissionGuard>
             }
           />
+
           <Route
             path="profile"
             element={
               <PermissionGuard permission="/profile">
                 <UserProfile />
-              </PermissionGuard>
-            }
-          />
-          <Route
-            path="security"
-            element={
-              <PermissionGuard permission="/security">
-                <PasswordSettings />
               </PermissionGuard>
             }
           />
@@ -292,14 +280,7 @@ export default function App() {
               </PermissionGuard>
             }
           />
-          <Route
-            path="roles"
-            element={
-              <PermissionGuard permission="/roles">
-                <RolesPermissions />
-              </PermissionGuard>
-            }
-          />
+
           <Route path="revenue" element={<ComingSoon />} />
           <Route path="analytics" element={<ComingSoon />} />
           <Route
@@ -307,14 +288,6 @@ export default function App() {
             element={
               <PermissionGuard permission="/profile">
                 <UserProfile />
-              </PermissionGuard>
-            }
-          />
-          <Route
-            path="security"
-            element={
-              <PermissionGuard permission="/security">
-                <PasswordSettings />
               </PermissionGuard>
             }
           />
@@ -367,14 +340,6 @@ export default function App() {
             element={
               <PermissionGuard permission="/profile">
                 <UserProfile />
-              </PermissionGuard>
-            }
-          />
-          <Route
-            path="security"
-            element={
-              <PermissionGuard permission="/security">
-                <PasswordSettings />
               </PermissionGuard>
             }
           />

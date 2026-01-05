@@ -44,12 +44,19 @@ export const register = asyncHandler(async (req, res, next) => {
 
   const hashPassword = hash({ plaintext: password });
 
+  // Handle pending organizer request at registration
+  const organizerRequestStatus =
+    req.body.requestOrganizer === true ? "pending" : "none";
+  const organizerSummary = req.body.organizerSummary || "";
+
   const newUser = await userModel.create({
     userName,
     email,
     password: hashPassword,
     firstName,
     lastName,
+    organizerRequestStatus,
+    organizerSummary,
   });
 
   return res.status(201).json({
@@ -134,6 +141,50 @@ export const login = asyncHandler(async (req, res, next) => {
     return next(new Error(req.t("errors.invalidLoginData"), { cause: 401 }));
   }
 
+  // Check if user is blocked or inactive
+  if (user.status === "blocked" || user.status === "inactive") {
+    return next(new Error(req.t("errors.accountBlocked"), { cause: 403 }));
+  }
+
+  // 2FA Logic
+  if (user.twoFactorEnabled) {
+    const { code } = req.body;
+
+    if (!code) {
+      const nanoId = customAlphabet("123456789", 6);
+      const twoFactorCode = nanoId();
+
+      user.twoFactorCode = twoFactorCode;
+      await user.save();
+
+      const html = `
+        <div style="font-family: Arial, sans-serif; padding: 20px;">
+          <h2>Two-Factor Authentication</h2>
+          <p>Your login verification code is:</p>
+          <h1 style="color: #4F46E5;">${twoFactorCode}</h1>
+          <p>This code is valid for this login attempt.</p>
+        </div>
+      `;
+
+      await sendEmail({ to: email, subject: "Login Verification Code", html });
+
+      return res.status(200).json({
+        message: "2FA Code sent to your email",
+        twoFactor: true,
+        email: user.email,
+      });
+    }
+
+    // Verify Code
+    if (user.twoFactorCode !== code) {
+      return next(new Error("Invalid 2FA Code", { cause: 400 }));
+    }
+
+    // Clear code after success
+    user.twoFactorCode = null;
+    await user.save();
+  }
+
   const tokenPayload = {
     id: user._id,
     role: user.role,
@@ -143,6 +194,7 @@ export const login = asyncHandler(async (req, res, next) => {
     address: user.address,
     firstName: user.firstName,
     lastName: user.lastName,
+    userImage: user.userImage,
   };
 
   const access_token = generateToken({
@@ -206,13 +258,11 @@ export const verifyForgetPasswordCode = asyncHandler(async (req, res, next) => {
     return next(new Error(req.t("errors.resetCodeExpired"), { cause: 400 }));
   }
 
-  return res
-    .status(200)
-    .json({
-      message:
-        req.t("messages.codeVerifiedSuccessfully") ||
-        "Code verified successfully",
-    });
+  return res.status(200).json({
+    message:
+      req.t("messages.codeVerifiedSuccessfully") ||
+      "Code verified successfully",
+  });
 });
 
 export const changeForgetPassword = asyncHandler(async (req, res, next) => {

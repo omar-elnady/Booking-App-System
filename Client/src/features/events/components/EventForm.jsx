@@ -13,15 +13,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Loader2,
-  Upload,
   X,
   Calendar as CalendarIcon,
   Clock,
   Image as ImageIcon,
   ChevronDown,
+  Plus,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
@@ -30,8 +29,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { format } from "date-fns";
 import { ar, enUS } from "date-fns/locale";
+import { useAuthStore } from "@/features/auth/store/authStore";
 
 export default function EventForm({
   onSubmit,
@@ -39,15 +45,45 @@ export default function EventForm({
   categories,
   isLoading,
   onCancel,
+  onAddCategory,
 }) {
   const { t, i18n } = useTranslation();
+  const { user } = useAuthStore();
+  const isOrganizer = user?.role === "organizer";
   const isRtl = i18n.dir() === "rtl";
   const [preview, setPreview] = useState(null);
+  const [newCategory, setNewCategory] = useState({ name: { en: "", ar: "" } });
+  const [isCategoryPopoverOpen, setIsCategoryPopoverOpen] = useState(false);
+  const [isCreatingCategory, setIsCreatingCategory] = useState(false);
+
+  const handleCreateCategory = async () => {
+    if (!newCategory.name.en || !newCategory.name.ar) return;
+    setIsCreatingCategory(true);
+    try {
+      if (onAddCategory) {
+        const result = await onAddCategory(newCategory);
+        setNewCategory({ name: { en: "", ar: "" } }); // Clear form
+        setIsCategoryPopoverOpen(false); // Close popover
+
+        // Auto-select the new category
+        // Adjust based on your API response structure (e.g., result.category._id or result._id)
+        const newCategoryId = result?.category?._id || result?._id;
+        if (newCategoryId) {
+          setValue("category", newCategoryId);
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsCreatingCategory(false);
+    }
+  };
 
   const {
     register,
     handleSubmit,
     setValue,
+    reset,
     control,
     watch,
     formState: { errors },
@@ -68,37 +104,42 @@ export default function EventForm({
 
   useEffect(() => {
     if (initialData) {
-      setValue("name.en", initialData.name?.en || "");
-      setValue("name.ar", initialData.name?.ar || "");
-      setValue("description.en", initialData.description?.en || "");
-      setValue("description.ar", initialData.description?.ar || "");
-      setValue("venue.en", initialData.venue?.en || "");
-      setValue("venue.ar", initialData.venue?.ar || "");
-      setValue(
-        "date",
-        initialData.date
+      const formattedData = {
+        name: {
+          en: initialData.name?.en || "",
+          ar: initialData.name?.ar || "",
+        },
+        description: {
+          en: initialData.description?.en || "",
+          ar: initialData.description?.ar || "",
+        },
+        venue: {
+          en: initialData.venue?.en || "",
+          ar: initialData.venue?.ar || "",
+        },
+        date: initialData.date
           ? new Date(initialData.date).toISOString().split("T")[0]
-          : ""
-      );
+          : "",
+        time: "",
+        price: initialData.price || 0,
+        capacity: initialData.capacity || 100,
+        category: initialData.category?._id || initialData.category || "",
+      };
+
       if (initialData.date) {
         const d = new Date(initialData.date);
         const hours = String(d.getHours()).padStart(2, "0");
         const minutes = String(d.getMinutes()).padStart(2, "0");
-        setValue("time", `${hours}:${minutes}`);
+        formattedData.time = `${hours}:${minutes}`;
       }
 
-      setValue("price", initialData.price || 0);
-      setValue("capacity", initialData.capacity || 100);
-      setValue(
-        "category",
-        initialData.category?._id || initialData.category || ""
-      );
+      reset(formattedData);
 
       if (initialData.image?.secure_url) {
         setPreview(initialData.image.secure_url);
       }
     }
-  }, [initialData, setValue]);
+  }, [initialData, reset]);
 
   useEffect(() => {
     if (watchImage && watchImage[0]) {
@@ -122,6 +163,7 @@ export default function EventForm({
         ? `${data.date}T${data.time}`
         : data.date;
       formData.append("date", dateTimeString);
+      if (data.time) formData.append("time", data.time);
     }
 
     formData.append("price", data.price);
@@ -296,12 +338,14 @@ export default function EventForm({
                     selected={field.value ? new Date(field.value) : undefined}
                     onSelect={(date) => {
                       if (date) {
-                        field.onChange(date.toISOString().split("T")[0]);
+                        field.onChange(format(date, "yyyy-MM-dd"));
                       }
                     }}
-                    disabled={(date) =>
-                      date < new Date(new Date().setHours(0, 0, 0, 0))
-                    }
+                    disabled={(date) => {
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0);
+                      return date < today;
+                    }}
                     initialFocus
                     locale={i18n.language === "ar" ? ar : enUS}
                   />
@@ -320,6 +364,10 @@ export default function EventForm({
             rules={{ required: true }}
             render={({ field }) => {
               const { timePart, period } = get12hTime(field.value);
+              // Use local state effectively by not forcing value update on every keystroke
+              // We use a key to force re-mount if external value changes drastically,
+              // but better to just use defaultValue and onBlur.
+              // Actually, simply removing value binding and syncing slightly differently works best.
               return (
                 <div className="flex gap-2">
                   <div className="relative flex-1">
@@ -327,12 +375,18 @@ export default function EventForm({
                     <Input
                       type="text"
                       placeholder="10:30"
-                      value={timePart}
-                      onChange={(e) => {
+                      defaultValue={timePart}
+                      // Using defaultValue allows typing freely.
+                      // We need to ensure it updates if the form resets (key change helps).
+                      key={field.value}
+                      onBlur={(e) => {
                         let val = e.target.value.replace(/[^0-9:]/g, "");
-                        if (val.length === 2 && !val.includes(":")) val += ":";
-                        if (val.length > 5) val = val.slice(0, 5);
-                        field.onChange(to24hTime(val, period));
+                        if (val.length === 2 && !val.includes(":"))
+                          val += ":00"; // simplistic fix for "10" -> "10:00"
+                        else if (val.length === 1) val = "0" + val + ":00";
+
+                        // Better: call to24hTime with whatever is there
+                        field.onChange(to24hTime(e.target.value, period));
                       }}
                       className={cn(
                         "h-11 pl-9 rounded-xl bg-background border-border/80 font-semibold focus:ring-1 focus:ring-primary/20",
@@ -432,42 +486,134 @@ export default function EventForm({
           <Label className="text-xs font-bold text-muted-foreground/90 tracking-tight">
             {t("buttons.categoryLabel")}
           </Label>
-          <Controller
-            name="category"
-            control={control}
-            rules={{ required: true }}
-            render={({ field }) => (
-              <Select onValueChange={field.onChange} value={field.value}>
-                <SelectTrigger
-                  className={cn(
-                    "h-11 rounded-xl bg-background border-border/80 font-bold",
-                    errors.category && "border-destructive/50 bg-destructive/5"
-                  )}
+          <div className="flex gap-2 w-full">
+            <div className="flex-1">
+              <Controller
+                name="category"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger
+                      className={cn(
+                        "h-11 rounded-xl bg-background border-border/80 font-semibold", // Changed from font-bold to font-semibold
+                        errors.category &&
+                          "border-destructive/50 bg-destructive/5"
+                      )}
+                    >
+                      <SelectValue placeholder={t("buttons.selectCategory")} />
+                    </SelectTrigger>
+                    <SelectContent className="z-[200] rounded-xl shadow-2xl border-border/60">
+                      {categories?.length > 0 ? (
+                        categories.map((cat) => (
+                          <SelectItem
+                            key={cat._id}
+                            value={cat._id}
+                            className="font-medium py-2.5"
+                          >
+                            {isRtl
+                              ? cat.name?.ar || cat.name
+                              : cat.name?.en || cat.name}
+                          </SelectItem>
+                        ))
+                      ) : (
+                        <div className="p-4 text-center text-xs text-muted-foreground">
+                          No categories found
+                        </div>
+                      )}
+                    </SelectContent>
+                  </Select>
+                )}
+              />
+            </div>
+
+            {!isOrganizer && (
+              <Popover
+                open={isCategoryPopoverOpen}
+                onOpenChange={setIsCategoryPopoverOpen}
+              >
+                <PopoverTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    className="h-11 w-11 shrink-0 rounded-xl border-dashed border-border/80 hover:border-primary hover:bg-primary/5 hover:text-primary transition-colors"
+                  >
+                    <Plus className="h-5 w-5" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent
+                  className="w-80 p-4 space-y-4 z-[200]"
+                  align="end"
+                  side="top"
                 >
-                  <SelectValue placeholder={t("buttons.selectCategory")} />
-                </SelectTrigger>
-                <SelectContent className="z-[150] rounded-xl shadow-2xl border-border/60">
-                  {categories?.length > 0 ? (
-                    categories.map((cat) => (
-                      <SelectItem
-                        key={cat._id}
-                        value={cat._id}
-                        className="font-bold py-2.5"
-                      >
-                        {isRtl
-                          ? cat.name?.ar || cat.name
-                          : cat.name?.en || cat.name}
-                      </SelectItem>
-                    ))
-                  ) : (
-                    <div className="p-4 text-center text-xs text-muted-foreground">
-                      No categories found
+                  <div className="space-y-2">
+                    <h4 className="font-medium leading-none">
+                      {t("common.createCategory") || "Create Category"}
+                    </h4>
+                    <p className="text-xs text-muted-foreground">
+                      {t("common.addCategoryDesc") ||
+                        "Add a new category directly."}
+                    </p>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="space-y-1">
+                      <Label htmlFor="cat-en" className="text-xs">
+                        {t("common.nameEn") || "Name (EN)"}
+                      </Label>
+                      <Input
+                        id="cat-en"
+                        value={newCategory.name.en}
+                        onChange={(e) =>
+                          setNewCategory({
+                            ...newCategory,
+                            name: { ...newCategory.name, en: e.target.value },
+                          })
+                        }
+                        placeholder="Category Name"
+                        className="h-8"
+                      />
                     </div>
-                  )}
-                </SelectContent>
-              </Select>
+                    <div className="space-y-1">
+                      <Label htmlFor="cat-ar" className="text-xs">
+                        {t("common.nameAr") || "Name (AR)"}
+                      </Label>
+                      <Input
+                        id="cat-ar"
+                        dir="rtl"
+                        value={newCategory.name.ar}
+                        onChange={(e) =>
+                          setNewCategory({
+                            ...newCategory,
+                            name: { ...newCategory.name, ar: e.target.value },
+                          })
+                        }
+                        placeholder="اسم الفئة"
+                        className="h-8 text-right"
+                      />
+                    </div>
+                    <Button
+                      type="button"
+                      size="sm"
+                      className="w-full font-bold"
+                      onClick={handleCreateCategory}
+                      disabled={
+                        !newCategory.name.en ||
+                        !newCategory.name.ar ||
+                        isCreatingCategory
+                      }
+                    >
+                      {isCreatingCategory ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        t("buttons.create") || "Create"
+                      )}
+                    </Button>
+                  </div>
+                </PopoverContent>
+              </Popover>
             )}
-          />
+          </div>
         </div>
       </div>
 

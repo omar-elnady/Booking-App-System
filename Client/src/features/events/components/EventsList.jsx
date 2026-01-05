@@ -12,8 +12,8 @@ function EventsList({
       <p className="text-black dark:text-gray-300">
         {i18n.language === "en" ? filteredAndSortedEvents.length : null}
         {filteredAndSortedEvents.length !== 1
-          ? t("events.evnets") + t("events.founds")
-          : t("events.event") + t("events.found")}
+          ? t("events.events") + " " + t("events.founds")
+          : t("events.event") + " " + t("events.found")}
         {i18n.language === "ar" ? ` : ` + filteredAndSortedEvents.length : null}
 
         {searchQuery && (

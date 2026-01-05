@@ -1,6 +1,7 @@
 import Stripe from "stripe";
 import eventModel from "../../../DB/modules/Event.model.js";
 import bookingModel from "../../../DB/modules/Booking.model.js";
+import userModel from "../../../DB/modules/User.model.js";
 import { asyncHandler } from "../../../utils/errorHandling.js";
 
 export const createBooking = asyncHandler(async (req, res, next) => {
@@ -40,7 +41,7 @@ export const createBooking = asyncHandler(async (req, res, next) => {
       categoryId: event.category.toString(),
     },
     success_url: `${process.env.FE_URL}/ticket-confirmation?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${process.env.FE_URL}/events/${eventId}`,
+    cancel_url: `${process.env.FE_URL}/ticket-cancelled`,
     line_items: [
       {
         price_data: {
@@ -89,13 +90,18 @@ export const webhook = asyncHandler(async (req, res, next) => {
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
+    console.log("Payment Success Session:", session);
 
     // Update booking status to completed
     const booking = await bookingModel.findOne({ stripeSessionId: session.id });
     if (booking) {
       booking.paymentStatus = "completed";
+      booking.status = "booked";
       booking.bookingDate = new Date();
       await booking.save();
+      await userModel.findByIdAndUpdate(booking.user, {
+        $addToSet: { bookedEvents: booking.event },
+      });
     }
   }
 

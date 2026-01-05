@@ -8,15 +8,17 @@ import apiClient from "../lib/axios";
 import { toast } from "sonner";
 
 // Fetch Events with Pagination & Search
+// Fetch Events with Pagination & Search
 export const useEvents = ({
   page = 1,
   size = 9,
   search = "",
   categories = [],
   sortBy = "",
+  lang = "en",
 } = {}) => {
   return useQuery({
-    queryKey: ["events", { page, size, search, categories, sortBy }],
+    queryKey: ["events", { page, size, search, categories, sortBy, lang }],
     queryFn: async () => {
       const response = await apiClient.get("/event", {
         params: { page, size, search, categories, sortBy },

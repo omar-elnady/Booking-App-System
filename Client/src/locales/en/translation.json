@@ -12,18 +12,12 @@
     "login": "Login",
     "signup": "Signup"
   },
-  "adminDashboard": {
-    "totalEvents": "Total Events",
-    "revenueCollected": "Revenue Collected",
-    "availableCapacity": "Available Capacity",
-    "activeBookings": "Active Bookings",
-    "overview": "Dashboard Overview",
-    "overviewSubtitle": "Track your event performance and revenue",
-    "last30Days": "Last 30 Days",
-    "categoriesDistribution": "Categories Distribution",
-    "revenueTrends": "Revenue Trends",
-    "totalRevenue": "Total Revenue",
-    "currency": "EGP"
+  "categories": "Categories",
+  "clearFilters": "Clear Filters",
+  "home": {
+    "title": "Discover the latest exciting events",
+    "subTitle": "Join now and don't miss your chance for an extraordinary experience!",
+    "goToEvents": "View all events"
   },
   "features": {
     "title": "Key Features",
@@ -40,99 +34,6 @@
       "description": "Stay always up to date with instant notifications about your events and ticket status."
     }
   },
-  "forgotPassword": {
-    "step1Title": "Forgot Password?",
-    "step1Desc": "No worries! It happens. Please enter the email address associated with your account.",
-    "step2Title": "Check your email",
-    "step2Desc": "We have sent a 6-digit verification code to your email",
-    "step3Title": "Reset Password",
-    "step3Desc": "Create a strong new password to secure your account."
-  },
-  "buttons": {
-    "submit": "Submit",
-    "cancel": "Cancel",
-    "save": "Save",
-    "next": "Next",
-    "back": "Back",
-    "sendCode": "Send Code",
-    "verify": "Verify Code",
-    "resetPassword": "Reset Password",
-    "confirmPassword": "Confirm Password",
-    "confirm": "Confirm",
-    "confirmDelete": "Confirm Delete",
-    "confirmDeleteDesc": "Are you sure you want to delete this category?",
-    "categoryLabel": "Category",
-    "selectCategory": "Select Category"
-  },
-  "manageEvents": {
-    "title": "Event Management",
-    "subtitle": "Create and manage your events and categories",
-    "tabSingle": "Single Events",
-    "tabSingleDesc": "Enter details for the single language version.",
-    "tabMulti": "Multi-language Events",
-    "tabMultiDesc": "Enter details for both Arabic and English versions.",
-    "tabCategories": "Categories",
-    "addNew": "Add New Event",
-    "multiLanguageDetails": "Multi-language Event Details",
-    "eventDetails": "Event Details",
-    "createEvent": "Create Event",
-    "addCategory": "Add Category",
-    "editCategory": "Edit Category",
-    "updateCategoryDesc": "Update Category Details",
-    "addCategoryDesc": "Add a new category for the event",
-    "confirmDelete": "Confirm Delete",
-    "confirmDeleteDesc": "Are you sure you want to delete this event?",
-    "categoryLabel": "Category",
-    "selectCategory": "Select Category"
-  },
-  "common": {
-    "success": "Success",
-    "error": "Error",
-    "required": "This field is required",
-    "eventAdded": "Event added successfully!",
-    "eventUpdated": "Event updated successfully!",
-    "eventDeleted": "Event deleted successfully!",
-    "fillAllFields": "Please fill all required fields for selected language(s).",
-    "invalid": "Invalid",
-    "all": "All",
-    "allStatuses": "All Statuses",
-    "noResults": "No results found",
-    "noResultsDesc": "Try adjusting your search or filters to find what you're looking for.",
-    "clearAllFilters": "Clear all filters"
-  },
-  "userProfile": {
-    "subtitle": "Manage your personal information and preferences"
-  },
-  "passwordSettings": {
-    "subtitle": "Update your password and secure your account"
-  },
-  "home": {
-    "title": "Discover the latest exciting events",
-    "subTitle": "Join now and don't miss your chance for an extraordinary experience!",
-    "goToEvents": "View all events"
-  },
-  "events": {
-    "title": "Join now and don't miss your chance for an extraordinary experience!",
-    "searchPlaceholder": "Search for event",
-    "searchButton": "Search",
-    "evnets": "Events",
-    "event": "Event",
-    "founds": "found",
-    "found": "found",
-    "for": "for",
-    "noEventsFound": "No events found",
-    "adjustSearch": "Try adjusting your search or filters to find more events"
-  },
-  "sortOpition": {
-    "filters": "Filter Options",
-    "sortBy": "Sort By",
-    "newest": "Newest",
-    "popular": "Most Popular",
-    "priceLowToHigh": "Price: Low to High",
-    "priceHighToLow": "Price: High to Low",
-    "status": "Status",
-    "date": "Date"
-  },
   "login": {
     "welcomeMessage": "Welcome to our events platform!",
     "signToContinue": "Sign in to book the latest events",
@@ -141,21 +42,7 @@
     "signIn": "Sign In",
     "signup": "Sign Up",
     "signingUp": "Signing Up...",
-    "emailPlaceholder": "Email address",
-    "passwordPlaceholder": "Password",
-    "backToLogin": "Back to login",
-    "loginButton": "Login",
     "signingIn": "Signing In...",
-    "forgetPassword": "Forgot Password?",
-    "dontHaveAccount": "Don't have an account?",
-    "signUpHere": "Sign up here",
-    "alreadyHaveAccount": "Already have an account?",
-    "signInHere": "Sign in here",
-    "demoAccounts": "Demo Accounts",
-    "continueAsGuest": "Continue as guest",
-    "newPasswordPlaceholder": "Enter new password",
-    "confirmNewPasswordPlaceholder": "Confirm new password",
-    "useDifferentEmail": "Use different email",
     "email": {
       "label": "Email",
       "placeholder": "Enter your email",
@@ -189,157 +76,39 @@
       "placeholder": "Confirm your password",
       "required": "Password confirmation is required",
       "minLength": "Password must be at least 8 characters"
-    }
-  },
-  "footer": {
-    "contactUs": "Contact Us",
-    "followUs": "Follow Us",
-    "logo": "Daghata",
-    "description": "With Daghata... your booking in a second!",
-    "copyright": "All rights reserved, Daghata 2025",
-    "phone": "Phone: 01013341863"
-  },
-  "dashboard": {
-    "adminTitle": "Admin Dashboard",
-    "sideBar": {
-      "title": "Control Panel",
-      "adminDashboard": "Event Analytics",
-      "magageEvents": "Manage Events",
-      "profileSettings": "Account Profile",
-      "changePassword": "Change Password",
-      "goBack": "Back to Home",
-      "logout": "Logout",
-      "theme": "Theme",
-      "language": "Language",
-      "returnHome": "Return Home",
-      "dark": "Dark",
-      "light": "Light",
-      "english": "English",
-      "arabic": "Arabic",
-      "menuLabel": "Menu",
-      "systemGroup": "System Control",
-      "controlPanel": "Control Panel",
-      "dashboardGroup": "Main Dashboard",
-      "manageUsersGroup": "User Management",
-      "dashboard": "Main Dashboard"
     },
-    "currency": "EGP",
-    "status": {
-      "active": "Active",
-      "inactive": "Inactive",
-      "blocked": "Blocked",
-      "pending": "Pending",
-      "completed": "Completed",
-      "cancelled": "Cancelled",
-      "failed": "Failed",
-      "soldout": "Sold Out",
-      "sold out": "Sold Out",
-      "booked": "Booked",
-      "draft": "Draft",
-      "confirmed": "Confirmed"
-    }
+    "forgetPassword": "Forgot Password?",
+    "dontHaveAccount": "Don't have an account?",
+    "signUpHere": "Sign up here",
+    "alreadyHaveAccount": "Already have an account?",
+    "signInHere": "Sign in here",
+    "demoAccounts": "Demo Accounts",
+    "continueAsGuest": "Continue as guest",
+    "backToLogin": "Back to login",
+    "loginButton": "Login",
+    "requestOrganizer": "Request to be an Organizer",
+    "organizerSummary": "Organizer Summary",
+    "organizerSummaryPlaceholder": "Tell us about yourself or your organization..."
   },
-  "eventForm": {
-    "eventName": {
-      "labelAr": "Event Name (AR)",
-      "labelEn": "Event Name (EN)",
-      "placeholderAr": "Enter event name in Arabic",
-      "placeholderEn": "Enter event name in English",
-      "requiredAr": "Event name is required"
-    },
-    "eventDescription": {
-      "labelAr": "Description (AR)",
-      "labelEn": "Description (EN)",
-      "placeholderAr": "Enter event description in Arabic",
-      "placeholderEn": "Enter event description in English",
-      "requiredAr": "Description is required",
-      "requiredEn": "Description is required"
-    },
-    "eventVenue": {
-      "labelAr": "Venue (AR)",
-      "labelEn": "Venue (EN)",
-      "placeholderAr": "Enter venue in Arabic",
-      "placeholderEn": "Enter venue in English",
-      "requiredAr": "Venue is required",
-      "requiredEn": "Venue is required"
-    },
-    "eventCategory": {
-      "labelAr": "Category",
-      "labelEn": "Category",
-      "placeholderAr": "Select Category",
-      "placeholderEn": "Select Category",
-      "requiredAr": "Category is required",
-      "requiredEn": "Category is required"
-    },
-    "eventDate": {
-      "labelAr": "Date",
-      "labelEn": "Date",
-      "placeholderAr": "Select Date",
-      "placeholderEn": "Select Date",
-      "requiredAr": "Date is required",
-      "requiredEn": "Date is required"
-    },
-    "eventTime": {
-      "labelAr": "Time",
-      "labelEn": "Time",
-      "placeholderAr": "Select Time",
-      "placeholderEn": "Select Time",
-      "requiredAr": "Time is required",
-      "requiredEn": "Time is required"
-    },
-    "eventCapacity": {
-      "labelAr": "Capacity",
-      "labelEn": "Capacity",
-      "placeholderAr": "Enter capacity",
-      "placeholderEn": "Enter capacity",
-      "requiredAr": ""
-    }
+  "forgotPassword": {
+    "step1Title": "Forgot Password?",
+    "step1Desc": "No worries! It happens. Please enter the email address associated with your account.",
+    "step2Title": "Check your email",
+    "step2Desc": "We have sent a 6-digit verification code to your email",
+    "step3Title": "Reset Password",
+    "step3Desc": "Create a strong new password to secure your account."
   },
-  "categoriesForm": {
-    "labelAr": "Category Name (AR)",
-    "labelEn": "Category Name (EN)",
-    "placeholderAr": "Enter category name in Arabic",
-    "placeholderEn": "Enter category name in English",
-    "requiredAr": "Category name is required",
-    "requiredEn": "Category name is required"
-  },
-  "userForm": {
-    "title": "Edit User Data",
-    "firstName": "First Name",
-    "lastName": "Last Name",
-    "userName": "Username",
-    "email": "Email",
-    "phone": "Phone Number",
-    "address": "Address"
-  },
-  "changePassword": {
-    "title": "Change Password",
-    "description": "For security reasons, you need to enter your current password to change it.",
-    "currentPassword": "Current Password",
-    "currentPasswordRequired": "Current password is required",
-    "newPassword": "New Password",
-    "confirmPassword": "Confirm Password",
-    "confirmPasswordRequired": "Confirm password is required",
-    "passwordsShouldMatch": "Passwords should match"
-  },
-  "saveChanges": "Save Changes",
-  "categories": "Event Types",
-  "clearFilters": "Clear Filters",
-  "currency": " EGP ",
-  "bookNow": "Book Now",
-  "loginButton": "Login",
-  "signupButton": "Signup",
-  "searchEvents": "Search Events",
-  "menu": {
-    "dashboard": "Dashboard",
-    "settings": "Settings",
-    "bookings": "Bookings app",
-    "logout": "Logout"
-  },
-  "messages": {
-    "resendVerificationCode": "Verification code resent",
-    "codeVerified": "Code verified successfully!",
-    "passwordChangedSuccessfully": "Password reset successfully!"
+  "events": {
+    "title": "Join now and don't miss your chance for an extraordinary experience!",
+    "searchPlaceholder": "Search for event",
+    "searchButton": "Search",
+    "events": "Events",
+    "event": "Event",
+    "founds": "found",
+    "found": "found",
+    "for": "for",
+    "noEventsFound": "No events found",
+    "adjustSearch": "Try adjusting your search or filters to find more events"
   },
   "eventDetails": {
     "back": "Back to Events",
@@ -357,6 +126,65 @@
     "instantConfirmation": "Instant Confirmation",
     "linkCopied": "Link copied!",
     "copyFailed": "Failed to copy link"
+  },
+  "booking": {
+    "confirmedTitle": "You're Going!",
+    "confirmedMessage": "Your ticket has been booked successfully. Check your email for details.",
+    "cancelledTitle": "Payment Cancelled",
+    "cancelledMessage": "The payment process was cancelled. No charges were made.",
+    "browseEvents": "Browse Events",
+    "browseMoreEvents": "Browse More Events",
+    "backHome": "Back to Home",
+    "goToDashboard": "Go to Dashboard",
+    "tryAgain": "Try Booking Again",
+    "viewTicket": "View Ticket"
+  },
+  "dashboard": {
+    "adminTitle": "Admin Dashboard",
+    "currency": "EGP",
+    "sideBar": {
+      "title": "Control Panel",
+      "adminDashboard": "Event Analytics",
+      "manageEvents": "Manage Events",
+      "profileSettings": "Account Profile",
+      "changePassword": "Change Password",
+      "goBack": "Back to Home",
+      "logout": "Logout",
+      "theme": "Theme",
+      "language": "Language",
+      "returnHome": "Return Home",
+      "dark": "Dark",
+      "light": "Light",
+      "english": "English",
+      "arabic": "Arabic",
+      "menuLabel": "Menu",
+      "systemGroup": "System Control",
+      "controlPanel": "Control Panel",
+      "dashboardGroup": "Main Dashboard",
+      "manageUsersGroup": "User Management",
+      "dashboard": "Main Dashboard",
+      "myTickets": "My Tickets"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "blocked": "Blocked",
+      "pending": "Pending",
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "failed": "Failed",
+      "soldout": "Sold Out",
+      "booked": "Booked",
+      "draft": "Draft",
+      "confirmed": "Confirmed"
+    },
+    "notifications": "Notifications",
+    "pendingRequests": "pending organizer requests",
+    "noNotifications": "No new notifications",
+    "organizerRequest": "Organizer Request",
+    "usersWantToJoin": "users requested to become organizers.",
+    "clickToReview": "Click to review",
+    "allCaughtUp": "All caught up!"
   },
   "userDashboard": {
     "title": "My Dashboard",
@@ -378,8 +206,61 @@
     "createNewEvent": "Create New Event",
     "viewBookings": "View Bookings"
   },
-  "errors": {
-    "eventNotFound": "Event not found"
+  "admin": {
+    "menu": {
+      "dashboard": "Dashboard",
+      "users": "Users",
+      "events": "Events",
+      "bookings": "Bookings",
+      "transactions": "Transactions",
+      "settings": "Settings",
+      "roles": "Roles",
+      "categories": "Categories"
+    },
+    "stats": {
+      "totalUsers": "Total Users",
+      "totalEvents": "Total Events",
+      "totalBookings": "Total Bookings",
+      "totalRevenue": "Total Revenue",
+      "activeBookings": "Active Bookings",
+      "revenueCollected": "Revenue Collected",
+      "availableCapacity": "Available Capacity",
+      "overview": "Dashboard Overview",
+      "overviewSubtitle": "Track your event performance and revenue"
+    },
+    "messages": {
+      "usersSubtitle": "Manage all system users",
+      "eventsSubtitle": "Manage all system events",
+      "bookingsSubtitle": "Manage all system bookings",
+      "transactionsSubtitle": "View and manage all transactions",
+      "settingsSubtitle": "Configure system settings",
+      "rolesSubtitle": "Manage roles and permissions",
+      "cannotChangeSuperAdmin": "Cannot change Super Admin role",
+      "alreadyIs": "is already"
+    },
+    "actions": {
+      "addUser": "Add User",
+      "searchUsers": "Search users...",
+      "quickActions": "Quick Actions",
+      "downloadReport": "Export CSV",
+      "manageUsers": "Manage Users",
+      "manageEvents": "Manage Events",
+      "manageBookings": "Manage Bookings"
+    }
+  },
+  "tables": {
+    "user": "User",
+    "role": "Role",
+    "status": "Status",
+    "date": "Date",
+    "joined": "Joined",
+    "actions": "Actions",
+    "email": "Email",
+    "event": "Event",
+    "bookingId": "Booking ID",
+    "price": "Price",
+    "customer": "Customer",
+    "payment": "Payment"
   },
   "superAdmin": {
     "menu": "Super Admin",
@@ -409,55 +290,11 @@
     "viewReports": "View Reports",
     "addUser": "Add User",
     "searchUsers": "Search users...",
-    "name": "Name",
-    "email": "Email",
-    "role": "Role",
-    "status": "Status",
-    "joinedDate": "Joined Date",
-    "actions": "Actions",
     "userManagement": "User Management",
     "userManagementSubtitle": "View and manage all system users and their permissions.",
-    "userTable": "User",
-    "user": "User",
-    "event": "Event",
-    "alreadyIs": "is already",
-    "viewFullProfile": "View Full Profile",
     "securityAndRoles": "Security & Roles",
-    "userAccount": "User Account",
-    "organizerAccess": "Organizer Access",
-    "superAdmin": "Super Admin",
-    "administrator": "Admin",
-    "accountStatus": "Account Status",
-    "reactivateProfile": "Reactivate Profile",
-    "deactivateTemporary": "Deactivate Temporary",
-    "terminateAccess": "Terminate Access",
-    "userProfileDetail": "User Profile Detail",
-    "reviewingParameters": "Reviewing account parameters for",
-    "functionalRole": "Functional Role",
-    "registrationDate": "Registration Date",
-    "systemArchitecture": "System Architecture",
     "configurePermissions": "Configure feature availability and routing permissions per user role.",
-    "saveConfiguration": "Save Configuration",
-    "structureRoles": "Structure Roles",
-    "routeAccess": "Route Access",
-    "toggleModules": "Toggle system modules enabled for this role.",
-    "featuresCount": "Features",
-    "routingInfo": "Routing security is enforced both in the UI sidebar and at the API level. Ensure correct mapping before saving.",
-    "bookingId": "Order ID",
-    "payment": "Payment",
-    "price": "Price",
-    "customer": "Customer",
-    "downloadReport": "Download Report",
-    "systemHealth": "System Health",
-    "backendApi": "Backend API",
-    "database": "Database",
-    "gateway": "Payment Gateway",
-    "online": "Online",
-    "connected": "Connected",
-    "live": "Live",
-    "activateEvent": "Activate Event",
-    "setDraft": "Set to Draft",
-    "cancelEvent": "Cancel Event"
+    "saveConfiguration": "Save Configuration"
   },
   "management": {
     "users": "Users Management",
@@ -468,45 +305,179 @@
     "manageEvents": "Manage Events",
     "eventsSubtitle": "Create, edit, and manage all events",
     "bookingsSubtitle": "View and manage all bookings",
+    "searchUsers": "Search by name, email, event...",
+    "downloadReport": "Export CSV",
+    "cannotChangeSuperAdmin": "Cannot change Super Admin role",
+    "pendingOrganizerRequests": "Pending Organizer Requests",
+    "pendingRequestsSubtitle": "Review users requesting organizer access",
+    "viewFullProfile": "View Full Profile",
+    "securityAndRoles": "Security & Roles",
+    "accountStatus": "Account Status",
+    "userProfileDetail": "User Profile Details",
+    "reviewingParameters": "Reviewing parameters for",
+    "email": "Email",
+    "functionalRole": "Functional Role",
+    "registrationDate": "Registration Date",
+    "user": "User",
     "userTable": "User",
     "role": "Role",
     "status": "Status",
-    "joinedDate": "Joined",
+    "joinedDate": "Joined Date",
     "actions": "Actions",
-    "email": "Email",
-    "functionalRole": "Role",
-    "registrationDate": "Registration Date",
-    "viewFullProfile": "View Profile",
-    "securityAndRoles": "Security & Roles",
-    "accountStatus": "Account Status",
-    "reactivateProfile": "Activate",
-    "deactivateTemporary": "Deactivate",
-    "terminateAccess": "Block",
-    "user": "User",
-    "alreadyIs": "is already",
-    "userProfileDetail": "User Profile",
-    "reviewingParameters": "Reviewing profile for",
-    "event": "Event",
-    "price": "Price",
-    "customer": "Attendees",
-    "payment": "Payment",
-    "activateEvent": "Activate",
-    "setDraft": "Set Draft",
-    "cancelEvent": "Cancel",
-    "bookingId": "Booking ID",
-    "searchUsers": "Search by name, email, event...",
-    "downloadReport": "Export CSV",
-    "dashboard": "Dashboard",
-    "overview": "Overview",
-    "categories": "Categories",
-    "roles": "Roles & Permissions",
-    "profile": "Profile",
-    "security": "Security",
-    "system": "System",
-    "cannotChangeSuperAdmin": "Cannot change Super Admin role"
+    "userAccount": "User Account",
+    "organizerAccess": "Organizer Access",
+    "reactivateProfile": "Activate Profile",
+    "deactivateTemporary": "Deactivate Temporary",
+    "terminateAccess": "Terminate Access"
   },
-
-  "breadcrumbs": {
+  "userProfile": {
+    "subtitle": "Manage your personal information and preferences"
+  },
+  "passwordSettings": {
+    "subtitle": "Update your password and secure your account"
+  },
+  "changePassword": {
+    "title": "Change Password",
+    "description": "For security reasons, you need to enter your current password to change it.",
+    "currentPassword": "Current Password",
+    "currentPasswordRequired": "Current password is required",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordRequired": "Confirm password is required",
+    "passwordsShouldMatch": "Passwords should match"
+  },
+  "common": {
+    "success": "Success",
+    "error": "Error",
+    "required": "This field is required",
+    "eventAdded": "Event added successfully!",
+    "eventUpdated": "Event updated successfully!",
+    "eventDeleted": "Event deleted successfully!",
+    "fillAllFields": "Please fill all required fields for selected language(s).",
+    "invalid": "Invalid",
+    "all": "All",
+    "allStatuses": "All Statuses",
+    "noResults": "No results found",
+    "noResultsDesc": "Try adjusting your search or filters to find what you're looking for.",
+    "clearAllFilters": "Clear all filters",
+    "currency": "EGP"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "next": "Next",
+    "back": "Back",
+    "sendCode": "Send Code",
+    "verify": "Verify Code",
+    "resetPassword": "Reset Password",
+    "confirmPassword": "Confirm Password",
+    "confirm": "Confirm",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirmDelete": "Confirm Delete",
+    "confirmDeleteDesc": "Are you sure you want to delete this category?",
+    "categoryLabel": "Category",
+    "selectCategory": "Select Category",
+    "bookNow": "Book Now"
+  },
+  "sortOpition": {
+    "filters": "Filter Options",
+    "sortBy": "Sort By",
+    "newest": "Newest",
+    "popular": "Most Popular",
+    "priceLowToHigh": "Price: Low to High",
+    "priceHighToLow": "Price: High to Low",
+    "status": "Status",
+    "date": "Date"
+  },
+  "footer": {
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us",
+    "logo": "Daghata",
+    "description": "With Daghata... your booking in a second!",
+    "copyright": "All rights reserved, Daghata 2025",
+    "phone": "Phone: 01013341863",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "messages": {
+    "resendVerificationCode": "Verification code resent",
+    "codeVerified": "Code verified successfully!",
+    "passwordChangedSuccessfully": "Password reset successfully!",
+    "bookingCreatedSuccessfully": "Booking created successfully!",
+    "accountDeleted": "Account deleted successfully",
+    "profileUpdated": "Profile updated successfully",
+    "organizerRequestSubmitted": "Request submitted successfully"
+  },
+  "errors": {
+    "eventNotFound": "Event not found",
+    "alreadyBooked": "You have already booked this event",
+    "soldOut": "This event is sold out",
+    "ticketNotFound": "Ticket not found",
+    "refundFailed": "Refund failed",
+    "categoryInUse": "Cannot delete category because it is being used by events."
+  },
+  "manageEvents": {
+    "title": "Event Management",
+    "subtitle": "Create and manage your events and categories",
+    "addNew": "Add New Event",
+    "multiLanguageDetails": "Multi-language Event Details",
+    "eventDetails": "Event Details",
+    "updateCategoryDesc": "Update Category Details",
+    "addCategoryDesc": "Add a new category for the event"
+  },
+  "eventForm": {
+    "eventName": {
+      "labelAr": "Event Name (AR)",
+      "labelEn": "Event Name (EN)",
+      "placeholderAr": "Enter event name in Arabic",
+      "placeholderEn": "Enter event name in English"
+    },
+    "eventDescription": {
+      "labelAr": "Description (AR)",
+      "labelEn": "Description (EN)",
+      "placeholderAr": "Enter event description in Arabic",
+      "placeholderEn": "Enter event description in English"
+    },
+    "eventVenue": {
+      "labelAr": "Venue (AR)",
+      "labelEn": "Venue (EN)",
+      "placeholderAr": "Enter venue in Arabic",
+      "placeholderEn": "Enter venue in English"
+    },
+    "eventCategory": {
+      "labelAr": "Category",
+      "labelEn": "Category",
+      "placeholderAr": "Select Category",
+      "placeholderEn": "Select Category"
+    },
+    "eventDate": {
+      "labelAr": "Date",
+      "labelEn": "Date",
+      "placeholderAr": "Select Date",
+      "placeholderEn": "Select Date"
+    },
+    "eventTime": {
+      "labelAr": "Time",
+      "labelEn": "Time",
+      "placeholderAr": "Select Time",
+      "placeholderEn": "Select Time"
+    },
+    "eventCapacity": {
+      "labelAr": "Capacity",
+      "labelEn": "Capacity",
+      "placeholderAr": "Enter capacity",
+      "placeholderEn": "Enter capacity"
+    }
+  },
+  "categoriesForm": {
+    "labelAr": "Category Name (AR)",
+    "labelEn": "Category Name (EN)",
+    "placeholderAr": "Enter category name in Arabic",
+    "placeholderEn": "Enter category name in English"
+  },
+    "breadcrumbs": {
     "dashboard": "Dashboard",
     "users": "Users",
     "events": "Events",
@@ -519,5 +490,49 @@
     "categories": "Categories",
     "super-admin": "System Administration",
     "organizer": "Organizer Control"
+  },
+  "pages": {
+    "userProfile": {
+      "title": "Account Settings",
+      "basicProfile": "Basic Profile",
+      "changeImage": "Change Image",
+      "removeImage": "Remove Image",
+      "firstName": "First Name",
+      "firstNameRequired": "First name is required",
+      "lastName": "Last Name",
+      "lastNameRequired": "Last name is required",
+      "userName": "Username",
+      "userNameRequired": "Username is required",
+      "phoneNumber": "Phone Number",
+      "invalidPhone": "Invalid Phone",
+      "saveChanges": "Save Changes",
+      "accountSecurity": "Account Security",
+      "email": "Email",
+      "changeEmail": "Change Email Address",
+      "enterNewEmail": "Enter your new email address. We will send a verification code.",
+      "required": "Required",
+      "sendVerificationCode": "Send Verification Code",
+      "password": "Password",
+      "changePassword": "Change Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "minLength": "Min 6 chars",
+      "confirmPassword": "Confirm Password",
+      "mismatch": "Mismatch",
+      "updatePassword": "Update Password",
+      "2StepVerification": "2-Step Verification",
+      "additionalSecurity": "Add an additional layer of security to your account during login.",
+      "deleteAccount": "Delete My Account",
+      "deleteAccountDescription": "Permanently delete the account and remove access from all workspaces.",
+      "deleteAccountWarning": "Warning: This action is permanent. All your data, including created events, will be deleted. You cannot delete your account if you have events with active bookings.",
+      "confirmDeleteAccount": "Confirm Delete Account",
+      "verifyEmailChange": "Verify Email Change",
+      "enterCode": "Enter the 6-digit code sent to your new email.",
+      "verify": "Verify",
+      "organizerRole": "Organizer Role",
+      "organizerRoleDesc": "Upgrade your account to create and manage events.",
+      "requestAccess": "Request Access",
+      "requestAgain": "Request Again"
+    }
   }
 }

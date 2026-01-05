@@ -37,6 +37,10 @@ const eventSchema = new Schema(
       required: true,
     },
 
+    time: {
+      type: String,
+    },
+
     price: {
       type: Number,
       required: true,
@@ -72,11 +76,10 @@ const eventSchema = new Schema(
   { timestamps: true }
 );
 
-eventSchema.pre("save", function (next) {
+eventSchema.pre("save", async function () {
   if (this.isNew) {
     this.availableTickets = this.capacity;
   }
-  next();
 });
 
 export default model("event", eventSchema);
