@@ -125,7 +125,7 @@ export const toggleTwoFactor = asyncHandler(async (req, res, next) => {
   console.log("Request body:", req.body);
   console.log("User ID:", req.user?.id);
 
-  const { enable } = req.body;
+  const { enable, method } = req.body;
   const { id } = req.user;
 
   console.log("Finding user with ID:", id);
@@ -136,8 +136,10 @@ export const toggleTwoFactor = asyncHandler(async (req, res, next) => {
     return next(new Error("User not found", { cause: 404 }));
   }
 
-  console.log("Current twoFactorEnabled:", user.twoFactorEnabled);
-  console.log("Setting twoFactorEnabled to:", enable);
+  if (method) {
+    console.log("Setting twoFactorMethod to:", method);
+    user.twoFactorMethod = method;
+  }
 
   user.twoFactorEnabled = enable;
   await user.save();
@@ -273,5 +275,43 @@ export const handleOrganizerRequest = asyncHandler(async (req, res, next) => {
 
   return res.status(200).json({
     message: `Request ${status} successfully`,
+  });
+});
+
+// Update Phone Number (after OTP verification)
+export const updatePhone = asyncHandler(async (req, res, next) => {
+  const { phone } = req.body;
+  const { id } = req.user;
+
+  if (!phone) {
+    return next(new Error("Phone number is required", { cause: 400 }));
+  }
+
+  const user = await userModel.findById(id);
+  if (!user) {
+    return next(new Error("User not found", { cause: 404 }));
+  }
+
+  // Check if phone already exists for another user
+  const existingUser = await userModel.findOne({ phone, _id: { $ne: id } });
+  if (existingUser) {
+    return next(new Error("Phone number already in use", { cause: 409 }));
+  }
+
+  user.phone = phone;
+  await user.save();
+
+  return res.status(200).json({
+    message: "Phone number updated successfully",
+    user: {
+      _id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      phone: user.phone,
+      userName: user.userName,
+      role: user.role,
+      userImage: user.userImage,
+    },
   });
 });

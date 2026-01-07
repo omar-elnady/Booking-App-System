@@ -11,6 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
 
 function SliderEvents() {
   const { t, i18n } = useTranslation();
@@ -35,6 +36,7 @@ function SliderEvents() {
           opts={{
             align: "start",
             loop: true,
+            direction: i18n.dir() || "ltr",
           }}
         >
           <CarouselContent className="-ml-0">
@@ -49,8 +51,18 @@ function SliderEvents() {
 
           {events.length > 1 && (
             <>
-              <CarouselPrevious className="hidden md:flex -left-16 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300 shadow-xl border-gray-200" />
-              <CarouselNext className="hidden md:flex -right-16 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300 shadow-xl border-gray-200" />
+              <CarouselPrevious
+                className={cn(
+                  "hidden md:flex hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300 shadow-xl border-gray-200",
+                  i18n.dir() === "rtl" ? "-right-16 rotate-180" : "-left-16"
+                )}
+              />
+              <CarouselNext
+                className={cn(
+                  "hidden md:flex hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300 shadow-xl border-gray-200",
+                  i18n.dir() === "rtl" ? "-left-16 rotate-180" : "-right-16"
+                )}
+              />
             </>
           )}
         </Carousel>

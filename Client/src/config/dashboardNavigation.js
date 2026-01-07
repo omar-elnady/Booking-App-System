@@ -9,6 +9,9 @@ import {
   Layers,
   UserCircle,
   Lock,
+  Heart,
+  UserPlus,
+  Receipt,
 } from "lucide-react";
 import { ROLES } from "@/lib/roles";
 
@@ -179,17 +182,22 @@ export const getDashboardNavigation = (role) => {
           ],
         },
         {
-          titleKey: "navbar.bookings",
+          titleKey: "Favorites",
           items: [
             {
-              titleKey: "navbar.bookings",
-              href: "/user/bookings",
-              icon: Ticket,
+              titleKey: "My Wishlist",
+              href: "/user/wishlist",
+              icon: Heart,
             },
             {
-              titleKey: "userDashboard.eventsAttended",
-              href: "/user/history",
-              icon: Calendar,
+              titleKey: "Following",
+              href: "/user/following",
+              icon: UserPlus,
+            },
+            {
+              titleKey: "Transactions",
+              href: "/user/transactions",
+              icon: Receipt,
             },
           ],
         },

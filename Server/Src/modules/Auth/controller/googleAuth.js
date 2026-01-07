@@ -88,5 +88,6 @@ export const googleLogin = asyncHandler(async (req, res, next) => {
     message: "Login successful",
     access_token,
     refresh_token,
+    user: { ...tokenPayload, wishlist: user.wishlist },
   });
 });

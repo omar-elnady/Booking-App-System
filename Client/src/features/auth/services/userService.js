@@ -27,8 +27,10 @@ export const userService = {
     return response.data;
   },
 
-  toggle2FA: async (enabled) => {
-    const response = await apiClient.patch("/user/2fa", { enable: enabled });
+  toggle2FA: async (data) => {
+    // Check if data is just a boolean (backward compatibility) or object
+    const payload = typeof data === "object" ? data : { enable: data };
+    const response = await apiClient.patch("/user/2fa", payload);
     return response.data;
   },
 

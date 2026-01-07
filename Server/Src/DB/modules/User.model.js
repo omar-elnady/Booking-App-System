@@ -33,6 +33,18 @@ const userSchema = new Schema(
       public_id: { type: String, default: null },
     },
     phone: String,
+    lastPhoneChangeDate: {
+      type: Date,
+      default: null,
+    },
+    dailyOtpCount: {
+      type: Number,
+      default: 0,
+    },
+    lastOtpDate: {
+      type: Date,
+      default: null,
+    },
     address: String,
     role: {
       type: String,
@@ -49,6 +61,11 @@ const userSchema = new Schema(
       type: String,
       default: "none",
       enum: ["none", "pending", "approved", "rejected"],
+    },
+    twoFactorMethod: {
+      type: String,
+      enum: ["email", "phone"],
+      default: "email",
     },
     organizerSummary: {
       type: String,
@@ -91,6 +108,18 @@ const userSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: "event",
+      },
+    ],
+    wishlist: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "event",
+      },
+    ],
+    following: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "user", // Following organizers (users with role 'organizer')
       },
     ],
   },

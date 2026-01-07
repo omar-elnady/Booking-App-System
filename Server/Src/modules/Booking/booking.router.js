@@ -15,11 +15,17 @@ router.post(
 
 router.post("/webhook", bookingController.webhook);
 
-router.patch(
-  "/cancelTicket",
+router.post(
+  "/cancel",
   auth([roles.Admin, roles.User]),
   validation(cancelBookingSchema),
   bookingController.cancelTicket
+);
+
+router.post(
+  "/verify-session",
+  auth([roles.Admin, roles.User]),
+  bookingController.verifySession
 );
 
 export default router;

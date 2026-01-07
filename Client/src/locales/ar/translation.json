@@ -12,6 +12,39 @@
     "login": "دخول",
     "signup": "انشاء حساب"
   },
+  "labels": {
+    "date": "التاريخ",
+    "time": "الوقت",
+    "location": "المكان",
+    "aboutEvent": "عن الايڤنت",
+    "startsIn": "يبدأ خلال",
+    "days": "يوم",
+    "hours": "ساعة",
+    "mins": "دقيقة",
+    "secs": "ثانية"
+  },
+  "common": {
+    "all": "الكل",
+    "loading": "جاري التحميل...",
+    "filters": "الفلاتر",
+    "clearFilters": "مسح الفلاتر",
+    "success": "تمام",
+    "error": "خطأ",
+    "required": "مطلوب",
+    "eventAdded": "الايڤنت انضاف تمام!",
+    "eventUpdated": "الايڤنت اتحدث تمام!",
+    "eventDeleted": "الايڤنت اتمسح!",
+    "fillAllFields": "املأ كل الحقول المطلوبة.",
+    "invalid": "مش مظبوط",
+    "allStatuses": "كل الحالات",
+    "noResults": "مفيش نتايج",
+    "noResultsDesc": "جرب تغير البحث.",
+    "clearAllFilters": "شيل الفلاتر",
+    "currency": "ج",
+    "loginRequiredTitle": "لازم تسجل دخول",
+    "loginRequiredMessage": "عشان تضيف الايڤنت للمفضلة لازم تكون مسجل دخول. تحب تسجل دلوقتي؟",
+    "loginNow": "سجل دخول"
+  },
   "home": {
     "title": "اكتشف أجدد الايڤنتات",
     "subTitle": "انضم دلوقتي ومتفوتش الفرصة!",
@@ -139,6 +172,13 @@
     "tryAgain": "جرب تحجز تاني",
     "viewTicket": "شوف التذكرة"
   },
+  "hero": {
+    "date": "تاريخ الحدث",
+    "venue": "المكان",
+    "price": "سعر التذكرة",
+    "showTicket": "عرض التذكرة",
+    "getDirections": "الحصول على الاتجاهات"
+  },
   "dashboard": {
     "adminTitle": "لوحة الأدمن",
     "currency": "ج",
@@ -178,6 +218,7 @@
       "draft": "مسودة",
       "confirmed": "مؤكد"
     },
+    "overview": "نظرة عامة",
     "notifications": "الإشعارات",
     "pendingRequests": "طلبات تنظيم معلقة",
     "noNotifications": "مفيش إشعارات جديدة",
@@ -346,21 +387,15 @@
     "confirmPasswordRequired": "مطلوب",
     "passwordsShouldMatch": "الباسورد مش متطابق"
   },
-  "common": {
-    "success": "تمام",
-    "error": "خطأ",
-    "required": "مطلوب",
-    "eventAdded": "الايڤنت انضاف تمام!",
-    "eventUpdated": "الايڤنت اتحدث تمام!",
-    "eventDeleted": "الايڤنت اتمسح!",
-    "fillAllFields": "املأ كل الحقول المطلوبة.",
-    "invalid": "مش مظبوط",
-    "all": "الكل",
-    "allStatuses": "كل الحالات",
-    "noResults": "مفيش نتايج",
-    "noResultsDesc": "جرب تغير البحث.",
-    "clearAllFilters": "شيل الفلاتر",
-    "currency": "ج"
+
+  "time": {
+    "days": "يوم",
+    "hours": "ساعة",
+    "minutes": "دقيقة",
+    "seconds": "ثانية",
+    "hrs": "ساعة",
+    "min": "دقيقة",
+    "sec": "ثانية"
   },
   "buttons": {
     "submit": "إرسال",
@@ -379,7 +414,14 @@
     "confirmDeleteDesc": "متأكد انك عايز تمسح؟",
     "categoryLabel": "التصنيف",
     "selectCategory": "اختار التصنيف",
-    "bookNow": "احجز دلوقتي"
+    "bookNow": "احجز دلوقتي",
+    "showTicket": "عرض التذكرة",
+    "getDirections": "الحصول على الاتجاهات",
+    "unfollow": "إلغاء المتابعة",
+    "browseEvents": "استكشف الايڤنتات",
+    "backToDashboard": "رجوع للوحة التحكم",
+    "downloadTicket": "تحميل التذكرة",
+    "viewRecap": "شوف الذكريات"
   },
   "sortOpition": {
     "filters": "فلترة",
@@ -533,6 +575,73 @@
       "organizerRoleDesc": "رقّي حسابك عشان تقدر تعمل وتدير ايڤنتات.",
       "requestAccess": "طلب انضمام",
       "requestAgain": "طلب مرة تانية"
+    },
+    "status": {
+      "completed": "مكتمل",
+      "pending": "قيد الانتظار",
+      "failed": "فشل",
+      "active": "نشط",
+      "past": "سابق",
+      "cancelled": "ملغي",
+      "soldout": "مباع بالكامل",
+      "booked": "تم الحجز"
     }
+  },
+  "wishlist": {
+    "tag": "مجموعتي الخاصة",
+    "title": "قائمة أمنياتي",
+    "subtitle": "قائمة بالايڤنتات اللي اخترتها بنفسك لمغامرتك الجاية.",
+    "total": "إجمالي العناصر"
+  },
+  "following": {
+    "tag": "شبكة التواصل",
+    "title": "المتابعة",
+    "subtitle": "خليك على تواصل مع منظمين الايڤنتات المفضلين عندك وما تفوتش أي تحديث.",
+    "total": "بتتابع",
+    "organizers": "المنظمين",
+    "empty": "مش بتتابع حد",
+    "emptyDesc": "اكتشف وتابع منظمين موهوبين عشان توصلك آخر أخبار الايڤنتات بتاعتهم."
+  },
+  "tickets": {
+    "myTickets": "تذاكري",
+    "upcoming": "القادمة",
+    "past": "السابقة",
+    "cancelled": "الملغاة",
+    "allTickets": "كل التذاكر",
+    "subtitle": "تابع كل حجوزاتك وتاريخ حضورك للايڤنتات.",
+    "cancelTitle": "إلغاء التذكرة؟",
+    "cancelDesc": "متأكد إنك عايز تلغي التذكرة دي؟ هيتم استرجاع فلوسك على نفس طريقة الدفع. العملية دي مش هتقدر ترجع فيها.",
+    "confirmCancel": "أيوه، الغي التذكرة",
+    "noUpcoming": "مفيش تذاكر قادمة",
+    "noPast": "مفيش تذاكر سابقة",
+    "noCancelled": "مفيش تذاكر ملغاة",
+    "yourEntryPass": "تذكرة الدخول",
+    "qrFullDesc": "من فضلك وري الكود ده للمنظمين عند الدخول عشان يتأكدوا من حجزك.",
+    "verified": "تم التحقق",
+    "scannedAt": "تم استخدامها",
+    "loading": "جاري تحميل تفاصيل تذكرتك...",
+    "notFound": "التذكرة مش موجودة",
+    "notFoundDesc": "التذكرة اللي بتدور عليها مش موجودة أو معندكش صلاحية تشوفها.",
+    "experience": "التجربة",
+    "completed": "مكتملة",
+    "sweetMemories": "ذكريات جميلة"
+  },
+  "transactions": {
+    "tag": "السجل المالي",
+    "title": "المعاملات المالية",
+    "subtitle": "تابع كل مدفوعاتك واسترجاعاتك في مكان واحد.",
+    "type": "النوع",
+    "status": "الحالة",
+    "payment": "دفع",
+    "refund": "استرجاع",
+    "payments": "المدفوعات",
+    "refunds": "الاسترجاعات",
+    "paid": "مدفوع",
+    "refunded": "مسترجع",
+    "empty": "لا توجد معاملات",
+    "emptyDesc": "سجل معاملاتك المالية هيظهر هنا بمجرد ما تعمل أول حجز."
+  },
+  "status": {
+    "booked": "تم الحجز"
   }
 }

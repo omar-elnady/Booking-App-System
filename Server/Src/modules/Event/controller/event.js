@@ -438,7 +438,9 @@ export const getSpicificEvent = asyncHandler(async (req, res, next) => {
   }
 
   // Also fetch raw if needed, but aggregation covers it.
-  const normalEvent = await eventModel.findById(id);
+  const normalEvent = await eventModel
+    .findById(id)
+    .populate("createdBy", "userName firstName lastName email");
 
   return res.json({
     message: req.t("eventsRetrievedSuccessfully"),

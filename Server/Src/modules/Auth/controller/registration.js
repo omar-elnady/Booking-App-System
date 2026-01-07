@@ -211,6 +211,7 @@ export const login = asyncHandler(async (req, res, next) => {
     message: req.t("messages.userLoginSuccessfully"),
     access_token,
     refresh_token,
+    user: { ...tokenPayload, wishlist: user.wishlist },
   });
 });
 

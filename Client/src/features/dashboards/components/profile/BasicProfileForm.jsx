@@ -31,13 +31,11 @@ const BasicProfileForm = ({
       firstName: user?.firstName || "",
       lastName: user?.lastName || "",
       userName: user?.userName || "",
-      phone: user?.phone || "",
     },
     values: {
       firstName: user?.firstName || "",
       lastName: user?.lastName || "",
       userName: user?.userName || "",
-      phone: user?.phone || "",
     },
   });
 
@@ -46,7 +44,6 @@ const BasicProfileForm = ({
     formData.append("firstName", data.firstName);
     formData.append("lastName", data.lastName);
     formData.append("userName", data.userName);
-    formData.append("phone", data.phone);
 
     if (selectedFile) {
       formData.append("image", selectedFile);
@@ -126,7 +123,7 @@ const BasicProfileForm = ({
           onSubmit={handleSubmit(onSubmitProfile)}
           className="space-y-8 w-full"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-6">
             <div className="space-y-2">
               <label className="text-sm font-medium">
                 {t("pages.userProfile.firstName")}
@@ -181,25 +178,6 @@ const BasicProfileForm = ({
               {errors.userName && (
                 <p className="text-xs text-destructive">
                   {errors.userName.message}
-                </p>
-              )}
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">
-                {t("pages.userProfile.phoneNumber")}
-              </label>
-              <Input
-                {...register("phone", {
-                  pattern: {
-                    value: /^01[0-9]{9}$/,
-                    message: t("pages.userProfile.invalidPhone"),
-                  },
-                })}
-                placeholder="01xxxxxxxxx"
-              />
-              {errors.phone && (
-                <p className="text-xs text-destructive">
-                  {errors.phone.message}
                 </p>
               )}
             </div>

@@ -17,7 +17,8 @@ import { useAdminSettings } from "@/hooks/useAdmin";
 // Dashboard Pages (role-specific)
 import AdminDashboard from "@/pages/dashboard/AdminDashboard"; // For super-admin & admin
 import OrganizerDashboard from "@/pages/dashboard/OrganizerDashboard";
-import UserDashboard from "@/pages/dashboard/UserDashboard";
+import MyTickets from "@/pages/dashboard/MyTickets";
+import TicketDetails from "@/pages/dashboard/TicketDetails";
 
 // Public Features
 import Home from "@/pages/home/Home";
@@ -35,11 +36,16 @@ import ManageAllBookings from "@/pages/dashboard/ManageAllBookings";
 import RolesPermissions from "@/pages/dashboard/RolesPermissions";
 import ManageCategories from "@/pages/dashboard/ManageCategories";
 import { UserProfile } from "@/pages/dashboard/UserProfile";
+import Wishlist from "@/pages/dashboard/Wishlist";
+import Following from "@/pages/dashboard/Following";
+import Transactions from "@/pages/dashboard/Transactions";
 
 import { useAuthStore } from "@features/auth/store/authStore";
+import { useUser } from "@/hooks/useUser";
 
 export default function App() {
   const { i18n } = useTranslation();
+  useUser();
 
   useEffect(() => {
     const direction = i18n.language === "ar" ? "rtl" : "ltr";
@@ -314,7 +320,15 @@ export default function App() {
             path="dashboard"
             element={
               <PermissionGuard permission="/dashboard">
-                <UserDashboard />
+                <MyTickets />
+              </PermissionGuard>
+            }
+          />
+          <Route
+            path="tickets/:bookingId"
+            element={
+              <PermissionGuard permission="/dashboard">
+                <TicketDetails />
               </PermissionGuard>
             }
           />
@@ -335,6 +349,9 @@ export default function App() {
             }
           />
           <Route path="upcoming" element={<ComingSoon />} />
+          <Route path="wishlist" element={<Wishlist />} />
+          <Route path="following" element={<Following />} />
+          <Route path="transactions" element={<Transactions />} />
           <Route
             path="profile"
             element={

@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import Confetti from "react-confetti";
 import { motion } from "framer-motion";
+import { ticketsService } from "@/services/ticketsService";
 
 const TicketConfirmation = () => {
   const { t } = useTranslation();
@@ -13,6 +14,7 @@ const TicketConfirmation = () => {
   const sessionId = searchParams.get("session_id");
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
+  const [isVerifying, setIsVerifying] = useState(!!sessionId);
 
   // Simple window resize listener
   useEffect(() => {
@@ -24,10 +26,37 @@ const TicketConfirmation = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    if (sessionId) {
+      ticketsService
+        .verifySession(sessionId)
+        .then((data) => {
+          console.log("Payment Verified:", data);
+        })
+        .catch((err) => {
+          console.error("Verification failed:", err);
+        })
+        .finally(() => {
+          setIsVerifying(false);
+        });
+    } else {
+      setIsVerifying(false);
+    }
+  }, [sessionId]);
+
   if (!sessionId) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-darkMainBg">
         <p>Invalid Session</p>
+      </div>
+    );
+  }
+
+  if (isVerifying) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-darkMainBg flex-col gap-4">
+        <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+        <p className="text-gray-600 dark:text-gray-400">Verifying payment...</p>
       </div>
     );
   }

@@ -12,8 +12,40 @@
     "login": "Login",
     "signup": "Signup"
   },
+  "labels": {
+    "date": "Date",
+    "time": "Time",
+    "location": "Location",
+    "aboutEvent": "About Event",
+    "startsIn": "Starts In",
+    "days": "Days",
+    "hours": "Hours",
+    "mins": "Mins",
+    "secs": "Secs"
+  },
+  "common": {
+    "all": "All",
+    "loading": "Loading...",
+    "filters": "Filters",
+    "clearFilters": "Clear Filters",
+    "success": "Success",
+    "error": "Error",
+    "required": "This field is required",
+    "eventAdded": "Event added successfully!",
+    "eventUpdated": "Event updated successfully!",
+    "eventDeleted": "Event deleted successfully!",
+    "fillAllFields": "Please fill all required fields for selected language(s).",
+    "invalid": "Invalid",
+    "allStatuses": "All Statuses",
+    "noResults": "No results found",
+    "noResultsDesc": "Try adjusting your search or filters to find what you're looking for.",
+    "clearAllFilters": "Clear all filters",
+    "currency": "EGP",
+    "loginRequiredTitle": "Login Required",
+    "loginRequiredMessage": "You need to be logged in to add events to your wishlist. Would you like to log in now?",
+    "loginNow": "Login Now"
+  },
   "categories": "Categories",
-  "clearFilters": "Clear Filters",
   "home": {
     "title": "Discover the latest exciting events",
     "subTitle": "Join now and don't miss your chance for an extraordinary experience!",
@@ -139,6 +171,13 @@
     "tryAgain": "Try Booking Again",
     "viewTicket": "View Ticket"
   },
+  "hero": {
+    "date": "Event Date",
+    "venue": "Venue",
+    "price": "Ticket Price",
+    "showTicket": "Show Ticket",
+    "getDirections": "Get Directions"
+  },
   "dashboard": {
     "adminTitle": "Admin Dashboard",
     "currency": "EGP",
@@ -178,6 +217,7 @@
       "draft": "Draft",
       "confirmed": "Confirmed"
     },
+    "overview": "Overview",
     "notifications": "Notifications",
     "pendingRequests": "pending organizer requests",
     "noNotifications": "No new notifications",
@@ -346,21 +386,15 @@
     "confirmPasswordRequired": "Confirm password is required",
     "passwordsShouldMatch": "Passwords should match"
   },
-  "common": {
-    "success": "Success",
-    "error": "Error",
-    "required": "This field is required",
-    "eventAdded": "Event added successfully!",
-    "eventUpdated": "Event updated successfully!",
-    "eventDeleted": "Event deleted successfully!",
-    "fillAllFields": "Please fill all required fields for selected language(s).",
-    "invalid": "Invalid",
-    "all": "All",
-    "allStatuses": "All Statuses",
-    "noResults": "No results found",
-    "noResultsDesc": "Try adjusting your search or filters to find what you're looking for.",
-    "clearAllFilters": "Clear all filters",
-    "currency": "EGP"
+
+  "time": {
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "hrs": "Hrs",
+    "min": "Min",
+    "sec": "Sec"
   },
   "buttons": {
     "submit": "Submit",
@@ -379,7 +413,14 @@
     "confirmDeleteDesc": "Are you sure you want to delete this category?",
     "categoryLabel": "Category",
     "selectCategory": "Select Category",
-    "bookNow": "Book Now"
+    "bookNow": "Book Now",
+    "showTicket": "Show Ticket",
+    "getDirections": "Get Directions",
+    "unfollow": "Unfollow",
+    "browseEvents": "Explore Events",
+    "backToDashboard": "Back to Dashboard",
+    "downloadTicket": "Download Ticket",
+    "viewRecap": "View Recap"
   },
   "sortOpition": {
     "filters": "Filter Options",
@@ -533,6 +574,73 @@
       "organizerRoleDesc": "Upgrade your account to create and manage events.",
       "requestAccess": "Request Access",
       "requestAgain": "Request Again"
+    },
+    "status": {
+      "completed": "Completed",
+      "pending": "Pending",
+      "failed": "Failed",
+      "active": "Active",
+      "past": "Past",
+      "cancelled": "Cancelled",
+      "soldout": "Sold Out",
+      "booked": "Booked"
     }
+  },
+  "wishlist": {
+    "tag": "Personal Collection",
+    "title": "My Wishlist",
+    "subtitle": "A curated list of events you've handpicked for your next adventure.",
+    "total": "Total Items"
+  },
+  "following": {
+    "tag": "Network",
+    "title": "Following",
+    "subtitle": "Stay connected with your favorite event organizers and never miss an update.",
+    "total": "Following",
+    "organizers": "Organizers",
+    "empty": "Not Following Anyone",
+    "emptyDesc": "Discover and follow talented organizers to stay updated on their latest events."
+  },
+  "tickets": {
+    "myTickets": "My Tickets",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "cancelled": "Cancelled",
+    "allTickets": "All Tickets",
+    "subtitle": "Keep track of all your event bookings and history.",
+    "cancelTitle": "Cancel Ticket?",
+    "cancelDesc": "Are you sure you want to cancel this ticket? A refund will be processed to your original payment method. This action cannot be undone.",
+    "confirmCancel": "Yes, Cancel Ticket",
+    "noUpcoming": "No upcoming tickets",
+    "noPast": "No past tickets",
+    "noCancelled": "No cancelled tickets",
+    "yourEntryPass": "Entry Pass",
+    "qrFullDesc": "Please show this QR code to the event staff at the entrance for verification.",
+    "verified": "Verified",
+    "scannedAt": "Used by owner",
+    "loading": "Fetching your ticket details...",
+    "notFound": "Ticket Not Found",
+    "notFoundDesc": "The ticket you're looking for doesn't exist or you don't have access.",
+    "experience": "Experience",
+    "completed": "Completed",
+    "sweetMemories": "Sweet Memories"
+  },
+  "transactions": {
+    "tag": "Financial History",
+    "title": "Transactions",
+    "subtitle": "Track all your payments and refunds in one place.",
+    "type": "Type",
+    "status": "Status",
+    "payment": "Payment",
+    "refund": "Refund",
+    "payments": "Payments",
+    "refunds": "Refunds",
+    "paid": "Paid",
+    "refunded": "Refunded",
+    "empty": "No Transactions",
+    "emptyDesc": "Your transaction history will appear here once you make your first booking."
+  },
+  "status": {
+    "booked": "Booked"
   }
 }

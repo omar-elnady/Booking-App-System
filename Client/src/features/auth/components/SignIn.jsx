@@ -69,7 +69,8 @@ const SignIn = ({ setIsLogin }) => {
       const token = response.data.access_token;
       if (token) {
         const decoded = jwtDecode(token);
-        login(decoded, token);
+        const user = response.data.user || decoded;
+        login(user, token);
         toast.success(response.data.message);
         navigate("/");
       }
@@ -88,7 +89,8 @@ const SignIn = ({ setIsLogin }) => {
       const token = response.data.access_token;
       if (token) {
         const decoded = jwtDecode(token);
-        login(decoded, token);
+        const user = response.data.user || decoded;
+        login(user, token);
         toast.success(response.data.message);
         navigate("/");
       }

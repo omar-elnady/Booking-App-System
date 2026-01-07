@@ -129,7 +129,7 @@ export function DashboardHeader({ isSidebarCollapsed, setIsSidebarCollapsed }) {
         </div>
 
         <div className="flex items-center gap-2 ">
-          <div className="flex items-center rounded-xl px-2 py-1 bg-muted/20 backdrop-blur-sm">
+          <div className="flex items-center rounded-xl px-2 py-1 border border-border/40 bg-background/50">
             <LanguageSwitcher />
             <div className="w-[1px] h-4 bg-border/50 mx-1" />
             <ThemeSwitcher />

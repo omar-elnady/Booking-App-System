@@ -9,7 +9,9 @@ import cloudinary from "../../utils/cloudinary.js";
 export const getPermissions = asyncHandler(async (req, res, next) => {
   let settings = await permissionModel.findOne();
   if (!settings) {
-    settings = await permissionModel.create({});
+    // Create with default permissions from schema
+    settings = new permissionModel();
+    await settings.save();
   }
   return res.status(200).json({ message: "Permissions fetched", settings });
 });

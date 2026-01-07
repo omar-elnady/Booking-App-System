@@ -4,6 +4,7 @@ import { Loader2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { useEvent } from "@/hooks/useEvents";
+import { useUserBookings } from "@/hooks/useTickets";
 import { useAuthStore } from "@features/auth/store/authStore";
 import { useCreateBooking } from "@/hooks/useCreateBooking";
 import { motion } from "framer-motion";
@@ -39,7 +40,15 @@ const EventDetails = () => {
     };
   }, [data, i18n.language]);
 
-  const isBooked = user?.bookedEvents?.includes(id) || false;
+  const { data: upcomingBookingsData } = useUserBookings("upcoming");
+  const isBooked = useMemo(() => {
+    return (
+      upcomingBookingsData?.bookings?.some(
+        (b) =>
+          b.event?._id?.toString() === id.toString() && b.status === "booked"
+      ) || false
+    );
+  }, [upcomingBookingsData, id]);
 
   const handleBookNow = () => {
     if (!isAuthenticated) {
